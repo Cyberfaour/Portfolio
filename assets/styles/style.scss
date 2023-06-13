@@ -13,19 +13,27 @@ body {
   font-family: "Lucida Console", Monaco, monospace;
   font-size: 14px;
   line-height: 1.4;
-  margin: 0;
-  padding: 0;
   height: auto;
   scroll-behavior: smooth;
-  border: 5px solid #00ff00; /* Green border */
+  border: 2.5px solid #00ff00; /* Green border */
   padding: 10px;
   margin: 10px;
+  
+  
   a {
     text-decoration: none;
     color: inherit;
   }
   a:hover {
     color: inherit;
+  }
+  button {
+    background-color: #00ff00;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-family: "Courier New", monospace; /* Optional: Apply a monospaced font */
   }
   .cookie-banner {
     position: fixed;
@@ -117,6 +125,7 @@ header {
       transition: width 0.5s;
     }
   }
+  
 }
 
 #console {
@@ -126,7 +135,7 @@ header {
   background-color: black;
   //   height: 300px;
   overflow: scroll;
-  opacity: 0;
+  opacity: 1;
   transition: opacity 1s;
   height: 90vh;
   overflow-x: hidden;
@@ -178,7 +187,7 @@ header {
   background-color: black;
   color: #00ff00; // Green text color
   font-family: "Courier New", Courier, monospace;
-    margin-bottom: 3rem;
+  margin-bottom: 3rem;
   h1 {
     font-size: 45px;
     text-align: center;
@@ -223,41 +232,132 @@ header {
     }
   }
 }
-.projects{
-    height: 60vh;
-    padding-top: 2rem;
-    .console-prompt {
-        font-family: monospace;
+.projects {
+  height: 60vh;
+  padding-top: 2rem;
+  h1 {
+    font-size: 45px;
+    text-align: center;
+    padding-bottom: 20px;
+    color: #00ff00;
+    font-weight: 700;
+  }
+  .console-prompt {
+    font-family: monospace;
+    i {
+      font-size: 24px;
+    }
+    .console-command {
+      background-color: #000;
+      color: #fff;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+
+      .console-prompt-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
         i {
-          font-size: 24px;
+          font-size: 25px !important;
         }
-        .console-command {
-          background-color: #000;
-          color: #fff;
-          padding: 10px;
-          display: flex;
-          align-items: center;
-      
-          .console-prompt-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-      
-            i {
-              font-size: 25px !important;
-            }
-            h4 {
-              margin: 10px 0;
-            }
-      
-            a {
-              color: #0f0;
-              text-decoration: underline;
-              font-size: 18px;
-            }
-          }
+        h4 {
+          margin: 10px 0;
+        }
+
+        a {
+          color: #0f0;
+          text-decoration: underline;
+          font-size: 18px;
         }
       }
+    }
+  }
+}
+.skills {
+  
+  h1 {
+    font-size: 45px;
+    text-align: center;
+    padding-bottom: 20px;
+    color: #00ff00;
+    font-weight: 700;
+  }
+  .input-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  #command-input {
+    padding: 5px;
+    margin-right: 10px;
+  }
+  
+  #enter-button {
+    font-size: 18px;
+    padding: 5px 10px;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .parent {
+    font-size: 20px; /* Adjust the font size as per your preference */
+  }
+  .child {
+    font-size: 15px; /* Adjust the font size for the child elements */
+  }
+  .output {
+    font-family: monospace;
+    white-space: pre;
+    color: #00ff00;
+    width: 500px; /* Adjust the width as desired */
+    margin: 0 auto; /* Center the element horizontally */
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', monospace;
+  }
+
+  li {
+    margin: 0;
+    padding: 0 0 0 20px;
+    position: relative;
+    color: #00ff00;
+
+    &:before {
+      content: ">";
+      position: absolute;
+      top: 0;
+      left: -20px;
+      font-weight: bold;
+      color: #00ff00;
+    }
+
+    &:last-child:before {
+      border-left: none;
+    }
+  }
+
+  ul ul {
+    margin-top: 10px;
+  }
+
+  ul ul li:before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: -20px;
+    border-top: 2px solid #00ff00;
+    width: 20px;
+  }
+
+  ul ul li:last-child:before {
+    border-left: 20px solid transparent;
+  }
 }
 
 
@@ -267,25 +367,112 @@ header {
   font-size: 18px;
   line-height: 1.4;
 }
-@media (max-width: 767px) {
-    .projects{
-        height: 90vh;
+.retro-contact {
+  background-color: #222;
+  color: #fff;
+  padding: 80px 0;
+
+  .section-heading {
+    font-size: 40px;
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .section-subheading {
+    font-size: 18px;
+    font-style: italic;
+    margin-bottom: 75px;
+    color: #fff;
+  }
+
+  form {
+    .form-group {
+      position: relative;
+      margin-bottom: 30px;
+
+      label {
+        position: absolute;
+        top: 0;
+        left: 10px;
+        color: #ffcc00;
+        font-size: 14px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        pointer-events: none;
+      }
+
+      input,
+      textarea {
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid #fff;
+        border-radius: 0;
+        color: #fff;
+        padding: 10px;
+        width: 100%;
+        font-size: 16px;
+        transition: all 0.3s ease;
+
+        &:focus,
+        &:not(:placeholder-shown) {
+          outline: none;
+          border-color: #ffcc00;
+        }
+
+        &:focus + label,
+        &:not(:placeholder-shown) + label {
+          top: -20px;
+          font-size: 12px;
+        }
+
+        &::placeholder {
+          color: #fff;
+          opacity: 0.6;
+        }
+      }
+
+      textarea {
+        resize: vertical;
+      }
     }
+
+    .btn-primary {
+      background-color: #ffcc00;
+      border: none;
+      border-radius: 0;
+      padding: 15px 30px;
+      font-size: 18px;
+      font-weight: 700;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: #fff;
+        color: #222;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .projects {
+    height: 90vh;
+  }
   .vintage-text-art {
     display: none; /* Hide the vintage text on small screens */
   }
-  
+
   .alternative-text {
     display: block; /* Show an alternative text on small screens */
     font-size: 10px;
     text-align: center;
-
+  }
     .retro-footer {
       background-color: #000;
       color: #00ff00;
       padding: 50px 0;
       font-weight: 600;
-
+      font-size: larger;
       h4 {
         font-family: "Courier New", Courier, monospace;
         font-size: 24px;
@@ -314,7 +501,7 @@ header {
         }
       }
     }
-  }
+  
 }
 
 @keyframes flicker {

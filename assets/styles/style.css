@@ -8,11 +8,9 @@ body {
   font-family: "Lucida Console", Monaco, monospace;
   font-size: 14px;
   line-height: 1.4;
-  margin: 0;
-  padding: 0;
   height: auto;
   scroll-behavior: smooth;
-  border: 5px solid #00ff00; /* Green border */
+  border: 2.5px solid #00ff00; /* Green border */
   padding: 10px;
   margin: 10px;
 }
@@ -22,6 +20,14 @@ body a {
 }
 body a:hover {
   color: inherit;
+}
+body button {
+  background-color: #00ff00;
+  color: rgb(0, 0, 0);
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-family: "Courier New", monospace; /* Optional: Apply a monospaced font */
 }
 body .cookie-banner {
   position: fixed;
@@ -112,7 +118,7 @@ header .chevron {
 #console {
   background-color: black;
   overflow: scroll;
-  opacity: 0;
+  opacity: 1;
   transition: opacity 1s;
   height: 90vh;
   overflow-x: hidden;
@@ -202,6 +208,13 @@ header .chevron {
   height: 60vh;
   padding-top: 2rem;
 }
+.projects h1 {
+  font-size: 45px;
+  text-align: center;
+  padding-bottom: 20px;
+  color: #00ff00;
+  font-weight: 700;
+}
 .projects .console-prompt {
   font-family: monospace;
 }
@@ -232,11 +245,174 @@ header .chevron {
   font-size: 18px;
 }
 
+.skills h1 {
+  font-size: 45px;
+  text-align: center;
+  padding-bottom: 20px;
+  color: #00ff00;
+  font-weight: 700;
+}
+.skills .input-container {
+  display: flex;
+  align-items: center;
+}
+.skills #command-input {
+  padding: 5px;
+  margin-right: 10px;
+}
+.skills #enter-button {
+  font-size: 18px;
+  padding: 5px 10px;
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.skills .parent {
+  font-size: 20px; /* Adjust the font size as per your preference */
+}
+.skills .child {
+  font-size: 15px; /* Adjust the font size for the child elements */
+}
+.skills .output {
+  font-family: monospace;
+  white-space: pre;
+  color: #00ff00;
+  width: 500px; /* Adjust the width as desired */
+  margin: 0 auto; /* Center the element horizontally */
+}
+.skills ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: "Courier New", monospace;
+}
+.skills li {
+  margin: 0;
+  padding: 0 0 0 20px;
+  position: relative;
+  color: #00ff00;
+}
+.skills li:before {
+  content: ">";
+  position: absolute;
+  top: 0;
+  left: -20px;
+  font-weight: bold;
+  color: #00ff00;
+}
+.skills li:last-child:before {
+  border-left: none;
+}
+.skills ul ul {
+  margin-top: 10px;
+}
+.skills ul ul li:before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: -20px;
+  border-top: 2px solid #00ff00;
+  width: 20px;
+}
+.skills ul ul li:last-child:before {
+  border-left: 20px solid transparent;
+}
+
 .vintage-text,
 .vintage-text-art {
   font-family: "Courier New", Courier, monospace;
   font-size: 18px;
   line-height: 1.4;
+}
+
+.retro-contact {
+  background-color: #222;
+  color: #fff;
+  padding: 80px 0;
+}
+.retro-contact .section-heading {
+  font-size: 40px;
+  color: #fff;
+  font-weight: 700;
+}
+.retro-contact .section-subheading {
+  font-size: 18px;
+  font-style: italic;
+  margin-bottom: 75px;
+  color: #fff;
+}
+.retro-contact form .form-group {
+  position: relative;
+  margin-bottom: 30px;
+}
+.retro-contact form .form-group label {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  color: #ffcc00;
+  font-size: 14px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+.retro-contact form .form-group input,
+.retro-contact form .form-group textarea {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #fff;
+  border-radius: 0;
+  color: #fff;
+  padding: 10px;
+  width: 100%;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+.retro-contact form .form-group input:not(:-moz-placeholder-shown), .retro-contact form .form-group textarea:not(:-moz-placeholder-shown) {
+  outline: none;
+  border-color: #ffcc00;
+}
+.retro-contact form .form-group input:focus, .retro-contact form .form-group input:not(:placeholder-shown),
+.retro-contact form .form-group textarea:focus,
+.retro-contact form .form-group textarea:not(:placeholder-shown) {
+  outline: none;
+  border-color: #ffcc00;
+}
+.retro-contact form .form-group input:not(:-moz-placeholder-shown) + label, .retro-contact form .form-group textarea:not(:-moz-placeholder-shown) + label {
+  top: -20px;
+  font-size: 12px;
+}
+.retro-contact form .form-group input:focus + label, .retro-contact form .form-group input:not(:placeholder-shown) + label,
+.retro-contact form .form-group textarea:focus + label,
+.retro-contact form .form-group textarea:not(:placeholder-shown) + label {
+  top: -20px;
+  font-size: 12px;
+}
+.retro-contact form .form-group input::-moz-placeholder, .retro-contact form .form-group textarea::-moz-placeholder {
+  color: #fff;
+  opacity: 0.6;
+}
+.retro-contact form .form-group input::placeholder,
+.retro-contact form .form-group textarea::placeholder {
+  color: #fff;
+  opacity: 0.6;
+}
+.retro-contact form .form-group textarea {
+  resize: vertical;
+}
+.retro-contact form .btn-primary {
+  background-color: #ffcc00;
+  border: none;
+  border-radius: 0;
+  padding: 15px 30px;
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+.retro-contact form .btn-primary:hover {
+  background-color: #fff;
+  color: #222;
 }
 
 @media (max-width: 767px) {
@@ -251,31 +427,32 @@ header .chevron {
     font-size: 10px;
     text-align: center;
   }
-  .alternative-text .retro-footer {
+  .retro-footer {
     background-color: #000;
     color: #00ff00;
     padding: 50px 0;
     font-weight: 600;
+    font-size: larger;
   }
-  .alternative-text .retro-footer h4 {
+  .retro-footer h4 {
     font-family: "Courier New", Courier, monospace;
     font-size: 24px;
     margin-bottom: 20px;
     font-weight: 600;
   }
-  .alternative-text .retro-footer p {
+  .retro-footer p {
     font-family: "Courier New", Courier, monospace;
     font-size: 15px;
   }
-  .alternative-text .retro-footer .social-icons li {
+  .retro-footer .social-icons li {
     display: inline-block;
     margin-right: 10px;
   }
-  .alternative-text .retro-footer .social-icons li a {
+  .retro-footer .social-icons li a {
     color: #00ff00;
     font-size: 20px;
   }
-  .alternative-text .retro-footer .social-icons li a:hover {
+  .retro-footer .social-icons li a:hover {
     color: #ff0000;
   }
 }
