@@ -458,6 +458,9 @@ header {
 }
 
 @media (max-width: 767px) {
+  #loading-screen{
+    height: 100vh;
+  }
   .projects {
     height: 90vh;
   }
