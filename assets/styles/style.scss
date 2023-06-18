@@ -11,14 +11,14 @@ body {
   background-color: black;
   color: #00ff00; /* Green text color */
   font-family: "Lucida Console", Monaco, monospace;
-  font-size: 14px;
+  // font-size: 14px;
   line-height: 1.4;
   height: auto;
   scroll-behavior: smooth;
   border: 2.5px solid #00ff00; /* Green border */
   padding: 10px;
   margin: 10px;
-  
+  opacity: 0.8;
   
   a {
     text-decoration: none;
@@ -135,7 +135,7 @@ header {
   background-color: black;
   //   height: 300px;
   overflow: scroll;
-  opacity: 1;
+  opacity: 0;
   transition: opacity 1s;
   height: 90vh;
   overflow-x: hidden;
@@ -242,12 +242,10 @@ header {
     color: #00ff00;
     font-weight: 700;
   }
-  .console-prompt {
+  .console-card {
     font-family: monospace;
-    i {
-      font-size: 24px;
-    }
-    .console-command {
+    
+    .console-card {
       background-color: #000;
       color: #fff;
       padding: 10px;
@@ -269,11 +267,14 @@ header {
         a {
           color: #0f0;
           text-decoration: underline;
-          font-size: 18px;
+         font-size: 5rem !important;
+          padding: 1rem; 
         }
       }
     }
   }
+
+
 }
 .skills {
   
@@ -303,10 +304,10 @@ header {
     cursor: pointer;
   }
   .parent {
-    font-size: 20px; /* Adjust the font size as per your preference */
+    font-size: 20px !important; /* Adjust the font size as per your preference */
   }
   .child {
-    font-size: 15px; /* Adjust the font size for the child elements */
+    font-size: 20px; /* Adjust the font size for the child elements */
   }
   .output {
     font-family: monospace;
@@ -367,10 +368,10 @@ header {
   font-size: 18px;
   line-height: 1.4;
 }
-.retro-contact {
-  background-color: #222;
+.retro-contact { 
+  height: 90vh;
+  background-color: #000000;
   color: #fff;
-  padding: 80px 0;
 
   .section-heading {
     font-size: 40px;
@@ -382,7 +383,7 @@ header {
     font-size: 18px;
     font-style: italic;
     margin-bottom: 75px;
-    color: #fff;
+    color: #00ff00;
   }
 
   form {
@@ -405,7 +406,7 @@ header {
       textarea {
         background-color: transparent;
         border: none;
-        border-bottom: 1px solid #fff;
+        border-bottom: 1px solid #00ff00;
         border-radius: 0;
         color: #fff;
         padding: 10px;
@@ -426,18 +427,18 @@ header {
         }
 
         &::placeholder {
-          color: #fff;
-          opacity: 0.6;
+          color: #00ff00;
+          // opacity: 0.6;
         }
       }
 
       textarea {
-        resize: vertical;
+        resize: none;
       }
     }
 
     .btn-primary {
-      background-color: #ffcc00;
+      background-color: #00ff00;
       border: none;
       border-radius: 0;
       padding: 15px 30px;
@@ -445,10 +446,12 @@ header {
       font-weight: 700;
       text-transform: uppercase;
       transition: all 0.3s ease;
+      color: #000;
 
       &:hover {
-        background-color: #fff;
-        color: #222;
+        background-color: #000;
+        color: #00ff00;
+        border: #00ff00 2px solid;
       }
     }
   }
@@ -467,12 +470,27 @@ header {
     font-size: 10px;
     text-align: center;
   }
-    .retro-footer {
-      background-color: #000;
-      color: #00ff00;
+    
+  
+}
+
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+.retro-footer {
+      background-color: #00ff00;
+      color: #000;
       padding: 50px 0;
       font-weight: 600;
-      font-size: larger;
+      font-size: 16px;
+      margin-top: 3rem;
+
       h4 {
         font-family: "Courier New", Courier, monospace;
         font-size: 24px;
@@ -501,19 +519,6 @@ header {
         }
       }
     }
-  
-}
-
-@keyframes flicker {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-}
-
 .flickering-lights {
   position: relative;
 

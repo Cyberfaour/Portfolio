@@ -6,13 +6,13 @@ body {
   background-color: black;
   color: #00ff00; /* Green text color */
   font-family: "Lucida Console", Monaco, monospace;
-  font-size: 14px;
   line-height: 1.4;
   height: auto;
   scroll-behavior: smooth;
   border: 2.5px solid #00ff00; /* Green border */
   padding: 10px;
   margin: 10px;
+  opacity: 0.8;
 }
 body a {
   text-decoration: none;
@@ -118,7 +118,7 @@ header .chevron {
 #console {
   background-color: black;
   overflow: scroll;
-  opacity: 1;
+  opacity: 0;
   transition: opacity 1s;
   height: 90vh;
   overflow-x: hidden;
@@ -215,34 +215,32 @@ header .chevron {
   color: #00ff00;
   font-weight: 700;
 }
-.projects .console-prompt {
+.projects .console-card {
   font-family: monospace;
 }
-.projects .console-prompt i {
-  font-size: 24px;
-}
-.projects .console-prompt .console-command {
+.projects .console-card .console-card {
   background-color: #000;
   color: #fff;
   padding: 10px;
   display: flex;
   align-items: center;
 }
-.projects .console-prompt .console-command .console-prompt-content {
+.projects .console-card .console-card .console-prompt-content {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.projects .console-prompt .console-command .console-prompt-content i {
+.projects .console-card .console-card .console-prompt-content i {
   font-size: 25px !important;
 }
-.projects .console-prompt .console-command .console-prompt-content h4 {
+.projects .console-card .console-card .console-prompt-content h4 {
   margin: 10px 0;
 }
-.projects .console-prompt .console-command .console-prompt-content a {
+.projects .console-card .console-card .console-prompt-content a {
   color: #0f0;
   text-decoration: underline;
-  font-size: 18px;
+  font-size: 5rem !important;
+  padding: 1rem;
 }
 
 .skills h1 {
@@ -269,10 +267,10 @@ header .chevron {
   cursor: pointer;
 }
 .skills .parent {
-  font-size: 20px; /* Adjust the font size as per your preference */
+  font-size: 20px !important; /* Adjust the font size as per your preference */
 }
 .skills .child {
-  font-size: 15px; /* Adjust the font size for the child elements */
+  font-size: 20px; /* Adjust the font size for the child elements */
 }
 .skills .output {
   font-family: monospace;
@@ -327,9 +325,9 @@ header .chevron {
 }
 
 .retro-contact {
-  background-color: #222;
+  height: 90vh;
+  background-color: #000000;
   color: #fff;
-  padding: 80px 0;
 }
 .retro-contact .section-heading {
   font-size: 40px;
@@ -340,7 +338,7 @@ header .chevron {
   font-size: 18px;
   font-style: italic;
   margin-bottom: 75px;
-  color: #fff;
+  color: #00ff00;
 }
 .retro-contact form .form-group {
   position: relative;
@@ -360,7 +358,7 @@ header .chevron {
 .retro-contact form .form-group textarea {
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid #00ff00;
   border-radius: 0;
   color: #fff;
   padding: 10px;
@@ -389,19 +387,17 @@ header .chevron {
   font-size: 12px;
 }
 .retro-contact form .form-group input::-moz-placeholder, .retro-contact form .form-group textarea::-moz-placeholder {
-  color: #fff;
-  opacity: 0.6;
+  color: #00ff00;
 }
 .retro-contact form .form-group input::placeholder,
 .retro-contact form .form-group textarea::placeholder {
-  color: #fff;
-  opacity: 0.6;
+  color: #00ff00;
 }
 .retro-contact form .form-group textarea {
-  resize: vertical;
+  resize: none;
 }
 .retro-contact form .btn-primary {
-  background-color: #ffcc00;
+  background-color: #00ff00;
   border: none;
   border-radius: 0;
   padding: 15px 30px;
@@ -409,10 +405,12 @@ header .chevron {
   font-weight: 700;
   text-transform: uppercase;
   transition: all 0.3s ease;
+  color: #000;
 }
 .retro-contact form .btn-primary:hover {
-  background-color: #fff;
-  color: #222;
+  background-color: #000;
+  color: #00ff00;
+  border: #00ff00 2px solid;
 }
 
 @media (max-width: 767px) {
@@ -427,34 +425,6 @@ header .chevron {
     font-size: 10px;
     text-align: center;
   }
-  .retro-footer {
-    background-color: #000;
-    color: #00ff00;
-    padding: 50px 0;
-    font-weight: 600;
-    font-size: larger;
-  }
-  .retro-footer h4 {
-    font-family: "Courier New", Courier, monospace;
-    font-size: 24px;
-    margin-bottom: 20px;
-    font-weight: 600;
-  }
-  .retro-footer p {
-    font-family: "Courier New", Courier, monospace;
-    font-size: 15px;
-  }
-  .retro-footer .social-icons li {
-    display: inline-block;
-    margin-right: 10px;
-  }
-  .retro-footer .social-icons li a {
-    color: #00ff00;
-    font-size: 20px;
-  }
-  .retro-footer .social-icons li a:hover {
-    color: #ff0000;
-  }
 }
 @keyframes flicker {
   0%, 100% {
@@ -464,6 +434,36 @@ header .chevron {
     opacity: 0.5;
   }
 }
+.retro-footer {
+  background-color: #00ff00;
+  color: #000;
+  padding: 50px 0;
+  font-weight: 600;
+  font-size: 16px;
+  margin-top: 3rem;
+}
+.retro-footer h4 {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+.retro-footer p {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 15px;
+}
+.retro-footer .social-icons li {
+  display: inline-block;
+  margin-right: 10px;
+}
+.retro-footer .social-icons li a {
+  color: #00ff00;
+  font-size: 20px;
+}
+.retro-footer .social-icons li a:hover {
+  color: #ff0000;
+}
+
 .flickering-lights {
   position: relative;
 }
