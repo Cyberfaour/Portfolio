@@ -4,14 +4,12 @@
 
 body {
   background-color: black;
-  color: #00ff00; /* Green text color */
+  color: #048d04; /* Green text color */
   font-family: "Lucida Console", Monaco, monospace;
   line-height: 1.4;
-  height: auto;
+  overflow-y: hidden;
   scroll-behavior: smooth;
-  border: 2.5px solid #00ff00; /* Green border */
-  padding: 10px;
-  margin: 10px;
+  margin-right: 3rem;
   opacity: 0.8;
 }
 body a {
@@ -22,7 +20,7 @@ body a:hover {
   color: inherit;
 }
 body button {
-  background-color: #00ff00;
+  background-color: #048d04;
   color: rgb(0, 0, 0);
   padding: 10px 20px;
   border: none;
@@ -45,7 +43,7 @@ body .cookie-banner.hide {
   opacity: 0;
 }
 body .cookie-banner button {
-  background-color: #00ff00;
+  background-color: #048d04;
   color: rgb(0, 0, 0);
   padding: 10px 20px;
   border: none;
@@ -57,6 +55,18 @@ body .cookie-banner .message {
   margin-right: 10px;
   color: #fff; /* Update the text color */
   font-family: "Courier New", monospace; /* Optional: Apply a monospaced font */
+}
+body .information_retro {
+  opacity: 0;
+  transition: opacity 1s;
+}
+body .information_retro .qr_code {
+  margin-top: 5rem;
+  background: url("../images/QR_Code2.svg");
+  width: 15rem;
+  height: 17.5rem;
+  background-size: cover;
+  margin: auto;
 }
 
 header {
@@ -110,7 +120,7 @@ header .chevron {
   top: 0;
   left: 0;
   height: 100%;
-  background-color: #00ff00; /* Green progress bar */
+  background-color: #048d04; /* Green progress bar */
   width: 0%;
   transition: width 0.5s;
 }
@@ -123,13 +133,14 @@ header .chevron {
   height: 90vh;
   overflow-x: hidden;
   scroll-behavior: smooth;
+  border: 5px solid #048d04; /* Green border */
 }
 
 .pixel {
   width: 10px;
   height: 10px;
   display: inline-block;
-  background-color: #00ff00; /* Green pixel */
+  background-color: #048d04; /* Green pixel */
 }
 
 .navbar {
@@ -147,25 +158,25 @@ header .chevron {
   margin-right: 10px;
 }
 .navbar a {
-  color: #00ff00;
+  color: #048d04;
   text-decoration: none;
   padding: 15px 30px;
-  border: 1px solid #00ff00;
+  border: 1px solid #048d04;
   font-size: 18px;
   font-weight: bold;
   text-transform: uppercase;
   transition: transform 0.3s, box-shadow 0.3s;
 }
 .navbar a:hover {
-  background-color: #00ff00;
+  background-color: #048d04;
   color: black;
   transform: scale(1.1);
-  box-shadow: 0 0 10px #00ff00;
+  box-shadow: 0 0 10px #048d04;
 }
 
 .about {
   background-color: black;
-  color: #00ff00;
+  color: #048d04;
   font-family: "Courier New", Courier, monospace;
   margin-bottom: 3rem;
 }
@@ -173,7 +184,7 @@ header .chevron {
   font-size: 45px;
   text-align: center;
   padding-bottom: 20px;
-  color: #00ff00;
+  color: #048d04;
   font-weight: 700;
 }
 .about .card-body {
@@ -198,10 +209,10 @@ header .chevron {
 }
 .about .carousel-indicators li {
   background-color: rgba(0, 255, 0, 0.3);
-  border-color: #00ff00;
+  border-color: #048d04;
 }
 .about .carousel-indicators li.active {
-  background-color: #00ff00;
+  background-color: #048d04;
 }
 
 .projects {
@@ -212,7 +223,7 @@ header .chevron {
   font-size: 45px;
   text-align: center;
   padding-bottom: 20px;
-  color: #00ff00;
+  color: #048d04;
   font-weight: 700;
 }
 .projects .console-card {
@@ -247,7 +258,7 @@ header .chevron {
   font-size: 45px;
   text-align: center;
   padding-bottom: 20px;
-  color: #00ff00;
+  color: #048d04;
   font-weight: 700;
 }
 .skills .input-container {
@@ -275,7 +286,7 @@ header .chevron {
 .skills .output {
   font-family: monospace;
   white-space: pre;
-  color: #00ff00;
+  color: #048d04;
   width: 500px; /* Adjust the width as desired */
   margin: 0 auto; /* Center the element horizontally */
 }
@@ -289,7 +300,7 @@ header .chevron {
   margin: 0;
   padding: 0 0 0 20px;
   position: relative;
-  color: #00ff00;
+  color: #048d04;
 }
 .skills li:before {
   content: ">";
@@ -297,7 +308,7 @@ header .chevron {
   top: 0;
   left: -20px;
   font-weight: bold;
-  color: #00ff00;
+  color: #048d04;
 }
 .skills li:last-child:before {
   border-left: none;
@@ -310,7 +321,7 @@ header .chevron {
   position: absolute;
   top: 10px;
   left: -20px;
-  border-top: 2px solid #00ff00;
+  border-top: 2px solid #048d04;
   width: 20px;
 }
 .skills ul ul li:last-child:before {
@@ -338,7 +349,7 @@ header .chevron {
   font-size: 18px;
   font-style: italic;
   margin-bottom: 75px;
-  color: #00ff00;
+  color: #048d04;
 }
 .retro-contact form .form-group {
   position: relative;
@@ -358,7 +369,7 @@ header .chevron {
 .retro-contact form .form-group textarea {
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid #00ff00;
+  border-bottom: 1px solid #048d04;
   border-radius: 0;
   color: #fff;
   padding: 10px;
@@ -387,17 +398,17 @@ header .chevron {
   font-size: 12px;
 }
 .retro-contact form .form-group input::-moz-placeholder, .retro-contact form .form-group textarea::-moz-placeholder {
-  color: #00ff00;
+  color: #048d04;
 }
 .retro-contact form .form-group input::placeholder,
 .retro-contact form .form-group textarea::placeholder {
-  color: #00ff00;
+  color: #048d04;
 }
 .retro-contact form .form-group textarea {
   resize: none;
 }
 .retro-contact form .btn-primary {
-  background-color: #00ff00;
+  background-color: #048d04;
   border: none;
   border-radius: 0;
   padding: 15px 30px;
@@ -409,18 +420,54 @@ header .chevron {
 }
 .retro-contact form .btn-primary:hover {
   background-color: #000;
-  color: #00ff00;
-  border: #00ff00 2px solid;
+  color: #048d04;
+  border: #048d04 2px solid;
 }
 
+@media (min-width: 768px) {
+  .retro-footer {
+    display: none;
+  }
+}
 @media (max-width: 767px) {
   #loading-screen {
     height: 100vh;
   }
+  .information_retro {
+    display: none;
+  }
+  .retro-footer {
+    background-color: #048d04;
+    color: #000;
+    padding: 50px 0;
+    font-weight: 600;
+    font-size: 16px;
+  }
+  .retro-footer h4 {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  .retro-footer p {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 15px;
+  }
+  .retro-footer .social-icons li {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  .retro-footer .social-icons li a {
+    color: #048d04;
+    font-size: 20px;
+  }
+  .retro-footer .social-icons li a:hover {
+    color: #ff0000;
+  }
   .projects {
     height: 90vh;
   }
-  .vintage-text-art {
+  .vintage-text-art, .navbar {
     display: none; /* Hide the vintage text on small screens */
   }
   .alternative-text {
@@ -437,36 +484,6 @@ header .chevron {
     opacity: 0.5;
   }
 }
-.retro-footer {
-  background-color: #00ff00;
-  color: #000;
-  padding: 50px 0;
-  font-weight: 600;
-  font-size: 16px;
-  margin-top: 3rem;
-}
-.retro-footer h4 {
-  font-family: "Courier New", Courier, monospace;
-  font-size: 24px;
-  margin-bottom: 20px;
-  font-weight: 600;
-}
-.retro-footer p {
-  font-family: "Courier New", Courier, monospace;
-  font-size: 15px;
-}
-.retro-footer .social-icons li {
-  display: inline-block;
-  margin-right: 10px;
-}
-.retro-footer .social-icons li a {
-  color: #00ff00;
-  font-size: 20px;
-}
-.retro-footer .social-icons li a:hover {
-  color: #ff0000;
-}
-
 .flickering-lights {
   position: relative;
 }

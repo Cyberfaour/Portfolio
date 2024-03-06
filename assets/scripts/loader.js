@@ -6,6 +6,7 @@ window.onload = function () {
       var progressBarFill = document.getElementById("progress-bar-fill");
       var progressText = document.getElementById("progress-text");
       var bootingText = document.getElementById("booting-text");
+      var information_column= document.getElementById("information_retro");
 
       var bootingDialog = [
         "Booting up... <span class='blinking-cursor'>&#9608;</span>",
@@ -33,6 +34,7 @@ window.onload = function () {
           setTimeout(function () {
             loadingScreen.style.display = "none";
             consoleDiv.style.opacity = 1;
+            information_column.style.opacity = 1;
           }, 2000);
         }
       }, 750); // Update the progress and booting dialog every 0.75 seconds (adjust as needed)
