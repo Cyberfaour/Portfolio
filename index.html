@@ -119,12 +119,6 @@
             font-size: clamp(2.8rem, 6vw, 5rem);
             font-weight: 700;
             line-height: 1.1;
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-        }
-        #hero h1 .char {
-            display: inline-block;
-            transform: translateY(115px);
-            transition: transform .5s cubic-bezier(.215, .61, .355, 1);
         }
         #hero h1 .accent { color: var(--accent); }
         #hero .lead {
@@ -305,15 +299,15 @@
     </nav>
 
     <header id="hero" class="text-center">
-        <div class="container" data-aos="fade-in">
-            <h1 class="mb-4 text-reveal">
+        <div class="container">
+            <h1 class="mb-4" data-aos="fade-up" data-aos-delay="200">
                 Software Engineer & Data Analyst.<br/>
                 Building <span class="accent">scalable</span> solutions.
             </h1>
-            <p class="lead mb-5 mx-auto" data-aos="fade-up" data-aos-delay="500">
+            <p class="lead mb-5 mx-auto" data-aos="fade-up" data-aos-delay="400">
                 I design and develop robust software, transforming complex data into actionable insights and driving efficiency through automation.
             </p>
-            <div class="hero-buttons mt-5" data-aos="fade-up" data-aos-delay="700">
+            <div class="hero-buttons mt-5" data-aos="fade-up" data-aos-delay="600">
                 <a href="https://www.linkedin.com/in/alifaour2022/" target="_blank" class="btn btn-primary-custom btn-lg me-3">
                     <i class="fab fa-linkedin me-2"></i> Connect on LinkedIn
                 </a>
@@ -479,7 +473,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://unpkg.com/split-type"></script>
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -497,19 +490,6 @@
             offset: 50,
         });
         
-        // --- HERO TEXT REVEAL ANIMATION ---
-        const heroTitle = document.querySelector('.text-reveal');
-        if (heroTitle) {
-            const split = new SplitType(heroTitle, { types: 'chars' });
-            window.addEventListener('load', () => {
-                split.chars.forEach((char, i) => {
-                    setTimeout(() => {
-                        char.style.transform = 'translateY(0)';
-                    }, i * 20);
-                });
-            });
-        }
-
         // --- STATS COUNTER ---
         const animateCounter = (counter) => {
             const target = +counter.getAttribute('data-target');
