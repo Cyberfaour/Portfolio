@@ -1,384 +1,685 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Ali Faour Retro Portfolio</title>
-    <!-- Required meta tags -->
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-  
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ali Faour • Software Engineer & Data Analyst</title>
 
-    <!-- Bootstrap CSS v5.2.1 -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
-      crossorigin="anonymous"
-    />
-    <link href="./assets/styles/style.css" rel="stylesheet" />
-    <script src="./assets/scripts/loader.js"></script>
-    <script src="./assets/scripts/cookie.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="./assets/scripts/skills.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+      :root {
+        --primary-blue: #007bff; /* Brighter, more vibrant blue */
+        --accent-cyan: #00e0ff; /* Futuristic cyan */
+        --dark-bg: #1a1a2e; /* Deep space dark blue */
+        --light-text: #e0e0e0;
+        --secondary-dark: #2a2a3e;
+        --gradient-start: #1a1a2e;
+        --gradient-end: #0a0a1a;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        scroll-behavior: smooth;
+        background-color: var(--dark-bg);
+        color: var(--light-text);
+      }
+
+      /* Base Section Styling */
+      section {
+        padding: 6rem 0; /* More vertical space */
+        position: relative;
+        overflow: hidden; /* For background effects */
+      }
+      .section-title {
+        font-family: "Orbitron", sans-serif; /* Futuristic font for titles */
+        font-weight: 700;
+        margin-bottom: 3rem; /* More space */
+        color: var(--accent-cyan);
+        text-shadow: 0 0 10px rgba(0, 224, 255, 0.5); /* Subtle glow */
+      }
+
+      /* ---------- NAVBAR ---------- */
+      .navbar {
+        backdrop-filter: blur(10px); /* Stronger blur */
+        background-color: rgba(26, 26, 46, 0.8); /* Darker translucent background */
+        border-bottom: 1px solid rgba(0, 224, 255, 0.1); /* Subtle cyber border */
+      }
+      .navbar-brand {
+        font-family: "Orbitron", sans-serif;
+        font-weight: 700;
+        color: var(--accent-cyan) !important;
+        text-shadow: 0 0 5px rgba(0, 224, 255, 0.7);
+        transition: text-shadow 0.3s ease;
+      }
+      .navbar-brand:hover {
+        text-shadow: 0 0 15px var(--accent-cyan);
+      }
+      .nav-link {
+        color: var(--light-text) !important;
+        font-weight: 500;
+        transition: color 0.3s ease, text-shadow 0.3s ease;
+      }
+      .nav-link:hover, .nav-link.active {
+        color: var(--accent-cyan) !important;
+        text-shadow: 0 0 8px var(--accent-cyan);
+      }
+
+      /* ---------- HERO ---------- */
+      #hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+        position: relative;
+        overflow: hidden;
+      }
+      #hero::before { /* Background particle/grid effect */
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(circle, rgba(0, 224, 255, 0.1) 1px, transparent 1px),
+                          radial-gradient(circle, rgba(0, 224, 255, 0.05) 1px, transparent 1px);
+        background-size: 20px 20px, 40px 40px;
+        background-position: 0 0, 10px 10px;
+        opacity: 0.15;
+        animation: subtle-pulse 15s infinite alternate; /* Subtle breathing effect */
+      }
+      #hero h1 {
+        font-family: "Orbitron", sans-serif;
+        font-weight: 700;
+        font-size: clamp(3rem, 6vw + 1rem, 5rem); /* Larger, more impactful */
+        color: var(--accent-cyan);
+        text-shadow: 0 0 20px rgba(0, 224, 255, 0.8);
+        line-height: 1.2;
+      }
+      #hero .lead {
+        font-size: 1.35rem; /* Slightly larger lead text */
+        color: var(--light-text);
+      }
+
+      /* Buttons */
+      .btn-primary {
+        background-color: var(--primary-blue);
+        border-color: var(--primary-blue);
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+      }
+      .btn-primary:hover {
+        background-color: var(--accent-cyan);
+        border-color: var(--accent-cyan);
+        box-shadow: 0 0 20px rgba(0, 224, 255, 0.5);
+        transform: translateY(-2px);
+      }
+      .btn-outline-dark { /* Renaming to be more generic like btn-secondary or btn-outline-light */
+        color: var(--accent-cyan);
+        border-color: var(--accent-cyan);
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 224, 255, 0.1);
+      }
+      .btn-outline-dark:hover {
+        background-color: var(--accent-cyan);
+        color: var(--dark-bg);
+        box-shadow: 0 0 20px rgba(0, 224, 255, 0.5);
+        transform: translateY(-2px);
+      }
+
+      /* ---------- ABOUT ---------- */
+      #about {
+        background-color: var(--secondary-dark);
+      }
+      #about img {
+        border: 3px solid var(--accent-cyan); /* Techy border */
+        box-shadow: 0 0 20px rgba(0, 224, 255, 0.2);
+        filter: grayscale(20%); /* Subtle desaturation for a techy look */
+        transition: all 0.3s ease;
+      }
+      #about img:hover {
+        filter: grayscale(0%);
+        box-shadow: 0 0 30px rgba(0, 224, 255, 0.5);
+      }
+      #about p {
+        color: var(--light-text);
+        line-height: 1.8;
+      }
+
+      /* ---------- STATS (NEW SECTION) ---------- */
+      #stats {
+        background: linear-gradient(45deg, var(--primary-blue), var(--accent-cyan));
+        color: white;
+        text-align: center;
+        padding: 4rem 0;
+      }
+      #stats .stat-item h3 {
+        font-family: "Orbitron", sans-serif;
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+      #stats .stat-item p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+      }
+
+      /* ---------- SKILLS ---------- */
+      #skills {
+        background-color: var(--dark-bg);
+      }
+      .skill-item {
+        background-color: var(--secondary-dark);
+        padding: 1.5rem;
+        border-radius: 0.75rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+      }
+      .skill-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 224, 255, 0.2);
+      }
+      .skill-item span:first-child {
+        font-weight: 600;
+        color: var(--accent-cyan);
+      }
+      .skill-item .progress {
+        height: 0.6rem; /* Slightly thicker */
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+      .skill-item .progress-bar {
+        background-color: var(--primary-blue) !important;
+        box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+        transition: width 1s ease-in-out; /* Smooth progress bar fill */
+      }
+
+      /* ---------- PROJECTS ---------- */
+      #projects {
+        background-color: var(--secondary-dark);
+      }
+      .project-card {
+        background-color: var(--dark-bg);
+        border: 1px solid rgba(0, 224, 255, 0.1);
+        border-radius: 0.75rem;
+        overflow: hidden;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      }
+      .project-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 224, 255, 0.5);
+        border-color: var(--accent-cyan);
+      }
+      .project-card img {
+        height: 250px; /* Consistent image height */
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+      .project-card:hover img {
+        transform: scale(1.05); /* Zoom effect on hover */
+      }
+      .project-card .card-title {
+        font-family: "Orbitron", sans-serif;
+        color: var(--accent-cyan);
+      }
+      .project-card .card-text {
+        color: var(--light-text);
+      }
+      .project-card .btn-outline-primary {
+        color: var(--accent-cyan);
+        border-color: var(--accent-cyan);
+        transition: all 0.3s ease;
+      }
+      .project-card .btn-outline-primary:hover {
+        background-color: var(--accent-cyan);
+        color: var(--dark-bg);
+        box-shadow: 0 0 10px var(--accent-cyan);
+      }
+
+      /* ---------- CONTACT ---------- */
+      #contact {
+        background: linear-gradient(135deg, var(--gradient-end) 0%, var(--gradient-start) 100%);
+      }
+      #contact .form-label {
+        color: var(--accent-cyan);
+        font-weight: 500;
+      }
+      #contact .form-control {
+        background-color: var(--secondary-dark);
+        border: 1px solid rgba(0, 224, 255, 0.3);
+        color: var(--light-text);
+        padding: 0.75rem 1rem;
+        transition: all 0.3s ease;
+      }
+      #contact .form-control:focus {
+        background-color: var(--secondary-dark);
+        border-color: var(--accent-cyan);
+        box-shadow: 0 0 10px rgba(0, 224, 255, 0.5);
+        color: var(--light-text);
+      }
+      #contact .form-control::placeholder {
+        color: rgba(224, 224, 224, 0.6);
+      }
+
+      /* ---------- FOOTER ---------- */
+      footer {
+        background: var(--gradient-end); /* Even darker for footer */
+        color: var(--light-text);
+        border-top: 1px solid rgba(0, 224, 255, 0.1);
+      }
+      footer h5, footer h6 {
+        font-family: "Orbitron", sans-serif;
+        color: var(--accent-cyan);
+      }
+      footer a {
+        color: var(--light-text);
+        transition: color 0.3s ease, text-shadow 0.3s ease;
+      }
+      footer a:hover {
+        color: var(--accent-cyan);
+        text-shadow: 0 0 8px var(--accent-cyan);
+      }
+
+      /* ---------- COOKIE BANNER ---------- */
+      #cookieBanner {
+        background: var(--secondary-dark);
+        border: 1px solid rgba(0, 224, 255, 0.2);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        color: var(--light-text);
+      }
+      #cookieBanner .btn-primary {
+        background-color: var(--accent-cyan);
+        border-color: var(--accent-cyan);
+        color: var(--dark-bg);
+      }
+      #cookieBanner .btn-outline-secondary {
+        color: var(--light-text);
+        border-color: var(--light-text);
+      }
+      #cookieBanner .btn-outline-secondary:hover {
+        background-color: var(--light-text);
+        color: var(--dark-bg);
+      }
+
+      /* Keyframe Animations */
+      @keyframes subtle-pulse {
+        0% { opacity: 0.15; }
+        50% { opacity: 0.25; }
+        100% { opacity: 0.15; }
+      }
+
+      @media (max-width: 768px) {
+        .section-title {
+          font-size: 2rem;
+          margin-bottom: 2rem;
+        }
+        section {
+          padding: 4rem 0;
+        }
+        #hero h1 {
+            font-size: clamp(2.5rem, 8vw + 1rem, 4rem);
+        }
+        #hero .lead {
+            font-size: 1.1rem;
+        }
+        #about img {
+          margin-bottom: 2rem;
+        }
+      }
+    </style>
   </head>
-
-  <body class="p-3 mx-auto mt-2 d-flex">
-    <div class="cookie-banner" id="cookieBanner">
-      <span class="message"
-        >This website uses cookies to ensure you get the best experience on our
-        website.</span
-      >
-      <button id="acceptButton">Accept</button>
-      <button id="rejectButton">Reject</button>
-    </div>
-    <div id="loading-screen" class="">
-      <div id="progress-bar">
-        <div id="progress-bar-fill"></div>
-      </div>
-      <pre class="vintage-text" id="progress-text">Progress: 0%</pre>
-      <pre
-        class="vintage-text flickering-lights"
-        id="booting-text"
-      >Booting up... <span class="blinking-cursor">&#9608;</span></pre>
-      
-    </div>
-    <aside id="information_retro" class="information_retro col-md-3  ">
-      <div class="container  ">
-        <div class="row">
-          <div class="col-lg-12 col-md-12">
-            <h5>About Me</h5>
-            <p>
-              Ali Ibrahim Faour<br />
-              Abu Dhabi, AUH, UAE
-            </p>
-            <!-- <p>
-              I am a passionate computer engineer with expertise in various programming languages and technologies. I enjoy exploring new technologies and solving complex problems. Connect with me to learn more!
-            </p> -->
-            <h5>Contact Me</h5>
-            <ul class="list-unstyled">
-            
-              <li><i class="fas fa-envelope"></i> <a href="mailto:ali2001faour@outlook.com">ali2001faour@outlook.com</a></li>
-              <li><i class="fas fa-map-marker-alt"></i> Al Khaldiya, Abu Dhabi, UAE</li>
-            </ul>
-            <h5>Connect With Me</h5>
-            <ul class="list-unstyled social-links">
-              <li>
-                <a href="https://www.linkedin.com/in/alifaour2022/" target="_blank">
-                  <i class="fab fa-linkedin"></i> LinkedIn
-                </a>
-              </li>
-              <li>
-                <a href="https://github.com/Cyberfaour" target="_blank">
-                  <i class="fab fa-github"></i> GitHub
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        
-      </div>
-    </aside>
-    <div id="console" class="m-auto col-md-8 p-md-4">
-      <header class="mb-5 col-md-12 p-2">
-        <!-- place navbar here -->
-        <!-- Nav tabs -->
-        <pre class="vintage-text-art text-center pt-5">
- ██╗    ██╗███████╗██╗      ██████╗ ██████╗ ███╗   ███╗███████╗
- ██║    ██║██╔════╝██║     ██╔═══   ██╔══██╗████╗ ████║██╔════╝
- ██║ █╗ ██║█████╗  ██║     ██║      ██   ██╔████╔██║████████╗  
- ██║███╗██║██╔══╝  ██║     ██║      ██╔══██╝██║╚██╔╝██║██╔══╝  
- ╚███╔███╔╝███████╗███████╗╚██████╔╝██║████ ██║ ╚═╝ ██║███████╗
-  ╚══╝╚══╝ ╚══════╝╚══════╝ ╚═════╝ ╚═╝     ╚═╝     ╚═╝╚══════╝
-            </pre
-        >
-
-        <nav class="navbar justify-content-center">
-          <ul class="nav">
-            <li class="nav-item m-1 flex-fill">
-              <a class="nav-link" href="#About">About</a>
-            </li>
-            <li class="nav-item m-1 flex-fill">
-              <a class="nav-link" href="#Projects">Projects</a>
-            </li>
-            <li class="nav-item m-1 flex-fill">
-              <a class="nav-link" href="#Skills">Skills</a>
-            </li>
-            <li class="nav-item m-1 flex-fill">
-              <a class="nav-link" href="#Contact">Contact</a>
-            </li>
+  <body>
+    <nav class="navbar navbar-expand-lg sticky-top shadow-sm">
+      <div class="container">
+        <a class="navbar-brand" href="#hero">Ali Faour</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+            <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
           </ul>
-        </nav>
+        </div>
+      </div>
+    </nav>
 
-        <div class="contents m-auto col-md-12 mt-4">
-          <h1 class="mb-4">Welcome to my portfolio</h1>
-          <p class="w-sm-50">
-            Through this portfolio, I invite you to explore my work, projects,
-            and achievements, which highlight my ability to design and develop
-            robust software applications, tackle complex challenges, and
-            contribute to cutting-edge advancements in the field. Join me on
-            this journey as we delve into the realm of computer engineering and
-            discover the possibilities together
-          </p>
+    <header id="hero" class="d-flex align-items-center text-center">
+      <div class="container" data-aos="fade-up" data-aos-duration="1000">
+        <h1>Ali Faour</h1>
+        <p class="lead mb-4 mt-3" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+          Crafting scalable solutions and transforming data into actionable insights.
+        </p>
+        <div class="mt-5" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
+          <a href="https://www.linkedin.com/in/alifaour2022/" target="_blank" class="btn btn-primary btn-lg me-3">
+            <i class="fab fa-linkedin me-2"></i> Connect on LinkedIn
+          </a>
+          <a href="https://github.com/Cyberfaour" target="_blank" class="btn btn-outline-dark btn-lg">
+            <i class="fab fa-github me-2"></i> View My GitHub
+          </a>
+        </div>
+      </div>
+    </header>
 
-          <div
-            class="btn-group d-block mt-4" role="group" aria-label="Button group name"
-          >
-            <a href="https://www.linkedin.com/in/alifaour2022/"
-              class="link mx-2"><i class="fab fa-linkedin-in text-light"></i
-            ></a>
-            <a href="https://github.com/Cyberfaour" class="link mx-2"
-              ><i class="fab fa-github text-light"></i
-            ></a>
-            <a
-              href="mailto:ali2001faour@outlook.com"
-              class="text-decoration-none text-light"
-              >ali2001faour@outlook.com</a
-            >
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title text-center" data-aos="fade-up">About Me</h2>
+        <div class="row align-items-center gy-5">
+          <div class="col-lg-4 text-center" data-aos="fade-right" data-aos-delay="200">
+            <img src="https://via.placeholder.com/400x400/007bff/FFFFFF?text=Ali+Faour" class="img-fluid rounded-circle shadow" alt="Ali Faour headshot" />
+          </div>
+          <div class="col-lg-8" data-aos="fade-left" data-aos-delay="200">
+            <p class="fs-5">
+              I'm **Ali Faour**, a passionate Computer Engineering graduate based in Abu Dhabi. With a strong foundation in ASP.NET MVC and a keen interest in **data analytics, automation, and cloud infrastructure**, I thrive on building robust, scalable software that empowers organizations to operate smarter and faster.
+            </p>
+            <p class="fs-5 mb-0">
+              My approach integrates cutting-edge technology with practical problem-solving. Beyond the keyboard, you'll find me **weight-training**, delving into **embedded systems** projects, or voraciously learning the next big tech trend to stay at the forefront of innovation.
+            </p>
           </div>
         </div>
-        <div class="chevron mx-auto my-5"></div>
-      </header>
-      <main class="mt-5">
-        <section
-          id="About"
-          class="about my-5 justify-content-center d-lg-flex row p-3"
-        >
-          <h1 class="text-center mb-5">About</h1>
-          <div class="container d-md-flex">
-            <div class="col-md-8 mb-md-5">
-              <div class="card-body">
-                <h4
-                  class="card-title text-wrap text-white text-decoration-underline"
-                >
-                  Ali Faour
-                </h4>
-                <p class="card-text text-white">
-                  Throughout my academic journey, I have gained extensive
-                  experience in a range of programming languages, including
-                  Python, Java, C++, and JavaScript. I am also proficient in
-                  automation and have the ability to design and implement
-                  automated solutions that streamline business operations,
-                  reduce errors, and improve efficiency.
-                  <br /><br /><br />
-                  I am committed to staying updated with the latest advancements
-                  in automation technology and continuously seek opportunities
-                  to apply my skills to solve complex problems and drive
-                  positive outcomes for organizations.
-                </p>
-              </div>
-            </div>
+      </div>
+    </section>
 
-            <div class="col-md-4">
-              <div
-                id="carouselId"
-                class="carousel slide vert"
-                data-bs-ride="carousel"
-              >
-                <ol class="carousel-indicators">
-                  <li
-                    data-bs-target="#carouselId"
-                    data-bs-slide-to="0"
-                    class="active"
-                    aria-current="true"
-                    aria-label="First slide"
-                  ></li>
-                  <li
-                    data-bs-target="#carouselId"
-                    data-bs-slide-to="1"
-                    aria-label="Second slide"
-                  ></li>
-                  <li
-                    data-bs-target="#carouselId"
-                    data-bs-slide-to="2"
-                    aria-label="Third slide"
-                  ></li>
-                  <li
-                    data-bs-target="#carouselId"
-                    data-bs-slide-to="3"
-                    aria-label="Second slide"
-                  ></li>
-                </ol>
-                <div class="carousel-inner p-5" role="listbox">
-                  <div class="carousel-item active">
-                    <img
-                      class="mb-5 d-block mx-auto pb-3"
-                      src="./assets/images/aws-certified-cloud-practitioner (2).png"
-                      alt="aws-certified-cloud-practitioner badge"
-                    />
-                  </div>
-                  <div class="carousel-item">
-                    <img
-                      class="mb-5 d-block mx-auto pb-3"
-                      src="./assets/images/computer-hardware-basics.png"
-                      alt=""
-                    />
-                  </div>
-                  <div class="carousel-item">
-                    <img
-                      class="mb-5 d-block mx-auto pb-3"
-                      src="./assets/images/introduction-to-cybersecurity.png"
-                      alt=""
-                    />
-                  </div>
-                  <div class="carousel-item">
-                    <img
-                      class="mb-5 d-block mx-auto pb-3"
-                      src="./assets/images/introduction-to-iot.png"
-                      alt=""
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-       <section
-          id="Projects"
-          class="projects my-5 justify-content-center px-3 py-5"
-        >
-          <h1 class="text-center pb-5 col-md-12">Areas of expertise</h1>
+    ---
 
-          <div class="d-lg-flex justify-content-between col-md-12 mt-5">
-            <div
-              class="console-card mb-5 col-md-3 text-capitalize text-center"
-            >
-              <div class="console-prompt-content">
-                <i class="fa fa-code fa-3x mb-3" aria-hidden="true"></i>
-                <h4 class="card-title mb-4">Software Engineering</h4>
-                <a href="https://github.com/Cyberfaour" class="text-center">&#62;View More</a>
-              </div>
-            </div>
-            <div
-              class="console-card mb-5 col-md-3 text-capitalize text-center"
-            >
-              <div class="console-prompt-content">
-                <i class="fa fa-laptop mb-3 fa-3x" aria-hidden="true"></i>
-                <h4 class="card-title mb-4">Embedded Systems & Design</h4>
-                <a href="https://github.com/Cyberfaour" class=""
-                  >&#62;View More</a
-                >
-              </div>
-            </div>
-            <div
-              class="console-card mb-5 col-md-3 text-capitalize text-center"
-            >
-              <div class="console-prompt-content">
-                <i class="fa fa-cloud mb-3 fa-3x" aria-hidden="true"></i>
-                <h4 class="card-title mb-4">Networking Solutions</h4>
-                <a href="https://github.com/Cyberfaour" class=""
-                  >&#62;View More</a
-                >
-              </div>
+    <section id="stats" class="text-center">
+      <div class="container">
+        <h2 class="section-title text-white mb-5" data-aos="fade-up">My Impact In Numbers</h2>
+        <div class="row justify-content-center gy-4">
+          <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="stat-item">
+              <h3 class="counter" data-target="67">0</h3><p>%</p>
+              <p>Reduction in report prep time</p>
             </div>
           </div>
-        </section>
-        <section id="Skills" class="skills my-md-5 justify-content-center d-md-flex row p-md-5">
-          <h1 class="text-center pb-5">Technical Skills</h1>
-          <div id="skills-container" class="container justify-content-around d-lg-flex gap-5 pb-5 justify-content-center">
-            <ul id="column1" class="column"></ul>
-            <ul id="column2" class="column"></ul>
-            <ul id="column3" class="column"></ul>
+          <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="stat-item">
+              <h3 class="counter" data-target="3">0</h3>
+              <p>Major enterprise projects delivered</p>
+            </div>
           </div>
-        </section>
-        <section id="Contact" class="contact-section retro-contact mb-md-5 p-md-5">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-8 mx-auto text-center">
-                <h2 class="section-heading">Contact Me</h2>
-                <p class="section-subheading">
-                  Have a question or want to work together? Fill out the form below and I'll get back to you.
-                </p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-lg-8 mx-auto">
-                <form id="contact-form" action="https://formspree.io/f/moqzooaa" method="POST">
-                  <div class="form-group">
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
-                  </div>
-                  <div class="form-group">
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
-                  </div>
-                  <div class="form-group">
-                    <textarea class="form-control" id="message" name="message" placeholder="Your Message" rows="6" required></textarea>
-                  </div>
-                  <div class="text-center">
-                    <button class="btn btn-primary btn-lg" type="submit">Send Message</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-            
-          </div>
-        </section>
-        
-        
-      </main>
-      <footer class="footer retro-footer mt-5  ">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-4 col-md-6">
-              <h5>About Me</h5>
-              <p>
-                Ali Ibrahim Faour<br />
-                Abu Dhabi, AUH, UAE
-              </p>
-              <p>
-                I am a passionate computer engineer with expertise in various programming languages and technologies. I enjoy exploring new technologies and solving complex problems. Connect with me to learn more!
-              </p>
-            </div>
-            <div class="col-md-4">
-              <h5>Contact Me</h5>
-              <ul class="list-unstyled">
-              
-                <li><i class="fas fa-envelope"></i> <a href="mailto:ali2001faour@outlook.com">ali2001faour@outlook.com</a></li>
-                <li><i class="fas fa-map-marker-alt"></i> Al Khaldiya, Abu Dhabi, UAE</li>
-              </ul>
-            </div>
-            <div class="col-md-4">
-              <h5>Connect With Me</h5>
-              <ul class="list-unstyled social-links">
-                <li>
-                  <a href="https://www.linkedin.com/in/alifaour2022/" target="_blank">
-                    <i class="fab fa-linkedin"></i> LinkedIn
-                  </a>
-                </li>
-                <li>
-                  <a href="https://github.com/Cyberfaour" target="_blank">
-                    <i class="fab fa-github"></i> GitHub
-                  </a>
-                </li>
-              </ul>
+          <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="stat-item">
+              <h3 class="counter" data-target="100">0</h3><p>%</p>
+              <p>Commitment to continuous learning</p>
             </div>
           </div>
         </div>
-      </footer>
-      
-    </div>
-    <div class="bg-primary ">
-      
+      </div>
+    </section>
+
+    ---
+
+    <section id="skills">
+      <div class="container">
+        <h2 class="section-title text-center" data-aos="fade-up">Technical Skills</h2>
+        <div class="row gy-4">
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="skill-item">
+              <div class="d-flex justify-content-between">
+                <span>C# / ASP.NET MVC</span>
+                <span>90%</span>
+              </div>
+              <div class="progress"><div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="d-flex justify-content-between">
+                <span>SQL & Entity Framework</span>
+                <span>85%</span>
+              </div>
+              <div class="progress"><div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="d-flex justify-content-between">
+                <span>JavaScript / TypeScript</span>
+                <span>80%</span>
+              </div>
+              <div class="progress"><div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div></div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="skill-item">
+              <div class="d-flex justify-content-between">
+                <span>Python & Automation</span>
+                <span>80%</span>
+              </div>
+              <div class="progress"><div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="d-flex justify-content-between">
+                <span>Cloud (AWS & Azure)</span>
+                <span>75%</span>
+              </div>
+              <div class="progress"><div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="d-flex justify-content-between">
+                <span>DevOps & CI/CD</span>
+                <span>70%</span>
+              </div>
+              <div class="progress"><div class="progress-bar" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div></div>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="skill-item">
+              <div class="d-flex justify-content-between">
+                <span>Data Analytics & Power BI</span>
+                <span>85%</span>
+              </div>
+              <div class="progress"><div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="d-flex justify-content-between">
+                <span>Embedded Systems (IoT)</span>
+                <span>75%</span>
+              </div>
+              <div class="progress"><div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="d-flex justify-content-between">
+                <span>Networking & Cybersecurity</span>
+                <span>70%</span>
+              </div>
+              <div class="progress"><div class="progress-bar" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    ---
+
+    <section id="projects">
+      <div class="container">
+        <h2 class="section-title text-center" data-aos="fade-up">Selected Projects</h2>
+        <div class="row g-5 justify-content-center"> <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
+            <div class="card project-card h-100">
+              <img src="https://via.placeholder.com/600x400/007bff/FFFFFF?text=Gas+Distribution+ERP" class="card-img-top" alt="Gas Distribution ERP screenshot" />
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">Gas Distribution ERP</h5>
+                <p class="card-text flex-grow-1">A full-stack ASP.NET MVC platform for managing LPG/NG assets, service tickets, and preventive maintenance across various UAE sites. Enhanced operational efficiency and resource allocation.</p>
+                <a href="https://github.com/Cyberfaour/gas-erp" target="_blank" class="btn btn-outline-primary mt-auto">
+                  <i class="fab fa-github me-2"></i>View Repo
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
+            <div class="card project-card h-100">
+              <img src="https://via.placeholder.com/600x400/007bff/FFFFFF?text=IoT+Smart+Meter" class="card-img-top" alt="IoT Smart Meter screenshot" />
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">IoT Smart Meter</h5>
+                <p class="card-text flex-grow-1">An ESP32-based system delivering real-time gas consumption analytics via MQTT, integrated with dynamic Power BI dashboards. Provides critical insights for resource management.</p>
+                <a href="https://github.com/Cyberfaour/iot-smart-meter" target="_blank" class="btn btn-outline-primary mt-auto">
+                  <i class="fab fa-github me-2"></i>View Repo
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="300">
+            <div class="card project-card h-100">
+              <img src="https://via.placeholder.com/600x400/007bff/FFFFFF?text=Data+Automation+Toolkit" class="card-img-top" alt="Data Automation Toolkit screenshot" />
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">Data Automation Toolkit</h5>
+                <p class="card-text flex-grow-1">A suite of Python scripts and PowerShell cmdlets that significantly reduced monthly reporting preparation time by 67% at Royal Gas Utility, enhancing data accuracy and efficiency.</p>
+                <a href="https://github.com/Cyberfaour/data-toolkit" target="_blank" class="btn btn-outline-primary mt-auto">
+                  <i class="fab fa-github me-2"></i>View Repo
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    ---
+
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title text-center" data-aos="fade-up">Get In Touch</h2>
+        <div class="row justify-content-center">
+          <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+            <form action="https://formspree.io/f/moqzooaa" method="POST" class="row g-4 needs-validation" novalidate> <div class="col-md-6">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" required />
+                <div class="invalid-feedback">Please enter your name.</div>
+              </div>
+              <div class="col-md-6">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required />
+                <div class="invalid-feedback">Please enter a valid email.</div>
+              </div>
+              <div class="col-12">
+                <label for="message" class="form-label">Message</label>
+                <textarea class="form-control" id="message" name="message" rows="6" required></textarea> <div class="invalid-feedback">Please enter your message.</div>
+              </div>
+              <div class="col-12 text-center mt-5"> <button class="btn btn-primary btn-lg" type="submit">
+                  <i class="fas fa-paper-plane me-2"></i> Send Message
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    ---
+
+    <footer class="py-5">
+      <div class="container">
+        <div class="row g-4 align-items-start">
+          <div class="col-md-4">
+            <h5 class="text-white mb-3">Ali Faour</h5>
+            <p class="mb-1">Abu Dhabi, UAE</p>
+            <p class="small mb-0 opacity-75">© 2025 Ali Faour. All rights reserved.</p>
+          </div>
+          <div class="col-md-4">
+            <h6 class="text-uppercase fw-semibold mb-3">Site Links</h6>
+            <ul class="list-unstyled">
+              <li><a href="#about">About</a></li>
+              <li><a href="#skills">Skills</a></li>
+              <li><a href="#projects">Projects</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h6 class="text-uppercase fw-semibold mb-3">Connect With Me</h6>
+            <a href="mailto:ali2001faour@outlook.com" class="d-block mb-2 text-decoration-none"><i class="fa fa-envelope me-2"></i>ali2001faour@outlook.com</a>
+            <a href="https://www.linkedin.com/in/alifaour2022/" target="_blank" class="d-block mb-2 text-decoration-none"><i class="fab fa-linkedin me-2"></i>LinkedIn</a>
+            <a href="https://github.com/Cyberfaour" target="_blank" class="d-block text-decoration-none"><i class="fab fa-github me-2"></i>GitHub</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div id="cookieBanner" class="shadow-lg py-3 px-4 rounded-3 d-flex flex-wrap align-items-center justify-content-between">
+      <span>This site uses cookies to enhance your experience. By continuing, you agree to our use of cookies.</span>
+      <div class="ms-auto mt-2 mt-sm-0">
+        <button id="acceptButton" class="btn btn-primary btn-sm me-2">Accept</button>
+        <button id="rejectButton" class="btn btn-outline-secondary btn-sm">Reject</button>
+      </div>
     </div>
 
-    <!-- Bootstrap JavaScript Libraries -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init(); // Initialize AOS
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
-      integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
-      crossorigin="anonymous"
-    ></script>
+      /* Cookie Banner */
+      const banner = document.getElementById("cookieBanner");
+      const accepted = localStorage.getItem("cookiesAccepted");
+      if (!accepted) banner.classList.add("show");
+      document.getElementById("acceptButton").onclick = () => {
+        localStorage.setItem("cookiesAccepted", true);
+        banner.style.display = "none"; // Or remove() for complete removal
+      };
+      document.getElementById("rejectButton").onclick = () => {
+        banner.style.display = "none"; // Or remove()
+      };
+
+      /* Bootstrap Form Validation */
+      (() => {
+        const forms = document.querySelectorAll(".needs-validation");
+        Array.from(forms).forEach(form => {
+          form.addEventListener("submit", event => {
+            if (!form.checkValidity()) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add("was-validated");
+          });
+        });
+      })();
+
+      /* Number Counter for Stats Section (simple version) */
+      const counters = document.querySelectorAll('.counter');
+      const speed = 200; // The lower, the faster
+
+      const animateCounter = (counter) => {
+          const target = +counter.getAttribute('data-target');
+          const textElement = counter;
+          let current = 0;
+
+          const updateCounter = () => {
+              const increment = target / speed;
+              if (current < target) {
+                  current = Math.ceil(current + increment);
+                  textElement.innerText = current;
+                  setTimeout(updateCounter, 1);
+              } else {
+                  textElement.innerText = target;
+              }
+          };
+          updateCounter();
+      };
+
+      // Intersection Observer to start counter when section is in view
+      const options = {
+          threshold: 0.5 // Trigger when 50% of the element is visible
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                  const countersInView = entry.target.querySelectorAll('.counter');
+                  countersInView.forEach(animateCounter);
+                  observer.unobserve(entry.target); // Stop observing once animated
+              }
+          });
+      }, options);
+
+      const statsSection = document.getElementById('stats');
+      if (statsSection) {
+          observer.observe(statsSection);
+      }
+    </script>
   </body>
 </html>
