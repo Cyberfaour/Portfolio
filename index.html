@@ -1,288 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ali Faour • Software Engineer & Data Analyst</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Bootstrap & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- AOS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
 
     <style>
         :root {
-            --background: #0a0a0a;
-            --foreground: #141414;
-            --text-primary: #f5f5f5;
-            --text-secondary: #a3a3a3;
-            --accent: #007aff;
-            --border-color: rgba(255, 255, 255, 0.1);
+            --bg-1: #0a0a0a;
+            --bg-2: #141414;
+            --fg-1: #f5f5f5;
+            --fg-2: #a3a3a3;
+            --accent: #ff5c00;
+            --border: rgba(255, 255, 255, 0.08);
         }
 
+        * { box-sizing: border-box; }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--background);
-            color: var(--text-primary);
+            background: var(--bg-1);
+            color: var(--fg-1);
             scroll-behavior: smooth;
         }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
 
-        /* --- PRELOADER --- */
-        .preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--background);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.6s ease, visibility 0.6s ease;
-        }
-        .preloader .spinner {
-            width: 40px;
-            height: 40px;
-            border: 4px solid var(--border-color);
-            border-top-color: var(--accent);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        .preloader.fade-out {
-            opacity: 0;
-            visibility: hidden;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
-
-        /* --- NAVBAR --- */
+        /* Navbar */
         .navbar {
-            background-color: rgba(10, 10, 10, 0.75);
+            background: rgba(10,10,10,.85);
             backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border);
         }
-        .navbar-brand {
-            font-weight: 600;
-            color: var(--text-primary) !important;
-        }
-        .nav-link {
-            font-weight: 500;
-            color: var(--text-secondary) !important;
-            transition: color 0.3s ease;
-        }
-        .nav-link:hover, .nav-link.active {
-            color: var(--text-primary) !important;
-        }
+        .navbar-brand { font-weight: 700; letter-spacing: 0.5px; }
+        .nav-link { color: var(--fg-2)!important; font-weight: 500; }
+        .nav-link:hover, .nav-link.active { color: var(--fg-1)!important; }
 
-        /* --- SECTION STYLING --- */
-        section {
-            padding: 7rem 0;
-            overflow: hidden;
-        }
-        .section-heading {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 3rem;
-            position: relative;
-            display: inline-block;
-        }
-        .section-heading::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background-color: var(--accent);
-        }
-
-        /* --- HERO --- */
+        /* Hero */
         #hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            position: relative;
-            background: linear-gradient(-45deg, #0a0a0a, #0d1a2b, #0a0a0a, #1a0a1a);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            text-align: center;
+            background: radial-gradient(circle at 20% 30%, rgba(255,92,0,0.35) 0%, transparent 60%),
+                        radial-gradient(circle at 80% 70%, rgba(0,122,255,.25) 0%, transparent 60%),
+                        var(--bg-1);
+            overflow: hidden;
         }
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        #hero h1 {
-            font-size: clamp(2.8rem, 6vw, 5rem);
-            font-weight: 700;
-            line-height: 1.1;
-        }
-        #hero h1 .accent { color: var(--accent); }
-        #hero .lead {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            max-width: 650px;
-        }
-        .hero-buttons .btn {
-            padding: 0.75rem 1.5rem;
-            font-weight: 500;
-        }
-        .btn-primary-custom {
-            background-color: var(--accent);
-            border-color: var(--accent);
-            color: #fff;
-            transition: all 0.3s ease;
-        }
-        .btn-primary-custom:hover {
-            background-color: #0062cc;
-            border-color: #005cbf;
-            transform: translateY(-2px);
-        }
-        .btn-secondary-custom {
-            background-color: transparent;
-            border: 1px solid var(--border-color);
-            color: var(--text-primary);
-            transition: all 0.3s ease;
-        }
-        .btn-secondary-custom:hover {
-            background-color: var(--foreground);
-            border-color: var(--accent);
-            transform: translateY(-2px);
-        }
+        #hero h1 { font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 700; line-height: 1.1; }
+        #hero .accent { color: var(--accent); }
+        #hero .lead { max-width: 720px; margin: 1.5rem auto; color: var(--fg-2); font-size: 1.2rem; }
 
-        /* --- ABOUT & SKILLS --- */
-        #about { background-color: var(--foreground); }
-        .skill-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 1.5rem; list-style: none; padding: 0;
-        }
-        .skill-grid li {
-            background-color: var(--background);
-            padding: 1rem; border-radius: 8px; text-align: center;
-            font-weight: 500; border: 1px solid var(--border-color);
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-        .skill-grid li:hover {
-            transform: translateY(-5px); border-color: var(--accent);
-        }
+        /* Sections */
+        section { padding: 6rem 0; position: relative; }
+        .section-heading { font-size: 1.3rem; font-weight: 600; margin-bottom: 3rem; position: relative; display: inline-block; }
+        .section-heading::after { content: ""; position: absolute; bottom: -8px; left: 0; width: 60px; height: 3px; background: var(--accent); }
 
-        /* --- STATS --- */
-        #stats { text-align: center; }
-        .stat-item h3 {
+        /* About */
+        #about { background: var(--bg-2); }
+        .skill-chip {
+            display: inline-block;
+            padding: .45rem 1.1rem;
+            margin: .35rem;
+            background: var(--bg-1);
+            color: var(--fg-1);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            font-size: .85rem;
             font-family: 'Roboto Mono', monospace;
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            font-weight: 600; color: var(--accent);
-            margin-bottom: 0.5rem;
+            transition: transform .3s ease, border-color .3s ease;
         }
-        .stat-item p {
-            color: var(--text-secondary);
-            font-size: 1rem;
-        }
+        .skill-chip:hover { border-color: var(--accent); transform: translateY(-4px); }
 
-        /* --- PROJECTS --- */
-        #projects { background-color: var(--foreground); }
-        .project-card {
-            background-color: var(--background);
-            border: 1px solid var(--border-color); border-radius: 12px;
-            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-            position: relative; overflow: hidden;
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            border-left: 2px solid var(--accent);
         }
-        .project-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--accent);
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+        .timeline-item { margin-bottom: 2.5rem; }
+        .timeline-item:last-child { margin-bottom: 0; }
+        .timeline-item:before {
+            content: "";
+            position: absolute;
+            left: -9px; top: 4px;
+            width: 14px; height: 14px;
+            background: var(--bg-1);
+            border: 2px solid var(--accent);
+            border-radius: 50%;
         }
-        .project-card .card-body { padding: 2rem; }
-        .project-card .card-title { font-weight: 600; color: var(--text-primary); }
-        .project-card .card-text { color: var(--text-secondary); }
-        .project-card .tech-stack {
-            padding: 0; list-style: none; display: flex;
-            flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;
-        }
-        .project-card .tech-stack li {
-            font-family: 'Roboto Mono', monospace; font-size: 0.8rem;
-            background-color: var(--accent); color: #0a0a0a;
-            padding: 0.25rem 0.75rem; border-radius: 20px;
-        }
-        .project-card .project-link {
-            color: var(--text-primary); text-decoration: none;
-            font-weight: 500; transition: color 0.3s ease;
-        }
-        .project-card .project-link:hover { color: var(--accent); }
-        .project-card .project-link i { transition: transform 0.3s ease; }
-        .project-card .project-link:hover i { transform: translateX(5px); }
+        .timeline-item h4 { margin-bottom: .25rem; font-weight: 600; }
+        .timeline-item span { color: var(--fg-2); font-size: .9rem; }
 
-        /* --- CONTACT FORM --- */
-        .form-label {
-            color: var(--text-secondary); font-weight: 500;
-        }
-        .form-control {
-            background-color: var(--foreground);
-            border: 1px solid var(--border-color);
-            color: var(--text-primary); padding: 1rem;
-            transition: all 0.3s ease;
-        }
-        .form-control:focus {
-            box-shadow: 0 0 0 0.25rem rgba(0, 122, 255, 0.25);
-            border-color: var(--accent); background-color: var(--foreground);
-            color: var(--text-primary);
-        }
-        .form-control.is-invalid {
-            border-color: #dc3545;
-        }
-        .form-control.is-invalid:focus {
-            box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
-        }
+        /* Accordion */
+        .accordion-button { background: var(--bg-1); color: var(--fg-1); border: 1px solid var(--border); }
+        .accordion-button:not(.collapsed) { background: var(--bg-2); color: var(--accent); }
+        .accordion-body { color: var(--fg-2); }
 
-        /* --- FOOTER --- */
-        footer {
-            padding: 4rem 0;
-            border-top: 1px solid var(--border-color);
-            text-align: center; background-color: var(--foreground);
-        }
-        footer .footer-links a {
-            color: var(--text-secondary); margin: 0 1rem;
-            text-decoration: none; transition: color 0.3s ease;
-        }
-        footer .footer-links a:hover { color: var(--text-primary); }
-
-        /* --- COOKIE BANNER --- */
-        #cookieBanner {
-            position: fixed;
-            bottom: -100%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: calc(100% - 2rem);
-            max-width: 900px;
-            background: var(--foreground);
-            border: 1px solid var(--border-color);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        /* Card generic */
+        .card-custom {
+            background: var(--bg-1);
+            border: 1px solid var(--border);
             border-radius: 12px;
-            padding: 1.5rem;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            transition: bottom 0.5s ease-in-out;
+            transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
         }
-        #cookieBanner.show { bottom: 1rem; }
-        #cookieBanner .btn-sm { padding: 0.4rem 1rem; }
-        #cookieBanner .btn-outline-secondary { border-color: var(--text-secondary); color: var(--text-secondary); }
-        #cookieBanner .btn-outline-secondary:hover { background: var(--text-secondary); color: var(--background); }
+        .card-custom:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 24px -10px rgba(0,0,0,.4);
+        }
+
+        /* Stats */
+        .stat { text-align: center; }
+        .stat h3 { font-family: 'Roboto Mono', monospace; font-size: clamp(2.2rem, 5vw, 3rem); color: var(--accent); margin-bottom: .5rem; }
+        .stat p { color: var(--fg-2); }
+
+        /* Projects */
+        #projects { background: var(--bg-2); }
+        .tech-badge {
+            background: var(--accent);
+            color: var(--bg-1);
+            border-radius: 1rem;
+            padding: .25rem .75rem;
+            font-size: .75rem;
+            font-family: 'Roboto Mono', monospace;
+            margin: .25rem;
+        }
+
+        /* Contact */
+        .form-control {
+            background: var(--bg-2);
+            border: 1px solid var(--border);
+            color: var(--fg-1);
+        }
+        .form-control:focus { border-color: var(--accent); box-shadow: 0 0 0 .25rem rgba(255,92,0,.25); background: var(--bg-2); color: var(--fg-1); }
+
+        /* Footer */
+        footer { padding: 4rem 0; text-align: center; border-top: 1px solid var(--border); background: var(--bg-2); }
+        footer a { margin: 0 .85rem; color: var(--fg-2); }
+        footer a:hover { color: var(--fg-1); }
     </style>
 </head>
 <body data-bs-spy="scroll" data-bs-target="#navMenu">
 
-    <div class="preloader">
-        <div class="spinner"></div>
-    </div>
-
-    <nav class="navbar navbar-expand-lg sticky-top">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#hero">Ali Faour</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
@@ -291,6 +164,8 @@
             <div class="collapse navbar-collapse" id="navMenu">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
                     <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
@@ -298,280 +173,248 @@
         </div>
     </nav>
 
-    <header id="hero" class="text-center">
-        <div class="container">
-            <h1 class="mb-4" data-aos="fade-up" data-aos-delay="200">
-                Software Engineer & Data Analyst.<br/>
-                Building <span class="accent">scalable</span> solutions.
-            </h1>
-            <p class="lead mb-5 mx-auto" data-aos="fade-up" data-aos-delay="400">
-                I design and develop robust software, transforming complex data into actionable insights and driving efficiency through automation.
-            </p>
-            <div class="hero-buttons mt-5" data-aos="fade-up" data-aos-delay="600">
-                <a href="https://www.linkedin.com/in/alifaour2022/" target="_blank" class="btn btn-primary-custom btn-lg me-3">
-                    <i class="fab fa-linkedin me-2"></i> Connect on LinkedIn
-                </a>
-                <a href="https://github.com/Cyberfaour" target="_blank" class="btn btn-secondary-custom btn-lg">
-                    <i class="fab fa-github me-2"></i> View My GitHub
-                </a>
+    <!-- Hero -->
+    <header id="hero">
+        <div class="container" data-aos="fade-up">
+            <h1>Building <span class="accent">robust</span> software & transforming <span class="accent">data</span> into insights.</h1>
+            <p class="lead">I’m a Software Engineer & Data Analyst turning complex business challenges into elegant, scalable solutions.</p>
+            <div class="mt-5 d-flex flex-wrap justify-content-center gap-3">
+                <a href="https://www.linkedin.com/in/alifaour2022/" target="_blank" class="btn btn-light fw-semibold"><i class="fab fa-linkedin me-2"></i>LinkedIn</a>
+                <a href="Ali_Faour_Resume.pdf" class="btn btn-outline-light"><i class="fas fa-file-alt me-2"></i>Resume</a>
+                <a href="https://github.com/Cyberfaour" target="_blank" class="btn btn-dark fw-semibold"><i class="fab fa-github me-2"></i>GitHub</a>
             </div>
         </div>
     </header>
 
-    <main>
-        <section id="about">
-            <div class="container">
-                <div class="row gy-5 align-items-center">
-                    <div class="col-lg-6" data-aos="fade-up">
-                        <h2 class="section-heading">About Me</h2>
-                        <p class="text-secondary mb-4">
-                            Hello! I'm Ali, a Computer Engineering graduate from Abu Dhabi with a passion for creating high-impact technology. My focus is on developing efficient, scalable systems using the .NET framework and leveraging data to drive decision-making.
-                        </p>
-                        <p class="text-secondary">
-                             Beyond the keyboard, you'll find me weight-training, delving into embedded systems projects, or voraciously learning the next big tech trend to stay at the forefront of innovation.
-                        </p>
-                    </div>
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                        <h3 class="h4 mb-4" style="color: var(--text-primary);">Core Technical Skills</h3>
-                        <ul class="skill-grid">
-                            <li>C# / .NET MVC</li>
-                            <li>SQL & EF Core</li>
-                            <li>Python</li>
-                            <li>JavaScript</li>
-                            <li>Azure & AWS</li>
-                            <li>Power BI</li>
-                            <li>DevOps & CI/CD</li>
-                            <li>Automation</li>
-                            <li>Embedded (IoT)</li>
-                            <li>REST APIs</li>
-                            <li>Cybersecurity</li>
-                            <li>Networking</li>
-                        </ul>
+    <!-- About -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-heading" data-aos="fade-up">About Me</h2>
+            <div class="row gy-4 align-items-center">
+                <div class="col-lg-7" data-aos="fade-up" data-aos-delay="100">
+                    <p class="fs-5 text-secondary">Computer Engineering graduate from Lebanon, based in Abu blending low-level control systems with modern full-stack development. Currently architecting enterprise gas‑distribution software at <strong>Royal Development for Gas Works</strong>, automating workflows that once took days into minutes.</p>
+                    <p class="text-secondary">Whether optimizing Modbus networking for IoT meters or orchestrating CI/CD pipelines in the cloud, I’m driven by measurable impact—like cutting report prep time by <strong>67%</strong> and boosting system uptime by <strong>25%</strong>. Outside work you’ll find me under a barbell, logging 15 km walks, or tinkering with an ESP32.</p>
+                </div>
+                <div class="col-lg-5" data-aos="fade-left" data-aos-delay="200">
+                    <h3 class="h5 mb-3">Core Skills</h3>
+                    <div>
+                        <span class="skill-chip">C# / .NET 8 MVC</span>
+                        <span class="skill-chip">EF Core & SQL</span>
+                        <span class="skill-chip">Python Automation</span>
+                        <span class="skill-chip">JavaScript • TS</span>
+                        <span class="skill-chip">Azure & AWS</span>
+                        <span class="skill-chip">Power BI</span>
+                        <span class="skill-chip">DevOps CI/CD</span>
+                        <span class="skill-chip">Embedded IoT</span>
+                        <span class="skill-chip">Cybersecurity</span>
+                        <span class="skill-chip">Networking</span>
+                        <span class="skill-chip">Docker & Virtualization</span>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="stats">
-            <div class="container">
-                <h2 class="section-heading text-center mx-auto" data-aos="fade-up">My Impact In Numbers</h2>
-                <div class="row justify-content-center gy-4 mt-4">
-                    <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="stat-item">
-                            <h3 class="counter" data-target="67">0</h3>
-                            <p>Reduction in Report Prep Time (%)</p>
-                        </div>
+    <section id="experience">
+  <div class="container">
+    <h2 class="section-heading" data-aos="fade-up">Experience</h2>
+    <div class="timeline" data-aos="fade-up" data-aos-delay="100">
+      
+      <!-- Current Role -->
+      <div class="timeline-item">
+        <h4>Project Manager Assistant / Software Engineer — Royal Development for Gas Works</h4>
+        <span class="d-block mb-2">Dec 2023 – Present • Abu Dhabi, UAE</span>
+        <ul class="text-secondary mb-0">
+          <li>Built a documentation framework, cutting retrieval time 20% and errors 30%.</li>
+          <li>Integrated Modbus &amp; LoRa IoT telemetry, boosting data accuracy 35% and uptime 25%.</li>
+          <li>Automated reporting with Python, saving multiple hours of manual work each week.</li>
+          <li>Delivered full-cycle projects 20% faster while trimming budget by 15%.</li>
+          <li>Audited designs for NFPA-58 compliance, raising documentation accuracy 30%.</li>
+        </ul>
+      </div>
+
+      <!-- Internship -->
+      <div class="timeline-item">
+        <h4>Intern – Control Systems Engineer / IT Support — Royal Development for Gas Works</h4>
+        <span class="d-block mb-2">Jan 2023 – Nov 2023 • Abu Dhabi, UAE</span>
+        <ul class="text-secondary mb-0">
+          <li>Assembled &amp; tested LPG gas-detection panels, improving build efficiency 15%.</li>
+          <li>Ensured on-site NFPA-58 compliance, reducing non-conformities 10%.</li>
+          <li>Calibrated LPG/NG detectors, raising detection accuracy 20%.</li>
+          <li>Monitored SCADA/PLC systems, shortening fault-response time 10%.</li>
+          <li>Resolved IT tickets 25% faster and cut network downtime 10%.</li>
+        </ul>
+      </div>
+
+      <!-- Previous Role -->
+      <div class="timeline-item">
+        <h4>Full-Stack Software Engineer — Tough Leaf</h4>
+        <span class="d-block mb-2">Aug 2022 – Jan 2023 • Remote</span>
+        <ul class="text-secondary mb-0">
+          <li>Optimized LAMP-stack backend (5 k+ records), trimming query times 20%.</li>
+          <li>Designed RESTful APIs and secured payment-gateway integrations (user engagement +10%).</li>
+          <li>Crafted responsive UI with Bootstrap/JS, lifting customer satisfaction 25%.</li>
+          <li>Wrote automated test suites, cutting post-deployment bugs 20%.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+    <section id="education">
+  <div class="container">
+    <h2 class="section-heading" data-aos="fade-up">Education &amp; Certifications</h2>
+
+    <!-- Degree -->
+    <div class="row gy-4">
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+        <h5 class="mb-1">Bachelor of Science, Computer Engineering</h5>
+        <p class="mb-0 text-secondary">
+          Lebanese International University &bull; Oct 2019 – Sep 2022
+        </p>
+      </div>
+
+      <!-- Certs -->
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+        <h5 class="mb-2">Key Certifications</h5>
+        <ul class="list-unstyled text-secondary mb-0">
+          <li>AWS Certified Cloud Practitioner &nbsp;(<small>Mar 2023 – Mar 2026</small>)</li>
+          <li>Electric Power Systems &ndash; University at Buffalo &nbsp;(<small>Feb 11 2024</small>)</li>
+          <li>Excel Basics for Data Analysis &ndash; IBM &nbsp;(<small>Sep 22 2024</small>)</li>
+          <li>Introduction to Data Analytics &ndash; IBM &nbsp;(<small>Oct 07 2024</small>)</li>
+          <li>Network Support &amp; Security &ndash; Cisco &nbsp;(<small>Oct 02 2023</small>)</li>
+          <li>Endpoint Security &ndash; Cisco &nbsp;(<small>Sep 26 2023</small>)</li>
+        </ul>
+
+        <h6 class="mt-4 mb-2">Additional Badges</h6>
+        <ul class="list-unstyled text-secondary mb-0">
+          <li>Introduction to IoT &ndash; Cisco (Feb 02 2023)</li>
+          <li>Networking Devices &amp; Initial Config &ndash; Cisco (Mar 03 2023)</li>
+          <li>Artificial Intelligence Fundamentals &ndash; Cisco (Aug 04 2023)</li>
+          <li>Python for Data Science &ndash; IBM (Sep 25 2023)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <!-- Stats -->
+    <section>
+        <div class="container">
+            <div class="row justify-content-center gy-4" data-aos="fade-up">
+                <div class="col-6 col-md-3 stat"><h3 class="counter" data-target="67">0</h3><p>Less Time on Reports</p></div>
+                <div class="col-6 col-md-3 stat"><h3 class="counter" data-target="25">0</h3><p>System Uptime Boost (%)</p></div>
+                <div class="col-6 col-md-3 stat"><h3 class="counter" data-target="8">0</h3><p>Certifications Earned</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-heading" data-aos="fade-up">Selected Projects</h2>
+            <div class="row g-4 justify-content-center">
+                <!-- Project 1 -->
+                <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="card card-custom h-100 p-4 d-flex flex-column">
+                        <h5>Gas Distribution ERP</h5>
+                        <p class="text-secondary flex-grow-1">Enterprise platform managing LPG/NG assets, ticketing & PPM scheduling.</p>
+                        <div class="mb-3"><span class="tech-badge">ASP.NET MVC</span><span class="tech-badge">C#</span><span class="tech-badge">SQL Server</span></div>
+                        <a href="https://github.com/Cyberfaour/gas-erp" target="_blank" class="stretched-link">Repository <i class="fas fa-arrow-right"></i></a>
                     </div>
-                    <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="stat-item">
-                            <h3 class="counter" data-target="3">0</h3>
-                            <p>Major Enterprise Projects Delivered</p>
-                        </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="card card-custom h-100 p-4 d-flex flex-column">
+                        <h5>IoT Smart Gas Meter</h5>
+                        <p class="text-secondary flex-grow-1">ESP32 + MQTT pipeline feeding real‑time analytics to Power BI dashboards.</p>
+                        <div class="mb-3"><span class="tech-badge">C++</span><span class="tech-badge">MQTT</span><span class="tech-badge">Power BI</span></div>
+                        <a href="https://github.com/Cyberfaour/iot-smart-meter" target="_blank" class="stretched-link">Repository <i class="fas fa-arrow-right"></i></a>
                     </div>
-                    <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="300">
-                        <div class="stat-item">
-                            <h3 class="counter" data-target="100">0</h3>
-                            <p>Commitment to Continuous Learning (%)</p>
-                        </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="card card-custom h-100 p-4 d-flex flex-column">
+                        <h5>Data Automation Toolkit</h5>
+                        <p class="text-secondary flex-grow-1">Python & PowerShell scripts that cut manual Excel prep by 67%.</p>
+                        <div class="mb-3"><span class="tech-badge">Python</span><span class="tech-badge">PowerShell</span><span class="tech-badge">Automation</span></div>
+                        <a href="https://github.com/Cyberfaour/data-toolkit" target="_blank" class="stretched-link">Repository <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="projects">
-            <div class="container">
-                <h2 class="section-heading" data-aos="fade-up">Selected Projects</h2>
-                <div class="row g-4 justify-content-center">
-                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                        <div class="card project-card h-100">
-                            <div class="card-body d-flex flex-column">
-                                <h3 class="card-title h5">Gas Distribution ERP</h3>
-                                <p class="card-text flex-grow-1 text-secondary">Full-stack platform to manage LPG/NG assets, service tickets, and preventive maintenance.</p>
-                                <ul class="tech-stack mt-4"><li>ASP.NET MVC</li><li>C#</li><li>SQL Server</li></ul>
-                                <a href="https://github.com/Cyberfaour/gas-erp" target="_blank" class="project-link mt-auto">View Repository <i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                        <div class="card project-card h-100">
-                            <div class="card-body d-flex flex-column">
-                                <h3 class="card-title h5">IoT Smart Gas Meter</h3>
-                                <p class="card-text flex-grow-1 text-secondary">ESP32 system for real-time analytics via MQTT, integrated with dynamic Power BI dashboards.</p>
-                                <ul class="tech-stack mt-4"><li>C++ (Arduino)</li><li>MQTT</li><li>Power BI</li></ul>
-                                <a href="https://github.com/Cyberfaour/iot-smart-meter" target="_blank" class="project-link mt-auto">View Repository <i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
-                        <div class="card project-card h-100">
-                            <div class="card-body d-flex flex-column">
-                                <h3 class="card-title h5">Data Automation Toolkit</h3>
-                                <p class="card-text flex-grow-1 text-secondary">Scripts automating data aggregation and reporting, reducing manual prep time by 67%.</p>
-                                <ul class="tech-stack mt-4"><li>Python</li><li>PowerShell</li><li>Automation</li></ul>
-                                <a href="https://github.com/Cyberfaour/data-toolkit" target="_blank" class="project-link mt-auto">View Repository <i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
+    <!-- Contact -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-heading text-center" data-aos="fade-up">Let’s Talk</h2>
+            <p class="text-secondary fs-5 text-center mx-auto" style="max-width: 600px;" data-aos="fade-up" data-aos-delay="100">Open to new roles & freelance gigs. Drop a message—I reply within 24 hrs.</p>
+            <div class="row justify-content-center">
+                <div class="col-lg-7" data-aos="fade-up" data-aos-delay="200">
+                    <form action="https://formspree.io/f/moqzooaa" method="POST" class="row g-4 needs-validation" novalidate>
+                        <div class="col-md-6"><label for="name" class="form-label">Name</label><input type="text" class="form-control" id="name" name="name" required /><div class="invalid-feedback">Enter your name.</div></div>
+                        <div class="col-md-6"><label for="email" class="form-label">Email</label><input type="email" class="form-control" id="email" name="email" required /><div class="invalid-feedback">Enter a valid email.</div></div>
+                        <div class="col-12"><label for="message" class="form-label">Message</label><textarea class="form-control" id="message" name="message" rows="6" required></textarea><div class="invalid-feedback">Enter your message.</div></div>
+                        <div class="col-12 text-center mt-2"><button class="btn btn-outline-light px-4" type="submit"><i class="fas fa-paper-plane me-2"></i>Send</button></div>
+                    </form>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="contact">
-            <div class="container">
-                <h2 class="section-heading text-center mx-auto" data-aos="fade-up">Get In Touch</h2>
-                <p class="text-secondary fs-5 mb-5 text-center mx-auto" style="max-width: 600px;" data-aos="fade-up" data-aos-delay="100">
-                    I'm currently open to new opportunities and collaborations. Have a question or want to work together?
-                </p>
-                <div class="row justify-content-center">
-                    <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
-                        <form action="https://formspree.io/f/moqzooaa" method="POST" class="row g-4 needs-validation" novalidate>
-                            <div class="col-md-6">
-                                <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" required>
-                                <div class="invalid-feedback">Please enter your name.</div>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" required>
-                                <div class="invalid-feedback">Please enter a valid email.</div>
-                            </div>
-                            <div class="col-12">
-                                <label for="message" class="form-label">Message</label>
-                                <textarea class="form-control" id="message" name="message" rows="6" required></textarea>
-                                <div class="invalid-feedback">Please enter your message.</div>
-                            </div>
-                            <div class="col-12 text-center mt-5">
-                                <button class="btn btn-primary-custom btn-lg" type="submit">
-                                    <i class="fas fa-paper-plane me-2"></i> Send Message
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-links mb-3">
+            <div class="mb-3">
                 <a href="https://www.linkedin.com/in/alifaour2022/" target="_blank">LinkedIn</a>
                 <a href="https://github.com/Cyberfaour" target="_blank">GitHub</a>
                 <a href="mailto:ali2001faour@outlook.com">Email</a>
             </div>
-            <p class="text-secondary small">© 2025 Ali Faour. Abu Dhabi, UAE.</p>
+            <p class="text-secondary small mb-0">© 2025 Ali Faour • Abu Dhabi, UAE</p>
         </div>
     </footer>
 
-    <div id="cookieBanner">
-        <span>This site uses cookies to enhance user experience. By continuing, you agree to our use of cookies.</span>
-        <div class="ms-auto d-flex gap-2 flex-shrink-0">
-            <button id="acceptButton" class="btn btn-primary-custom btn-sm">Accept</button>
-            <button id="rejectButton" class="btn btn-outline-secondary btn-sm">Reject</button>
-        </div>
-    </div>
-
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', () => {
+            AOS.init({ duration: 800, once: true, offset: 50 });
 
-        // --- PRELOADER ---
-        const preloader = document.querySelector('.preloader');
-        window.addEventListener('load', () => {
-            preloader.classList.add('fade-out');
-        });
-
-        // --- AOS INITIALIZATION ---
-        AOS.init({
-            duration: 800,
-            once: true,
-            offset: 50,
-        });
-        
-        // --- STATS COUNTER ---
-        const animateCounter = (counter) => {
-            const target = +counter.getAttribute('data-target');
-            let current = 0;
-            const updateCounter = () => {
-                const increment = Math.ceil(target / 100);
-                if (current < target) {
-                    current += increment;
-                    counter.innerText = Math.min(current, target);
-                    requestAnimationFrame(updateCounter);
-                } else {
-                    counter.innerText = target;
-                }
-            };
-            updateCounter();
-        };
-        const statsSection = document.getElementById('stats');
-        const observerOptions = { threshold: 0.5 };
-        const statsObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const counters = entry.target.querySelectorAll('.counter');
-                    counters.forEach(animateCounter);
-                    observer.unobserve(entry.target);
-                }
+            // Counters
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const update = () => {
+                    const target = +counter.dataset.target;
+                    const c = +counter.innerText;
+                    const inc = Math.ceil(target / 100);
+                    if (c < target) {
+                        counter.innerText = c + inc;
+                        requestAnimationFrame(update);
+                    } else { counter.innerText = target; }
+                };
+                const io = new IntersectionObserver(entries => {
+                    if (entries[0].isIntersecting) { update(); io.disconnect(); }
+                }, { threshold: 0.5 });
+                io.observe(counter);
             });
-        }, observerOptions);
-        if (statsSection) {
-            statsObserver.observe(statsSection);
-        }
 
-        // --- FORM VALIDATION ---
-        const forms = document.querySelectorAll('.needs-validation');
-        Array.from(forms).forEach(form => {
-            form.addEventListener('submit', event => {
-                if (!form.checkValidity()) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                }
-                form.classList.add('was-validated');
-            }, false);
-        });
-
-        // --- COOKIE BANNER ---
-        const banner = document.getElementById("cookieBanner");
-        const acceptBtn = document.getElementById("acceptButton");
-        const rejectBtn = document.getElementById("rejectButton");
-        const cookiesAccepted = localStorage.getItem("cookiesAccepted");
-
-        if (!cookiesAccepted) {
-            setTimeout(() => banner.classList.add("show"), 2000);
-        }
-        acceptBtn.onclick = () => {
-            localStorage.setItem("cookiesAccepted", "true");
-            banner.classList.remove("show");
-        };
-        rejectBtn.onclick = () => {
-            localStorage.setItem("cookiesAccepted", "false");
-            banner.classList.remove("show");
-        };
-        
-        // --- ACTIVE NAV ON SCROLL ---
-        const navLinks = document.querySelectorAll('.nav-link');
-        const sections = document.querySelectorAll('section, header');
-
-        const scrollObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const id = entry.target.id;
-                    navLinks.forEach(link => {
-                        link.classList.remove('active');
-                        if (link.getAttribute('href') === `#${id}`) {
-                            link.classList.add('active');
-                        }
-                    });
-                }
+            // Form validation
+            const forms = document.querySelectorAll('.needs-validation');
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', evt => {
+                    if (!form.checkValidity()) {
+                        evt.preventDefault(); evt.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
             });
-        }, { rootMargin: '-30% 0px -70% 0px' });
-
-        sections.forEach(section => scrollObserver.observe(section));
-
-    });
+        });
     </script>
 </body>
 </html>
