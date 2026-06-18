@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#060606; color:#f5f5f5; font-family:'Inter',sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  ::selection { background:#e8893a; color:#060606; }
+  @keyframes blink { 0%,100%{ opacity:1; } 50%{ opacity:0.2; } }
+  @media (max-width:980px){
+    [data-m="g-head"]{ grid-template-columns:1fr !important; gap:40px !important; }
+    [data-m="g-thesis"]{ grid-template-columns:1fr !important; gap:1px !important; }
+    [data-m="g-arch"]{ grid-template-columns:1fr !important; gap:30px !important; }
+    [data-m="g-breadth"]{ grid-template-columns:1fr !important; gap:30px !important; }
+    [data-m="g-disc"]{ grid-template-columns:1fr !important; }
+    [data-navlinks]{ display:none !important; }
+  }
+  @media (max-width:600px){
+    [data-modgrid]{ grid-template-columns:repeat(2,1fr) !important; }
+    section{ padding-left:22px !important; padding-right:22px !important; }
+    [data-nav] > div{ padding-left:22px !important; padding-right:22px !important; }
+    h1{ font-size:clamp(2.2rem,10vw,3rem) !important; }
+    [data-diagram]{ font-size:9px !important; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; }
+    [data-reveal]{ opacity:1 !important; transform:none !important; }
+  }
+</style>
+<title>Gridlock Utility Portal — Case Study · Ali Faour</title>
+<meta name="description" content="Gridlock: an enterprise utility ERP where no business policy is hardcoded. A modular monolith (ASP.NET Core 8, Blazor) that starts empty and is configured entirely by business admins — not engineers.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23060606'/%3E%3Crect x='2.5' y='2.5' width='59' height='59' rx='12.5' fill='none' stroke='%23e8893a' stroke-width='2'/%3E%3Ctext x='32' y='44' font-family='monospace' font-size='30' font-weight='700' fill='%23e8893a' text-anchor='middle'%3EAF%3C/text%3E%3C/svg%3E">
+<script src="theme.js"></script>
+</helmet>
+
+<div data-root style="position:relative; background:#060606; min-height:100vh;">
+
+  <div style="position:fixed; inset:0; z-index:0; pointer-events:none; background-image:linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px); background-size:64px 64px; mask-image:radial-gradient(circle at 50% 0%,#000 0%,transparent 75%);"></div>
+
+  <div data-progress style="position:fixed; top:0; left:0; height:2px; width:0%; background:#e8893a; z-index:2000;"></div>
+
+  <!-- NAV -->
+  <nav data-nav style="position:fixed; top:0; left:0; width:100%; z-index:1000; padding:22px 0; border-bottom:1px solid rgba(255,255,255,0.06); background:rgba(6,6,6,0.55); backdrop-filter:blur(20px); transition:padding 0.4s cubic-bezier(0.2,0,0,1),background 0.4s;">
+    <div style="max-width:1280px; margin:0 auto; padding:0 40px; display:flex; align-items:center; justify-content:space-between;">
+      <a href="Ali Faour Portfolio.dc.html" style="display:flex; align-items:center; gap:11px; text-decoration:none; color:#9a9a9a; font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:600; letter-spacing:1px; transition:color 0.3s;" style-hover="color:#f5f5f5;">
+        <span style="color:#e8893a;">←</span> ALI&nbsp;FAOUR
+      </a>
+      <ul style="display:flex; gap:28px; list-style:none; align-items:center;" data-navlinks>
+        <li><a href="#thesis" style="color:#7a7a7a; text-decoration:none; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:1px; transition:color 0.3s;" style-hover="color:#f5f5f5;">THESIS</a></li>
+        <li><a href="#engines" style="color:#7a7a7a; text-decoration:none; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:1px; transition:color 0.3s;" style-hover="color:#f5f5f5;">ENGINES</a></li>
+        <li><a href="#architecture" style="color:#7a7a7a; text-decoration:none; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:1px; transition:color 0.3s;" style-hover="color:#f5f5f5;">ARCHITECTURE</a></li>
+        <li><a href="#discipline" style="color:#7a7a7a; text-decoration:none; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:1px; transition:color 0.3s;" style-hover="color:#f5f5f5;">DISCIPLINE</a></li>
+      </ul>
+      <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#7a7a7a; letter-spacing:0.5px;">CASE STUDY · 04</span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="top" style="position:relative; z-index:1; padding:150px 40px 70px;">
+    <div style="max-width:1280px; margin:0 auto; width:100%;">
+      <div data-reveal style="display:inline-flex; align-items:center; gap:10px; font-family:'JetBrains Mono',monospace; font-size:11px; color:#9a9a9a; letter-spacing:2px; text-transform:uppercase; padding:9px 16px; border:1px solid rgba(255,255,255,0.12); border-radius:4px; margin-bottom:34px;">
+        <span style="color:#5b8dd9;">◆</span> Gridlock · Enterprise Utility ERP Platform
+      </div>
+      <div data-m="g-head" style="display:grid; grid-template-columns:1.5fr 1fr; gap:60px; align-items:end;">
+        <div>
+          <h1 data-reveal style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(2.5rem,5.6vw,5rem); line-height:1.0; letter-spacing:-0.035em; margin-bottom:30px;">
+            An ERP where <span style="position:relative; font-weight:700;">no business policy<span style="position:absolute; left:0; bottom:4px; width:100%; height:9px; background:#e8893a; opacity:0.85; z-index:-1;"></span></span> is hardcoded.
+          </h1>
+          <p data-reveal style="font-size:clamp(1rem,1.4vw,1.22rem); color:#9a9a9a; max-width:650px; line-height:1.75;">
+            Gridlock is a configurable, enterprise-grade platform for the full lifecycle of a gas utility — metering &amp; billing, work orders, field ops, assets, compliance, procurement, and a self-service customer portal. Built on one principle: <span style="color:#f5f5f5;">it starts empty and is configured by business admins, not engineers.</span> Every workflow, approval chain, SLA threshold and document template is admin-editable data.
+          </p>
+        </div>
+        <div data-reveal style="border:1px solid rgba(91,141,217,0.25); border-radius:8px; background:linear-gradient(180deg,rgba(91,141,217,0.06),rgba(255,255,255,0.005)); padding:24px; font-family:'JetBrains Mono',monospace;">
+          <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:14px; border-bottom:1px solid rgba(255,255,255,0.08); margin-bottom:16px;">
+            <span style="font-size:10px; letter-spacing:1.5px; color:#7a7a7a;">PLATFORM</span>
+            <span style="font-size:10px; color:#5b8dd9;">● MODULAR MONOLITH</span>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:13px; font-size:12px;">
+            <div style="display:flex; justify-content:space-between;"><span style="color:#7a7a7a;">runtime</span><span>ASP.NET Core 8</span></div>
+            <div style="display:flex; justify-content:space-between;"><span style="color:#7a7a7a;">ui</span><span>Blazor Server</span></div>
+            <div style="display:flex; justify-content:space-between;"><span style="color:#7a7a7a;">data</span><span>EF Core · SQL Server</span></div>
+            <div style="display:flex; justify-content:space-between;"><span style="color:#7a7a7a;">app layer</span><span>MediatR (CQRS)</span></div>
+            <div style="display:flex; justify-content:space-between;"><span style="color:#7a7a7a;">modules</span><span style="color:#5b8dd9;">17 bounded</span></div>
+            <div style="display:flex; justify-content:space-between; align-items:center;"><span style="color:#7a7a7a;">first boot</span><span style="color:#e8893a;">empty</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THESIS -->
+  <section id="thesis" style="position:relative; z-index:1; padding:110px 40px; border-top:1px solid rgba(255,255,255,0.08);">
+    <div style="max-width:1280px; margin:0 auto;">
+      <div data-reveal style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#e8893a; letter-spacing:2px; margin-bottom:16px;">01 — THE THESIS</div>
+      <h2 data-reveal style="font-family:'Space Grotesk',sans-serif; font-size:clamp(1.8rem,3.6vw,2.9rem); font-weight:500; letter-spacing:-0.025em; line-height:1.1; max-width:900px; margin-bottom:24px;">Most utility ERPs bake business rules into code. So every policy change needs an engineer.</h2>
+      <p data-reveal style="color:#9a9a9a; max-width:760px; font-size:1.08rem; line-height:1.8; margin-bottom:56px;">A new approval threshold, a different billing cadence, a new document type — each becomes a developer ticket, a release, and downtime. Gridlock inverts that: business policy is <em>data</em>, configured through the UI, with no JSON editing, no GUID hunting, and no app restarts.</p>
+
+      <div data-reveal data-m="g-thesis" style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.08); border-radius:8px; overflow:hidden;">
+        <div style="background:#060606; padding:38px 34px;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#9aa3af; letter-spacing:1px; margin-bottom:20px;">TYPICAL ERP — POLICY IN CODE</div>
+          <div data-diagram style="display:flex; flex-direction:column; gap:10px; font-family:'JetBrains Mono',monospace; font-size:12.5px;">
+            <div style="display:flex; align-items:center; gap:12px;"><span style="width:78px; color:#7a7a7a;">change</span><span style="padding:9px 14px; border:1px solid rgba(255,255,255,0.14); border-radius:5px; color:#cfcfcf;">edit source code</span></div>
+            <div style="padding-left:90px; color:#555;">↓</div>
+            <div style="display:flex; align-items:center; gap:12px;"><span style="width:78px; color:#7a7a7a;">deploy</span><span style="padding:9px 14px; border:1px solid rgba(255,255,255,0.14); border-radius:5px; color:#cfcfcf;">build &amp; release</span></div>
+            <div style="padding-left:90px; color:#555;">↓</div>
+            <div style="display:flex; align-items:center; gap:12px;"><span style="width:78px; color:#7a7a7a;">cost</span><span style="padding:9px 14px; border:1px dashed rgba(229,84,84,0.45); border-radius:5px; color:#e07a7a;">downtime · engineer required</span></div>
+          </div>
+        </div>
+        <div style="background:#060606; padding:38px 34px;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#5b8dd9; letter-spacing:1px; margin-bottom:20px;">GRIDLOCK — POLICY AS DATA</div>
+          <div data-diagram style="display:flex; flex-direction:column; gap:10px; font-family:'JetBrains Mono',monospace; font-size:12.5px;">
+            <div style="display:flex; align-items:center; gap:12px;"><span style="width:78px; color:#7a7a7a;">change</span><span style="padding:9px 14px; border:1px solid rgba(91,141,217,0.4); border-radius:5px; color:#cfcfcf;">admin edits in UI</span></div>
+            <div style="padding-left:90px; color:#555;">↓</div>
+            <div style="display:flex; align-items:center; gap:12px;"><span style="width:78px; color:#7a7a7a;">apply</span><span style="padding:9px 14px; border:1px solid rgba(91,141,217,0.4); border-radius:5px; color:#cfcfcf;">saved as configuration</span></div>
+            <div style="padding-left:90px; color:#555;">↓</div>
+            <div style="display:flex; align-items:center; gap:12px;"><span style="width:78px; color:#7a7a7a;">cost</span><span style="padding:9px 14px; border:1px solid rgba(62,207,142,0.4); border-radius:5px; background:rgba(62,207,142,0.06); color:#3ecf8e;">live · no restart · no developer</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENGINES -->
+  <section id="engines" style="position:relative; z-index:1; padding:110px 40px; border-top:1px solid rgba(255,255,255,0.08);">
+    <div style="max-width:1280px; margin:0 auto;">
+      <div data-reveal style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#e8893a; letter-spacing:2px; margin-bottom:16px;">02 — CONFIGURABLE ENGINES</div>
+      <h2 data-reveal style="font-family:'Space Grotesk',sans-serif; font-size:clamp(1.8rem,3.6vw,2.9rem); font-weight:500; letter-spacing:-0.025em; line-height:1.1; max-width:860px; margin-bottom:24px;">The platform is a set of engines — all admin-managed, all empty on first boot.</h2>
+      <p data-reveal style="color:#9a9a9a; max-width:720px; font-size:1.06rem; line-height:1.8; margin-bottom:54px;">Instead of hardcoded behaviors scattered through the codebase, each policy concern is its own engine with a configuration surface. A <span style="font-family:'JetBrains Mono',monospace; color:#cfcfcf;">/admin/setup</span> Configuration Health dashboard shows which engines are configured versus empty, and configuration bundles export/import with SHA-256 integrity checks and dry-run diffs.</p>
+
+      <div data-reveal style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.08); border-radius:8px; overflow:hidden;" data-m="g-engines">
+        <div style="background:#060606; padding:26px 26px;"><div style="font-family:'Space Grotesk',sans-serif; font-size:1.05rem; font-weight:600; margin-bottom:7px;">Sequence / numbering</div><p style="color:#8a8a8a; font-size:0.9rem; line-height:1.6;">Fail-closed document numbering for invoices, work orders, contracts.</p></div>
+        <div style="background:#060606; padding:26px 26px;"><div style="font-family:'Space Grotesk',sans-serif; font-size:1.05rem; font-weight:600; margin-bottom:7px;">Approval chains</div><p style="color:#8a8a8a; font-size:0.9rem; line-height:1.6;">Visual, condition-based multi-step approvals — no seeded thresholds.</p></div>
+        <div style="background:#060606; padding:26px 26px;"><div style="font-family:'Space Grotesk',sans-serif; font-size:1.05rem; font-weight:600; margin-bottom:7px;">Notification rules</div><p style="color:#8a8a8a; font-size:0.9rem; line-height:1.6;">Routing, templating, channel and dedupe policy as data, not config files.</p></div>
+        <div style="background:#060606; padding:26px 26px;"><div style="font-family:'Space Grotesk',sans-serif; font-size:1.05rem; font-weight:600; margin-bottom:7px;">Workflow engine</div><p style="color:#8a8a8a; font-size:0.9rem; line-height:1.6;">Status-as-workflow-nodes; admin-composed lifecycle definitions.</p></div>
+        <div style="background:#060606; padding:26px 26px;"><div style="font-family:'Space Grotesk',sans-serif; font-size:1.05rem; font-weight:600; margin-bottom:7px;">Work-order scheduler</div><p style="color:#8a8a8a; font-size:0.9rem; line-height:1.6;">Policy-driven automation — cadence, lookahead, retries — replacing hardcoded pollers.</p></div>
+        <div style="background:#060606; padding:26px 26px;"><div style="font-family:'Space Grotesk',sans-serif; font-size:1.05rem; font-weight:600; margin-bottom:7px;">SLA &amp; visibility</div><p style="color:#8a8a8a; font-size:0.9rem; line-height:1.6;">SLA policies and row-level security expressed as rules, not branches.</p></div>
+        <div style="background:#060606; padding:26px 26px;"><div style="font-family:'Space Grotesk',sans-serif; font-size:1.05rem; font-weight:600; margin-bottom:7px;">Entity timeline &amp; links</div><p style="color:#8a8a8a; font-size:0.9rem; line-height:1.6;">Append-only audit spine plus cross-record relationships.</p></div>
+        <div style="background:#060606; padding:26px 26px;"><div style="font-family:'Space Grotesk',sans-serif; font-size:1.05rem; font-weight:600; margin-bottom:7px;">ServiceDocument</div><p style="color:#8a8a8a; font-size:0.9rem; line-height:1.6;">QuestPDF generation — QR-verified, branded, signature-captured controlled docs.</p></div>
+        <div style="background:#060606; padding:26px 26px;"><div style="font-family:'Space Grotesk',sans-serif; font-size:1.05rem; font-weight:600; margin-bottom:7px;">Config health &amp; transfer</div><p style="color:#8a8a8a; font-size:0.9rem; line-height:1.6;">Setup dashboard plus export/import with SHA-256 integrity &amp; dry-run diffs.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARCHITECTURE -->
+  <section id="architecture" style="position:relative; z-index:1; padding:110px 40px; border-top:1px solid rgba(255,255,255,0.08);">
+    <div style="max-width:1280px; margin:0 auto;">
+      <div data-reveal style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#e8893a; letter-spacing:2px; margin-bottom:16px;">03 — ARCHITECTURE</div>
+      <h2 data-reveal style="font-family:'Space Grotesk',sans-serif; font-size:clamp(1.8rem,3.6vw,2.9rem); font-weight:500; letter-spacing:-0.025em; line-height:1.1; max-width:880px; margin-bottom:48px;">A modular monolith with strict boundaries — one binary, many bounded modules.</h2>
+
+      <div data-m="g-arch" style="display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;">
+        <div data-reveal style="border:1px solid rgba(255,255,255,0.1); border-radius:8px; overflow:hidden;">
+          <div style="padding:14px 22px; background:rgba(255,255,255,0.03); border-bottom:1px solid rgba(255,255,255,0.08); font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:1px; color:#7a7a7a; display:flex; justify-content:space-between;"><span>REQUEST_PATH.trace</span><span style="color:#5b8dd9;">CQRS</span></div>
+          <div style="padding:30px 26px;" data-diagram>
+            <div style="display:flex; flex-direction:column; gap:9px; font-family:'JetBrains Mono',monospace; font-size:12px;">
+              <div style="padding:11px 16px; border:1px solid rgba(255,255,255,0.14); border-radius:5px; color:#cfcfcf;">Razor / Blazor page</div>
+              <div style="color:#555; padding-left:18px;">↓ &nbsp;query / command only</div>
+              <div style="padding:11px 16px; border:1px solid rgba(91,141,217,0.4); border-radius:5px; color:#cfcfcf; background:rgba(91,141,217,0.06);">MediatR handler <span style="color:#7a7a7a;">· permissioned</span></div>
+              <div style="color:#555; padding-left:18px;">↓</div>
+              <div style="padding:11px 16px; border:1px solid rgba(255,255,255,0.14); border-radius:5px; color:#cfcfcf;">Domain + EF Core</div>
+              <div style="color:#555; padding-left:18px;">↓ &nbsp;emits</div>
+              <div style="padding:11px 16px; border:1px solid rgba(232,137,58,0.4); border-radius:5px; color:#e8893a; background:rgba(232,137,58,0.05);">Domain event → other modules</div>
+            </div>
+            <p style="color:#7a7a7a; font-size:0.82rem; line-height:1.6; margin-top:20px; font-family:'JetBrains Mono',monospace;">// pages never inject services or DbContext directly</p>
+          </div>
+        </div>
+        <div data-reveal style="display:flex; flex-direction:column; gap:24px;">
+          <div>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-size:1.18rem; font-weight:600; margin-bottom:8px;"><span style="color:#5b8dd9; font-family:'JetBrains Mono',monospace; font-size:0.82em;">01 · </span>Modules talk only via contracts</h3>
+            <p style="color:#9a9a9a; font-size:1rem; line-height:1.7;">Cross-module communication happens through Contracts — interfaces, DTOs, enums — or domain events, never direct references. The boundaries are real, not conventional.</p>
+          </div>
+          <div>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-size:1.18rem; font-weight:600; margin-bottom:8px;"><span style="color:#5b8dd9; font-family:'JetBrains Mono',monospace; font-size:0.82em;">02 · </span>Application slices, not service soup</h3>
+            <p style="color:#9a9a9a; font-size:1rem; line-height:1.7;">Razor pages reach the domain only through permissioned MediatR query/command handlers — never by injecting services or <span style="font-family:'JetBrains Mono',monospace; font-size:0.92em;">DbContext</span>.</p>
+          </div>
+          <div>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-size:1.18rem; font-weight:600; margin-bottom:8px;"><span style="color:#5b8dd9; font-family:'JetBrains Mono',monospace; font-size:0.82em;">03 · </span>Event-driven over manual buttons</h3>
+            <p style="color:#9a9a9a; font-size:1rem; line-height:1.7;">Schedule, threshold and state-transition triggers replace force-run actions, which are confined to hidden diagnostics surfaces. SignalR powers the live operational surfaces.</p>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:4px;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#9a9a9a; padding:5px 11px; border:1px solid rgba(255,255,255,0.12); border-radius:4px;">ASP.NET IDENTITY · RBAC</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#9a9a9a; padding:5px 11px; border:1px solid rgba(255,255,255,0.12); border-radius:4px;">SIGNALR</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#9a9a9a; padding:5px 11px; border:1px solid rgba(255,255,255,0.12); border-radius:4px;">QUESTPDF</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#9a9a9a; padding:5px 11px; border:1px solid rgba(255,255,255,0.12); border-radius:4px;">PWA · OFFLINE SYNC</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BREADTH -->
+  <section style="position:relative; z-index:1; padding:110px 40px; border-top:1px solid rgba(255,255,255,0.08);">
+    <div style="max-width:1280px; margin:0 auto;">
+      <div data-reveal style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#e8893a; letter-spacing:2px; margin-bottom:16px;">04 — BREADTH</div>
+      <h2 data-reveal style="font-family:'Space Grotesk',sans-serif; font-size:clamp(1.8rem,3.6vw,2.9rem); font-weight:500; letter-spacing:-0.025em; line-height:1.1; max-width:860px; margin-bottom:24px;">A dozen disconnected tools, consolidated into one surface per domain.</h2>
+      <p data-reveal style="color:#9a9a9a; max-width:720px; font-size:1.06rem; line-height:1.8; margin-bottom:48px;">Seventeen bounded modules — from meter-to-bill automation and distribution day-boards to a provider-agnostic customer self-service portal with offline field sync.</p>
+
+      <div data-reveal data-modgrid style="display:grid; grid-template-columns:repeat(6,1fr); gap:1px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.08); border-radius:8px; overflow:hidden; margin-bottom:48px;">
+        <div style="background:#060606; padding:18px 16px; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:#cfcfcf;">Platform</div>
+        <div style="background:#060606; padding:18px 16px; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:#cfcfcf;">Commercial</div>
+        <div style="background:#060606; padding:18px 16px; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:#cfcfcf;">Engineering</div>
+        <div style="background:#060606; padding:18px 16px; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:#cfcfcf;">Assets</div>
+        <div style="background:#060606; padding:18px 16px; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:#cfcfcf;">Operations</div>
+        <div style="background:#060606; padding:18px 16px; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:#cfcfcf;">WorkOrders</div>
+        <div style="background:#060606; padding:18px 16px; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:#cfcfcf;">Fleet</div>
+        <div style="background:#060606; padding:18px 16px; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:#cfcfcf;">MeterReading</div>
+        <div style="background:#060606; padding:18px 16px; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:#cfcfcf;">Finance</div>
+        <div style="background:#060606; padding:18px 16px; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:#cfcfcf;">Inventory</div>
+        <div style="background:#060606; padding:18px 16px; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:#cfcfcf;">HumanResources</div>
+        <div style="background:#060606; padding:18px 16px; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:#cfcfcf;">Identity</div>
+        <div style="background:#060606; padding:18px 16px; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:#cfcfcf;">Workflow</div>
+        <div style="background:#060606; padding:18px 16px; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:#cfcfcf;">Documents</div>
+        <div style="background:#060606; padding:18px 16px; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:#cfcfcf;">Assignment</div>
+        <div style="background:#060606; padding:18px 16px; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:#cfcfcf;">Support</div>
+        <div style="background:#060606; padding:18px 16px; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:#cfcfcf;">Admin</div>
+        <div style="background:#0b0b0b; padding:18px 16px; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:#5b8dd9;">+ Portal</div>
+      </div>
+
+      <div data-reveal data-m="g-breadth" style="display:grid; grid-template-columns:repeat(3,1fr); gap:30px;">
+        <div>
+          <h3 style="font-family:'Space Grotesk',sans-serif; font-size:1.12rem; font-weight:600; margin-bottom:10px;">Meter-to-bill</h3>
+          <p style="color:#9a9a9a; font-size:0.96rem; line-height:1.7;">Billing-cycle policies, automated cycle close with estimated reads and true-up, meter replacement with reading continuity, route planning.</p>
+        </div>
+        <div>
+          <h3 style="font-family:'Space Grotesk',sans-serif; font-size:1.12rem; font-weight:600; margin-bottom:10px;">Distribution &amp; ops</h3>
+          <p style="color:#9a9a9a; font-size:0.96rem; line-height:1.7;">Delivery day-boards dispatched into fleet trips, bulk-balance threshold alerts, consumption-anomaly detection, an auto-refreshing ops wallboard.</p>
+        </div>
+        <div>
+          <h3 style="font-family:'Space Grotesk',sans-serif; font-size:1.12rem; font-weight:600; margin-bottom:10px;">Customer self-service</h3>
+          <p style="color:#9a9a9a; font-size:0.96rem; line-height:1.7;">Appointment booking, online payments (provider-agnostic, Telr), self-service statements, meter self-reading, a help centre, and a PWA with offline sync.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISCIPLINE -->
+  <section id="discipline" style="position:relative; z-index:1; padding:110px 40px; border-top:1px solid rgba(255,255,255,0.08);">
+    <div style="max-width:1280px; margin:0 auto;">
+      <div data-reveal style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#e8893a; letter-spacing:2px; margin-bottom:16px;">05 — ENGINEERING DISCIPLINE</div>
+      <h2 data-reveal style="font-family:'Space Grotesk',sans-serif; font-size:clamp(1.8rem,3.6vw,2.9rem); font-weight:500; letter-spacing:-0.025em; line-height:1.1; max-width:860px; margin-bottom:48px;">The project enforces its own doctrine — programmatically.</h2>
+
+      <div data-reveal data-m="g-disc" style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.08); border-radius:8px; overflow:hidden; margin-bottom:44px;">
+        <div style="background:#060606; padding:34px 30px;">
+          <div style="font-family:'Space Grotesk',sans-serif; font-size:2.1rem; font-weight:600; letter-spacing:-0.02em; margin-bottom:6px;">1,460<span style="color:#5b8dd9; font-size:0.5em; font-weight:400;"> methods</span></div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#7a7a7a; letter-spacing:1px; margin-bottom:12px;">SURFACE-AUDIT TOOL</div>
+          <p style="color:#8a8a8a; font-size:0.94rem; line-height:1.65;">Every service method across 267 interfaces is tracked against its UI exposure — coverage stays classified, dead surface area can't accumulate.</p>
+        </div>
+        <div style="background:#060606; padding:34px 30px;">
+          <div style="font-family:'Space Grotesk',sans-serif; font-size:2.1rem; font-weight:600; letter-spacing:-0.02em; margin-bottom:6px;">0<span style="color:#5b8dd9; font-size:0.5em; font-weight:400;"> exceptions</span></div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#7a7a7a; letter-spacing:1px; margin-bottom:12px;">GUARDRAIL TESTS</div>
+          <p style="color:#8a8a8a; font-size:0.94rem; line-height:1.65;">Tests lock in invariants: no hardcoded policy, no manual-refresh buttons on user surfaces, no cross-module leakage, MediatR-only page access.</p>
+        </div>
+        <div style="background:#060606; padding:34px 30px;">
+          <div style="font-family:'Space Grotesk',sans-serif; font-size:2.1rem; font-weight:600; letter-spacing:-0.02em; margin-bottom:6px;">9+8<span style="color:#5b8dd9; font-size:0.5em; font-weight:400;"> increments</span></div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#7a7a7a; letter-spacing:1px; margin-bottom:12px;">WAVE-BASED PROGRAM</div>
+          <p style="color:#8a8a8a; font-size:0.94rem; line-height:1.65;">Phases 1–9, then Waves 0–7 — each documented with an architecture doc, an audit snapshot, and dedicated guardrail tests.</p>
+        </div>
+      </div>
+
+      <p data-reveal style="color:#9a9a9a; max-width:820px; font-size:1.05rem; line-height:1.8;">Work was driven by a systematic <span style="color:#f5f5f5;">trim-and-consolidate</span> mandate: collapsing duplicate surfaces, removing legacy shims, and converting hardcoded behavior into configurable engines — increment after increment.</p>
+    </div>
+  </section>
+
+  <!-- OUTCOME -->
+  <section style="position:relative; z-index:1; padding:110px 40px; border-top:1px solid rgba(255,255,255,0.08);">
+    <div style="max-width:1280px; margin:0 auto;">
+      <div data-reveal style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#e8893a; letter-spacing:2px; margin-bottom:16px;">06 — OUTCOME</div>
+      <div data-reveal style="border-left:2px solid #e8893a; padding:6px 0 6px 30px; max-width:920px;">
+        <p style="font-family:'Space Grotesk',sans-serif; font-size:clamp(1.4rem,2.4vw,2rem); font-weight:500; line-height:1.4; letter-spacing:-0.01em;">A utility ERP a non-technical administrator can stand up and fully configure — workflows, approvals, documents, billing rules — without a developer, while a guardrail-enforced architecture keeps the codebase consistent as it scales across every domain.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="position:relative; z-index:1; padding:30px 40px 120px;">
+    <div style="max-width:1280px; margin:0 auto; display:flex; flex-wrap:wrap; gap:20px; align-items:center; justify-content:space-between; padding-top:60px; border-top:1px solid rgba(255,255,255,0.08);">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#7a7a7a; letter-spacing:1px; margin-bottom:10px;">END OF CASE STUDY</div>
+        <h3 style="font-family:'Space Grotesk',sans-serif; font-size:clamp(1.4rem,2.6vw,2rem); font-weight:500; letter-spacing:-0.02em;">More of how I turn operations into systems.</h3>
+      </div>
+      <div style="display:flex; gap:14px; flex-wrap:wrap;">
+        <a href="ADNOC Case Study.dc.html" data-magnetic style="display:inline-flex; align-items:center; gap:12px; padding:15px 26px; background:transparent; color:#f5f5f5; text-decoration:none; font-weight:600; font-size:14px; border-radius:5px; border:1px solid rgba(255,255,255,0.16); transition:transform 0.25s cubic-bezier(0.2,0,0,1),border-color 0.3s;" style-hover="border-color:#f5f5f5;">ADNOC case study →</a>
+        <a href="Ali Faour Portfolio.dc.html" data-magnetic style="display:inline-flex; align-items:center; gap:12px; padding:15px 26px; background:#f5f5f5; color:#060606; text-decoration:none; font-weight:600; font-size:14px; border-radius:5px; border:1px solid #f5f5f5; transition:transform 0.25s cubic-bezier(0.2,0,0,1),background 0.3s;" style-hover="background:#e8893a; border-color:#e8893a;"><span>←</span> Back to portfolio</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    const root = this.el || document;
+    const qa = (s) => Array.from(root.querySelectorAll(s));
+    const q = (s) => root.querySelector(s);
+
+    const reveals = qa('[data-reveal]');
+    reveals.forEach((el) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(28px)';
+      el.style.transition = 'opacity 0.8s cubic-bezier(0.2,0,0,1), transform 0.8s cubic-bezier(0.2,0,0,1)';
+    });
+    const show = (el) => { el.style.opacity = '1'; el.style.transform = 'none'; };
+    const checkReveals = () => {
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      reveals.forEach((el) => {
+        if (el.dataset.shown) return;
+        const r = el.getBoundingClientRect();
+        if (r.top < vh * 0.92 && r.bottom > 0) { el.dataset.shown = '1'; show(el); }
+      });
+    };
+    requestAnimationFrame(checkReveals);
+    window.addEventListener('scroll', checkReveals, { passive: true });
+    window.addEventListener('resize', checkReveals, { passive: true });
+    setTimeout(() => reveals.forEach(show), 1600);
+
+    const prog = q('[data-progress]');
+    const nav = q('[data-nav]');
+    const onScroll = () => {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      const p = h > 0 ? (window.scrollY / h) * 100 : 0;
+      if (prog) prog.style.width = p + '%';
+      if (nav) {
+        if (window.scrollY > 60) { nav.style.padding = '14px 0'; nav.style.background = (window.__navBg ? window.__navBg(true) : 'rgba(6,6,6,0.82)'); }
+        else { nav.style.padding = '22px 0'; nav.style.background = (window.__navBg ? window.__navBg(false) : 'rgba(6,6,6,0.55)'); }
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    qa('a[href^="#"]').forEach((a) => {
+      a.addEventListener('click', (ev) => {
+        const id = a.getAttribute('href');
+        const t = root.querySelector(id);
+        if (t) { ev.preventDefault(); const y = t.getBoundingClientRect().top + window.scrollY - 70; window.scrollTo({ top: y, behavior: 'smooth' }); }
+      });
+    });
+
+    qa('[data-magnetic]').forEach((b) => {
+      b.addEventListener('mousemove', (e) => {
+        const r = b.getBoundingClientRect();
+        const x = (e.clientX - r.left - r.width / 2) * 0.28;
+        const y = (e.clientY - r.top - r.height / 2) * 0.4;
+        b.style.transform = `translate(${x}px, ${y}px)`;
+      });
+      b.addEventListener('mouseleave', () => { b.style.transform = 'translate(0,0)'; });
+    });
+  }
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

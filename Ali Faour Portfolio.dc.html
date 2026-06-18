@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:auto; }
+  body { background:#060606; color:#f5f5f5; font-family:'Inter',sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  ::selection { background:#e8893a; color:#060606; }
+  @keyframes spin { to { transform:rotate(360deg); } }
+  @keyframes pulse { 0%,100%{ opacity:1; } 50%{ opacity:0.25; } }
+  @keyframes marquee { from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+  @media (max-width:920px){
+    [data-m="g-hero"]{ grid-template-columns:1fr !important; gap:44px !important; }
+    [data-m="g-about"]{ grid-template-columns:1fr !important; gap:26px !important; }
+    [data-m="g-contact"]{ grid-template-columns:1fr !important; gap:48px !important; }
+    [data-m="g-exp"] > div{ grid-template-columns:1fr !important; gap:14px !important; }
+    [data-m="g4"]{ grid-template-columns:repeat(2,1fr) !important; }
+    [data-m="g3"]{ grid-template-columns:repeat(2,1fr) !important; }
+    [data-m="g-metrics"]{ grid-template-columns:repeat(2,1fr) !important; }
+    [data-navlinks]{ display:none !important; }
+  }
+  @media (max-width:600px){
+    [data-m="g4"], [data-m="g3"], [data-m="g2"], [data-m="g-metrics"]{ grid-template-columns:1fr !important; }
+    section{ padding-left:22px !important; padding-right:22px !important; }
+    [data-nav] > div{ padding-left:22px !important; padding-right:22px !important; }
+    h1{ font-size:clamp(2.4rem,11vw,3.4rem) !important; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; }
+    [data-reveal]{ opacity:1 !important; transform:none !important; }
+  }
+</style>
+<title>Ali Faour — Operations, Projects &amp; IoT Systems</title>
+<meta name="description" content="Ali Faour — I turn multi-site gas operations into controlled, traceable systems. Coordination, compliance, data automation and IoT telemetry across Abu Dhabi and Dubai.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ali Faour — Operations, Projects &amp; IoT Systems">
+<meta property="og:description" content="I turn operational chaos into controlled, traceable systems — coordination, compliance, data automation and IoT across UAE gas operations.">
+<meta property="og:image" content="og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23060606'/%3E%3Crect x='2.5' y='2.5' width='59' height='59' rx='12.5' fill='none' stroke='%23e8893a' stroke-width='2'/%3E%3Ctext x='32' y='44' font-family='monospace' font-size='30' font-weight='700' fill='%23e8893a' text-anchor='middle'%3EAF%3C/text%3E%3C/svg%3E">
+<script src="theme.js"></script>
+</helmet>
+
+<div data-root style="position:relative; background:#060606; min-height:100vh;">
+
+  <!-- grain / grid backdrop -->
+  <div style="position:fixed; inset:0; z-index:0; pointer-events:none; background-image:linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px); background-size:64px 64px; mask-image:radial-gradient(circle at 50% 0%,#000 0%,transparent 75%);"></div>
+
+  <!-- scroll progress -->
+  <div data-progress style="position:fixed; top:0; left:0; height:2px; width:0%; background:#e8893a; z-index:2000;"></div>
+
+  <!-- NAV -->
+  <nav data-nav style="position:fixed; top:0; left:0; width:100%; z-index:1000; padding:22px 0; border-bottom:1px solid rgba(255,255,255,0.06); background:rgba(6,6,6,0.55); backdrop-filter:blur(20px); transition:padding 0.4s cubic-bezier(0.2,0,0,1),background 0.4s;">
+    <div style="max-width:1440px; margin:0 auto; padding:0 40px; display:flex; align-items:center; justify-content:space-between;">
+      <a href="#top" style="display:flex; align-items:center; gap:12px; text-decoration:none; color:#f5f5f5;">
+        <span style="width:9px; height:9px; border-radius:50%; background:#e8893a; box-shadow:0 0 12px #e8893a; animation:pulse 2.4s ease-in-out infinite;"></span>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:14px; font-weight:600; letter-spacing:1px;">ALI&nbsp;FAOUR</span>
+      </a>
+      <ul style="display:flex; gap:38px; list-style:none; align-items:center;" data-navlinks>
+        <li><a href="#about" style="color:#7a7a7a; text-decoration:none; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:1px; transition:color 0.3s;" style-hover="color:#f5f5f5;">ABOUT</a></li>
+        <li><a href="#expertise" style="color:#7a7a7a; text-decoration:none; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:1px; transition:color 0.3s;" style-hover="color:#f5f5f5;">EXPERTISE</a></li>
+        <li><a href="#experience" style="color:#7a7a7a; text-decoration:none; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:1px; transition:color 0.3s;" style-hover="color:#f5f5f5;">EXPERIENCE</a></li>
+        <li><a href="#credentials" style="color:#7a7a7a; text-decoration:none; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:1px; transition:color 0.3s;" style-hover="color:#f5f5f5;">CREDENTIALS</a></li>
+        <li><a href="#projects" style="color:#7a7a7a; text-decoration:none; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:1px; transition:color 0.3s;" style-hover="color:#f5f5f5;">WORK</a></li>
+        <li><a href="#contact" style="color:#7a7a7a; text-decoration:none; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:1px; transition:color 0.3s;" style-hover="color:#f5f5f5;">CONTACT</a></li>
+      </ul>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#7a7a7a; letter-spacing:0.5px; display:flex; align-items:center; gap:8px;">
+        <span style="width:6px; height:6px; border-radius:50%; background:#3ecf8e; box-shadow:0 0 8px #3ecf8e;"></span>
+        <span data-clock>AUH 00:00</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="top" style="position:relative; z-index:1; min-height:100vh; display:flex; align-items:center; padding:140px 40px 60px;">
+    <div style="max-width:1440px; margin:0 auto; width:100%;">
+      <div data-m="g-hero" style="display:grid; grid-template-columns:1.55fr 1fr; gap:64px; align-items:end;">
+        <div>
+          <div data-reveal style="display:inline-flex; align-items:center; gap:10px; font-family:'JetBrains Mono',monospace; font-size:11px; color:#9a9a9a; letter-spacing:2px; text-transform:uppercase; padding:9px 16px; border:1px solid rgba(255,255,255,0.12); border-radius:4px; margin-bottom:34px;">
+            <span style="color:#e8893a;">◆</span> Operations · Compliance · Data &amp; IoT
+          </div>
+          <h1 data-reveal style="font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:clamp(2.8rem,7vw,6.4rem); line-height:0.98; letter-spacing:-0.035em; margin-bottom:30px;">
+            Turning operational <span style="font-weight:700; font-style:italic;">chaos</span><br>into controlled,<br>traceable <span style="position:relative; font-weight:700;">systems<span style="position:absolute; left:0; bottom:6px; width:100%; height:8px; background:#e8893a; opacity:0.85; z-index:-1;"></span></span>
+          </h1>
+          <p data-reveal style="font-size:clamp(1rem,1.4vw,1.22rem); color:#9a9a9a; max-width:620px; line-height:1.75; margin-bottom:42px;">
+            Across multi-site gas operations in Abu Dhabi &amp; Dubai, I'm the layer between messy field reality and management — coordinating stakeholders, controlling compliance, and wiring <span style="color:#f5f5f5;">IoT telemetry into data systems that report themselves</span>.
+          </p>
+          <div data-reveal style="display:flex; gap:16px; flex-wrap:wrap;">
+            <a href="#contact" data-magnetic style="display:inline-flex; align-items:center; gap:12px; padding:15px 26px; background:#f5f5f5; color:#060606; text-decoration:none; font-weight:600; font-size:14px; border-radius:5px; border:1px solid #f5f5f5; transition:transform 0.25s cubic-bezier(0.2,0,0,1),background 0.3s;" style-hover="background:#e8893a; border-color:#e8893a;">
+              Get in touch <span>→</span>
+            </a>
+            <a href="Ali_Faour_Resume.pdf" data-magnetic style="display:inline-flex; align-items:center; gap:12px; padding:15px 26px; background:transparent; color:#f5f5f5; text-decoration:none; font-weight:600; font-size:14px; border-radius:5px; border:1px solid rgba(255,255,255,0.16); transition:transform 0.25s cubic-bezier(0.2,0,0,1),border-color 0.3s;" style-hover="border-color:#f5f5f5;">
+              Download CV ↓
+            </a>
+          </div>
+        </div>
+
+        <!-- system status panel -->
+        <div data-reveal style="border:1px solid rgba(255,255,255,0.1); border-radius:8px; background:linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.005)); padding:24px; font-family:'JetBrains Mono',monospace;">
+          <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:14px; border-bottom:1px solid rgba(255,255,255,0.08); margin-bottom:16px;">
+            <span style="font-size:10px; letter-spacing:1.5px; color:#7a7a7a;">SYSTEM STATUS</span>
+            <span style="font-size:10px; color:#3ecf8e;">● OPERATIONAL</span>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:13px; font-size:12px;">
+            <div style="display:flex; justify-content:space-between;"><span style="color:#7a7a7a;">location</span><span>Abu Dhabi, UAE</span></div>
+            <div style="display:flex; justify-content:space-between;"><span style="color:#7a7a7a;">current_role</span><span>Projects · Ops · IoT</span></div>
+            <div style="display:flex; justify-content:space-between;"><span style="color:#7a7a7a;">domain</span><span>Gas &amp; Energy</span></div>
+            <div style="display:flex; justify-content:space-between;"><span style="color:#7a7a7a;">degree</span><span>Computer Eng.</span></div>
+            <div style="display:flex; justify-content:space-between; align-items:center;"><span style="color:#7a7a7a;">availability</span><span style="color:#3ecf8e;">Open to roles</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- METRICS -->
+      <div data-reveal data-m="g-metrics" style="margin-top:90px; display:grid; grid-template-columns:repeat(4,1fr); border:1px solid rgba(255,255,255,0.08); border-radius:8px; overflow:hidden;">
+        <div style="padding:34px 28px; border-right:1px solid rgba(255,255,255,0.08); border-top:1px solid rgba(255,255,255,0.08);">
+          <div style="font-family:'Space Grotesk',sans-serif; font-size:clamp(2.2rem,3.6vw,3.4rem); font-weight:600; letter-spacing:-0.03em; line-height:1;"><span data-count="100">0</span>%</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#7a7a7a; letter-spacing:1px; text-transform:uppercase; margin-top:10px;">Audit &amp; inspection ready</div>
+        </div>
+        <div style="padding:34px 28px; border-right:1px solid rgba(255,255,255,0.08); border-top:1px solid rgba(255,255,255,0.08);">
+          <div style="font-family:'Space Grotesk',sans-serif; font-size:clamp(2.2rem,3.6vw,3.4rem); font-weight:600; letter-spacing:-0.03em; line-height:1;"><span data-count="300">0</span>%</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#7a7a7a; letter-spacing:1px; text-transform:uppercase; margin-top:10px;">Execution efficiency</div>
+        </div>
+        <div style="padding:34px 28px; border-right:1px solid rgba(255,255,255,0.08); border-top:1px solid rgba(255,255,255,0.08);">
+          <div style="font-family:'Space Grotesk',sans-serif; font-size:clamp(2.2rem,3.6vw,3.4rem); font-weight:600; letter-spacing:-0.03em; line-height:1;"><span data-count="200">0</span>+</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#7a7a7a; letter-spacing:1px; text-transform:uppercase; margin-top:10px;">Reports automated</div>
+        </div>
+        <div style="padding:34px 28px; border-top:1px solid rgba(255,255,255,0.08);">
+          <div style="font-family:'Space Grotesk',sans-serif; font-size:clamp(2.2rem,3.6vw,3.4rem); font-weight:600; letter-spacing:-0.03em; line-height:1;"><span data-count="67">0</span>%</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#7a7a7a; letter-spacing:1px; text-transform:uppercase; margin-top:10px;">Manual rework removed</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- marquee divider -->
+  <div style="position:relative; z-index:1; border-top:1px solid rgba(255,255,255,0.08); border-bottom:1px solid rgba(255,255,255,0.08); overflow:hidden; padding:18px 0; white-space:nowrap;">
+    <div style="display:inline-block; animation:marquee 38s linear infinite;">
+      <span style="font-family:'Space Grotesk',sans-serif; font-size:18px; color:#5a5a5a; letter-spacing:0.5px;">&nbsp;MULTI-SITE OPERATIONS&nbsp;&nbsp;◆&nbsp;&nbsp;COMPLIANCE CONTROL&nbsp;&nbsp;◆&nbsp;&nbsp;AUDIT-READY DOCUMENTATION&nbsp;&nbsp;◆&nbsp;&nbsp;DATA &amp; AUTOMATION&nbsp;&nbsp;◆&nbsp;&nbsp;IoT TELEMETRY&nbsp;&nbsp;◆&nbsp;&nbsp;MODBUS / LORA / MQTT&nbsp;&nbsp;◆&nbsp;&nbsp;MULTI-SITE OPERATIONS&nbsp;&nbsp;◆&nbsp;&nbsp;COMPLIANCE CONTROL&nbsp;&nbsp;◆&nbsp;&nbsp;AUDIT-READY DOCUMENTATION&nbsp;&nbsp;◆&nbsp;&nbsp;DATA &amp; AUTOMATION&nbsp;&nbsp;◆&nbsp;&nbsp;IoT TELEMETRY&nbsp;&nbsp;◆&nbsp;&nbsp;MODBUS / LORA / MQTT&nbsp;&nbsp;◆&nbsp;&nbsp;</span>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about" style="position:relative; z-index:1; padding:120px 40px;">
+    <div style="max-width:1440px; margin:0 auto;">
+      <div data-reveal style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#e8893a; letter-spacing:2px; margin-bottom:38px;">01 — ABOUT</div>
+      <div data-m="g-about" style="display:grid; grid-template-columns:1fr 1.3fr; gap:72px;">
+        <h2 data-reveal style="font-family:'Space Grotesk',sans-serif; font-size:clamp(1.9rem,3.2vw,2.9rem); font-weight:500; letter-spacing:-0.03em; line-height:1.12;">I bring order to operational chaos.</h2>
+        <div data-reveal>
+          <p style="font-size:1.18rem; color:#cfcfcf; line-height:1.8; margin-bottom:24px;">Computer Engineer based in Abu Dhabi, working across multi-site gas operations in the UAE — the point where field reality, vendors, regulators, and management all have to line up.</p>
+          <p style="font-size:1.05rem; color:#8a8a8a; line-height:1.85;">My job is control. I keep multi-site execution moving, hold compliance documentation <span style="color:#f5f5f5;">audit-ready</span>, and turn scattered site data into a single operational layer — increasingly with AI-assisted automation handling the repetitive work. I think in systems and I don't leave loose ends. The result is delivery that's traceable, inspection-ready, and <span style="color:#f5f5f5;">300% more efficient</span> — without adding headcount.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERTISE -->
+  <section id="expertise" style="position:relative; z-index:1; padding:120px 40px; border-top:1px solid rgba(255,255,255,0.08);">
+    <div style="max-width:1440px; margin:0 auto;">
+      <div data-reveal style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#e8893a; letter-spacing:2px; margin-bottom:16px;">02 — EXPERTISE</div>
+      <h2 data-reveal style="font-family:'Space Grotesk',sans-serif; font-size:clamp(1.9rem,3.2vw,2.9rem); font-weight:500; letter-spacing:-0.03em; margin-bottom:56px;">One operator. Four control layers.</h2>
+
+      <div data-m="g4" style="display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.08); border-radius:8px; overflow:hidden;">
+
+        <div data-reveal data-card style="background:#060606; padding:34px 30px; transition:background 0.4s;">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:26px;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#e8893a;">A1</span>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-size:1.15rem; font-weight:600;">Operations &amp; Coordination</h3>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:0;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#8a8a8a; padding:11px 0; border-top:1px solid rgba(255,255,255,0.06); transition:color 0.3s;" style-hover="color:#f5f5f5;">Multi-site execution (AUH + Dubai)</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#8a8a8a; padding:11px 0; border-top:1px solid rgba(255,255,255,0.06); transition:color 0.3s;" style-hover="color:#f5f5f5;">Stakeholder alignment</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#8a8a8a; padding:11px 0; border-top:1px solid rgba(255,255,255,0.06); transition:color 0.3s;" style-hover="color:#f5f5f5;">Vendor &amp; consultant management</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#8a8a8a; padding:11px 0; border-top:1px solid rgba(255,255,255,0.06); transition:color 0.3s;" style-hover="color:#f5f5f5;">Snags, handovers &amp; blockers</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#8a8a8a; padding:11px 0; border-top:1px solid rgba(255,255,255,0.06); transition:color 0.3s;" style-hover="color:#f5f5f5;">Inspections &amp; corrective actions</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#8a8a8a; padding:11px 0; border-top:1px solid rgba(255,255,255,0.06); transition:color 0.3s;" style-hover="color:#f5f5f5;">Directives → execution plans</span>
+          </div>
+        </div>
+
+        <div data-reveal data-card style="background:#060606; padding:34px 30px; transition:background 0.4s;">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:26px;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#e8893a;">A2</span>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-size:1.15rem; font-weight:600;">Documentation &amp; Compliance</h3>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:0;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#8a8a8a; padding:11px 0; border-top:1px solid rgba(255,255,255,0.06); transition:color 0.3s;" style-hover="color:#f5f5f5;">AMC · COC · NOC packs</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#8a8a8a; padding:11px 0; border-top:1px solid rgba(255,255,255,0.06); transition:color 0.3s;" style-hover="color:#f5f5f5;">Submission &amp; approval control</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#8a8a8a; padding:11px 0; border-top:1px solid rgba(255,255,255,0.06); transition:color 0.3s;" style-hover="color:#f5f5f5;">Audit &amp; inspection readiness</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#8a8a8a; padding:11px 0; border-top:1px solid rgba(255,255,255,0.06); transition:color 0.3s;" style-hover="color:#f5f5f5;">Handover &amp; taking-over records</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#8a8a8a; padding:11px 0; border-top:1px solid rgba(255,255,255,0.06); transition:color 0.3s;" style-hover="color:#f5f5f5;">Traceable document control</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#8a8a8a; padding:11px 0; border-top:1px solid rgba(255,255,255,0.06); transition:color 0.3s;" style-hover="color:#f5f5f5;">Decision-ready reporting</span>
+          </div>
+        </div>
+
+        <div data-reveal data-card style="background:#060606; padding:34px 30px; transition:background 0.4s;">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:26px;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#e8893a;">A3</span>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-size:1.15rem; font-weight:600;">Data &amp; Automation</h3>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:0;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#8a8a8a; padding:11px 0; border-top:1px solid rgba(255,255,255,0.06); transition:color 0.3s;" style-hover="color:#f5f5f5;">Trackers, registers &amp; dashboards</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#8a8a8a; padding:11px 0; border-top:1px solid rgba(255,255,255,0.06); transition:color 0.3s;" style-hover="color:#f5f5f5;">Single operational data layer</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#8a8a8a; padding:11px 0; border-top:1px solid rgba(255,255,255,0.06); transition:color 0.3s;" style-hover="color:#f5f5f5;">AI-assisted workflows</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#8a8a8a; padding:11px 0; border-top:1px solid rgba(255,255,255,0.06); transition:color 0.3s;" style-hover="color:#f5f5f5;">Python · PowerShell · C# / .NET</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#8a8a8a; padding:11px 0; border-top:1px solid rgba(255,255,255,0.06); transition:color 0.3s;" style-hover="color:#f5f5f5;">SQL Server · Power BI</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#8a8a8a; padding:11px 0; border-top:1px solid rgba(255,255,255,0.06); transition:color 0.3s;" style-hover="color:#f5f5f5;">Manual rework eliminated</span>
+          </div>
+        </div>
+
+        <div data-reveal data-card style="background:#060606; padding:34px 30px; transition:background 0.4s;">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:26px;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#e8893a;">A4</span>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-size:1.15rem; font-weight:600;">IoT &amp; Telemetry</h3>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:0;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#8a8a8a; padding:11px 0; border-top:1px solid rgba(255,255,255,0.06); transition:color 0.3s;" style-hover="color:#f5f5f5;">Gas &amp; LPG tank monitoring</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#8a8a8a; padding:11px 0; border-top:1px solid rgba(255,255,255,0.06); transition:color 0.3s;" style-hover="color:#f5f5f5;">Device → server → platform</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#8a8a8a; padding:11px 0; border-top:1px solid rgba(255,255,255,0.06); transition:color 0.3s;" style-hover="color:#f5f5f5;">APN / domain / server config</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#8a8a8a; padding:11px 0; border-top:1px solid rgba(255,255,255,0.06); transition:color 0.3s;" style-hover="color:#f5f5f5;">Modbus · LoRa · MQTT</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#8a8a8a; padding:11px 0; border-top:1px solid rgba(255,255,255,0.06); transition:color 0.3s;" style-hover="color:#f5f5f5;">Commissioning &amp; validation</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#8a8a8a; padding:11px 0; border-top:1px solid rgba(255,255,255,0.06); transition:color 0.3s;" style-hover="color:#f5f5f5;">Remote + onsite troubleshooting</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" style="position:relative; z-index:1; padding:120px 40px; border-top:1px solid rgba(255,255,255,0.08);">
+    <div style="max-width:1440px; margin:0 auto;">
+      <div data-reveal style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#e8893a; letter-spacing:2px; margin-bottom:16px;">03 — EXPERIENCE</div>
+      <h2 data-reveal style="font-family:'Space Grotesk',sans-serif; font-size:clamp(1.9rem,3.2vw,2.9rem); font-weight:500; letter-spacing:-0.03em; margin-bottom:64px;">Professional journey.</h2>
+
+      <div data-m="g-exp" style="display:flex; flex-direction:column;">
+
+        <div data-reveal style="display:grid; grid-template-columns:220px 1fr; gap:56px; padding:40px 0; border-top:1px solid rgba(255,255,255,0.08);">
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#e8893a; margin-bottom:10px;">DEC 2023 — PRESENT</div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#7a7a7a;">Abu Dhabi, UAE</div>
+          </div>
+          <div>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-size:1.5rem; font-weight:600; letter-spacing:-0.02em; margin-bottom:6px;">Royal Development for Gas Works</h3>
+            <div style="font-size:1rem; color:#9a9a9a; margin-bottom:22px;">Assistant Project Manager · Software Engineer · AIoT Specialist</div>
+            <ul style="list-style:none; display:grid; gap:13px;">
+              <li style="padding-left:24px; position:relative; color:#9a9a9a; line-height:1.7;"><span style="position:absolute; left:0; color:#e8893a;">—</span>Delivered 100+ ADNOC-governed gas control systems 3 months ahead of schedule with 300% efficiency improvement.</li>
+              <li style="padding-left:24px; position:relative; color:#9a9a9a; line-height:1.7;"><span style="position:absolute; left:0; color:#e8893a;">—</span>Led the Department of Energy LPG enhancement program (2023–2025) across multiple sites with complex stakeholder coordination.</li>
+              <li style="padding-left:24px; position:relative; color:#9a9a9a; line-height:1.7;"><span style="position:absolute; left:0; color:#e8893a;">—</span>Designed a TPS-inspired flow execution model, cutting building deployment from 6 hours to 2.5 hours.</li>
+              <li style="padding-left:24px; position:relative; color:#9a9a9a; line-height:1.7;"><span style="position:absolute; left:0; color:#e8893a;">—</span>Generated 200+ technical compliance reports via Python automation, streamlining handover documentation by 67%.</li>
+              <li style="padding-left:24px; position:relative; color:#9a9a9a; line-height:1.7;"><span style="position:absolute; left:0; color:#e8893a;">—</span>Integrated Modbus &amp; LoRa IoT telemetry, achieving 35% better data accuracy and a 20% reliability gain.</li>
+              <li style="padding-left:24px; position:relative; color:#9a9a9a; line-height:1.7;"><span style="position:absolute; left:0; color:#e8893a;">—</span>Built an ASP.NET MVC enterprise platform for centralized asset management with real-time progress visibility.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div data-reveal style="display:grid; grid-template-columns:220px 1fr; gap:56px; padding:40px 0; border-top:1px solid rgba(255,255,255,0.08);">
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#9a9a9a; margin-bottom:10px;">JAN 2023 — NOV 2023</div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#7a7a7a;">Abu Dhabi, UAE</div>
+          </div>
+          <div>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-size:1.5rem; font-weight:600; letter-spacing:-0.02em; margin-bottom:6px;">Royal Development for Gas Works</h3>
+            <div style="font-size:1rem; color:#9a9a9a; margin-bottom:22px;">Intern — Control Systems Engineer / IT Support</div>
+            <ul style="list-style:none; display:grid; gap:13px;">
+              <li style="padding-left:24px; position:relative; color:#9a9a9a; line-height:1.7;"><span style="position:absolute; left:0; color:#e8893a;">—</span>Assembled and tested LPG detection panels, improving build efficiency by 15%.</li>
+              <li style="padding-left:24px; position:relative; color:#9a9a9a; line-height:1.7;"><span style="position:absolute; left:0; color:#e8893a;">—</span>Calibrated explosion-proof detectors, raising detection accuracy by 20%.</li>
+              <li style="padding-left:24px; position:relative; color:#9a9a9a; line-height:1.7;"><span style="position:absolute; left:0; color:#e8893a;">—</span>Monitored SCADA/PLC systems, optimizing response times by 10%.</li>
+              <li style="padding-left:24px; position:relative; color:#9a9a9a; line-height:1.7;"><span style="position:absolute; left:0; color:#e8893a;">—</span>Implemented MS Active Directory and managed IT ticketing, cutting downtime and resolution times.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div data-reveal style="display:grid; grid-template-columns:220px 1fr; gap:56px; padding:40px 0; border-top:1px solid rgba(255,255,255,0.08); border-bottom:1px solid rgba(255,255,255,0.08);">
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#9a9a9a; margin-bottom:10px;">AUG 2022 — JAN 2023</div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#7a7a7a;">Remote</div>
+          </div>
+          <div>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-size:1.5rem; font-weight:600; letter-spacing:-0.02em; margin-bottom:6px;">Tough Leaf</h3>
+            <div style="font-size:1rem; color:#9a9a9a; margin-bottom:22px;">Full-Stack Software Engineer</div>
+            <ul style="list-style:none; display:grid; gap:13px;">
+              <li style="padding-left:24px; position:relative; color:#9a9a9a; line-height:1.7;"><span style="position:absolute; left:0; color:#e8893a;">—</span>Optimized LAMP-stack database queries, reducing execution times by 20%.</li>
+              <li style="padding-left:24px; position:relative; color:#9a9a9a; line-height:1.7;"><span style="position:absolute; left:0; color:#e8893a;">—</span>Designed RESTful APIs with secure payment integrations.</li>
+              <li style="padding-left:24px; position:relative; color:#9a9a9a; line-height:1.7;"><span style="position:absolute; left:0; color:#e8893a;">—</span>Built responsive UIs with Bootstrap/JavaScript, boosting satisfaction by 25%.</li>
+              <li style="padding-left:24px; position:relative; color:#9a9a9a; line-height:1.7;"><span style="position:absolute; left:0; color:#e8893a;">—</span>Implemented automated testing, reducing post-deployment bugs by 20%.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CREDENTIALS -->
+  <section id="credentials" style="position:relative; z-index:1; padding:120px 40px; border-top:1px solid rgba(255,255,255,0.08);">
+    <div style="max-width:1440px; margin:0 auto;">
+      <div data-reveal style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#e8893a; letter-spacing:2px; margin-bottom:16px;">04 — CREDENTIALS</div>
+      <h2 data-reveal style="font-family:'Space Grotesk',sans-serif; font-size:clamp(1.9rem,3.2vw,2.9rem); font-weight:500; letter-spacing:-0.03em; margin-bottom:56px;">Certified &amp; audit-ready.</h2>
+
+      <div data-m="g3" style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.08); border-radius:8px; overflow:hidden;">
+
+        <div data-reveal style="background:#060606; padding:32px 30px; display:flex; flex-direction:column; gap:18px;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#e8893a; letter-spacing:1.5px; padding:4px 10px; border:1px solid rgba(232,137,58,0.4); border-radius:4px;">INFOSEC</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#3ecf8e;">● ACTIVE</span>
+          </div>
+          <div>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-size:1.25rem; font-weight:600; letter-spacing:-0.01em; margin-bottom:6px;">ISO/IEC 27001:2022</h3>
+            <div style="color:#cfcfcf; font-size:0.98rem; margin-bottom:4px;">ISMS Lead Auditor</div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#7a7a7a;">IRCA Certified</div>
+          </div>
+        </div>
+
+        <div data-reveal style="background:#060606; padding:32px 30px; display:flex; flex-direction:column; gap:18px;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#e8893a; letter-spacing:1.5px; padding:4px 10px; border:1px solid rgba(232,137,58,0.4); border-radius:4px;">CLOUD</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#3ecf8e;">● ACTIVE</span>
+          </div>
+          <div>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-size:1.25rem; font-weight:600; letter-spacing:-0.01em; margin-bottom:6px;">AWS Cloud Practitioner</h3>
+            <div style="color:#cfcfcf; font-size:0.98rem; margin-bottom:4px;">Certified — Foundational</div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#7a7a7a;">Amazon Web Services</div>
+          </div>
+        </div>
+
+        <div data-reveal style="background:#060606; padding:32px 30px; display:flex; flex-direction:column; gap:18px;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#e8893a; letter-spacing:1.5px; padding:4px 10px; border:1px solid rgba(232,137,58,0.4); border-radius:4px;">EDUCATION</span>
+          </div>
+          <div>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-size:1.25rem; font-weight:600; letter-spacing:-0.01em; margin-bottom:6px;">B.E. Computer Engineering</h3>
+            <div style="color:#cfcfcf; font-size:0.98rem; margin-bottom:4px;">Bachelor of Engineering</div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#7a7a7a;">Lebanon</div>
+          </div>
+        </div>
+
+        <div data-reveal style="background:#060606; padding:32px 30px; display:flex; flex-direction:column; gap:18px;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#e8893a; letter-spacing:1.5px; padding:4px 10px; border:1px solid rgba(232,137,58,0.4); border-radius:4px;">HSE</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#3ecf8e;">● ACTIVE</span>
+          </div>
+          <div>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-size:1.25rem; font-weight:600; letter-spacing:-0.01em; margin-bottom:6px;">ADNOC WMS</h3>
+            <div style="color:#cfcfcf; font-size:0.98rem; margin-bottom:4px;">Work Management System</div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#7a7a7a;">ADNOC Authorized</div>
+          </div>
+        </div>
+
+        <div data-reveal style="background:#060606; padding:32px 30px; display:flex; flex-direction:column; gap:18px;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#e8893a; letter-spacing:1.5px; padding:4px 10px; border:1px solid rgba(232,137,58,0.4); border-radius:4px;">HSE</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#3ecf8e;">● ACTIVE</span>
+          </div>
+          <div>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-size:1.25rem; font-weight:600; letter-spacing:-0.01em; margin-bottom:6px;">ADNOC LSR</h3>
+            <div style="color:#cfcfcf; font-size:0.98rem; margin-bottom:4px;">Life Saving Rules</div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#7a7a7a;">ADNOC Certified</div>
+          </div>
+        </div>
+
+        <div data-reveal style="background:linear-gradient(135deg,rgba(232,137,58,0.08),rgba(255,255,255,0.01)); padding:32px 30px; display:flex; flex-direction:column; justify-content:center; gap:8px;">
+          <div style="font-family:'Space Grotesk',sans-serif; font-size:2.4rem; font-weight:600; letter-spacing:-0.03em; line-height:1;">5</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#9a9a9a; letter-spacing:1px; text-transform:uppercase; line-height:1.5;">Active credentials<br>across infosec, cloud &amp; HSE</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" style="position:relative; z-index:1; padding:120px 40px; border-top:1px solid rgba(255,255,255,0.08);">
+    <div style="max-width:1440px; margin:0 auto;">
+      <div data-reveal style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#e8893a; letter-spacing:2px; margin-bottom:16px;">05 — SELECTED WORK</div>
+      <h2 data-reveal style="font-family:'Space Grotesk',sans-serif; font-size:clamp(1.9rem,3.2vw,2.9rem); font-weight:500; letter-spacing:-0.03em; margin-bottom:56px;">Systems I've shipped.</h2>
+
+      <div data-m="g2" style="display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.08); border-radius:8px; overflow:hidden;">
+
+        <a href="DoE LPG Case Study.dc.html" data-proj style="background:#060606; padding:42px 38px; text-decoration:none; color:inherit; position:relative; transition:background 0.4s; display:block;" style-hover="background:#0d0d0d;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:26px;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#7a7a7a;">PROJECT 01</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#e8893a; letter-spacing:1px;">CASE STUDY →</span>
+          </div>
+          <h3 style="font-family:'Space Grotesk',sans-serif; font-size:1.45rem; font-weight:600; letter-spacing:-0.02em; margin-bottom:14px;">DoE LPG Enhancement Program</h3>
+          <p style="color:#8a8a8a; line-height:1.7; margin-bottom:24px; font-size:0.98rem;">Multi-year Department of Energy infrastructure program (2023–2025). Coordinated execution sequencing, stakeholder reviews, and close-out documentation for large-scale LPG deployments across multiple sites.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:8px;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#9a9a9a; padding:5px 11px; border:1px solid rgba(255,255,255,0.12); border-radius:4px;">PROJECT MGMT</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#9a9a9a; padding:5px 11px; border:1px solid rgba(255,255,255,0.12); border-radius:4px;">COMPLIANCE</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#9a9a9a; padding:5px 11px; border:1px solid rgba(255,255,255,0.12); border-radius:4px;">DOE STANDARDS</span>
+          </div>
+        </a>
+
+        <a href="ADNOC Case Study.dc.html" data-proj style="background:#060606; padding:42px 38px; text-decoration:none; color:inherit; position:relative; transition:background 0.4s; display:block;" style-hover="background:#0d0d0d;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:26px;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#7a7a7a;">PROJECT 02</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#e8893a; letter-spacing:1px;">CASE STUDY →</span>
+          </div>
+          <h3 style="font-family:'Space Grotesk',sans-serif; font-size:1.45rem; font-weight:600; letter-spacing:-0.02em; margin-bottom:14px;">ADNOC Systems Deployment</h3>
+          <p style="color:#8a8a8a; line-height:1.7; margin-bottom:24px; font-size:0.98rem;">Accelerated deployment of 100+ ADNOC-governed gas control and detection systems — compressing a 6-month timeline to 2 months via a hybrid Waterfall-Agile approach and flow-optimized field execution.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:8px;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#9a9a9a; padding:5px 11px; border:1px solid rgba(255,255,255,0.12); border-radius:4px;">FIELD EXECUTION</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#9a9a9a; padding:5px 11px; border:1px solid rgba(255,255,255,0.12); border-radius:4px;">HSE COMPLIANCE</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#9a9a9a; padding:5px 11px; border:1px solid rgba(255,255,255,0.12); border-radius:4px;">300% EFFICIENCY</span>
+          </div>
+        </a>
+
+        <a href="Gridlock Case Study.dc.html" data-proj style="background:#060606; padding:42px 38px; text-decoration:none; color:inherit; position:relative; transition:background 0.4s; display:block;" style-hover="background:#0d0d0d;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:26px;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#7a7a7a;">PROJECT 03</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#e8893a; letter-spacing:1px;">CASE STUDY →</span>
+          </div>
+          <h3 style="font-family:'Space Grotesk',sans-serif; font-size:1.45rem; font-weight:600; letter-spacing:-0.02em; margin-bottom:14px;">Gridlock Utility Portal</h3>
+          <p style="color:#8a8a8a; line-height:1.7; margin-bottom:24px; font-size:0.98rem;">An enterprise utility ERP where no business policy is hardcoded. A modular monolith (ASP.NET Core 8, Blazor) of 17 bounded modules that starts empty and is configured entirely by business admins — workflows, approvals, billing rules — with no developer in the loop.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:8px;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#9a9a9a; padding:5px 11px; border:1px solid rgba(255,255,255,0.12); border-radius:4px;">ASP.NET CORE 8</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#9a9a9a; padding:5px 11px; border:1px solid rgba(255,255,255,0.12); border-radius:4px;">BLAZOR · MEDIATR</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#9a9a9a; padding:5px 11px; border:1px solid rgba(255,255,255,0.12); border-radius:4px;">SQL SERVER</span>
+          </div>
+        </a>
+
+        <a href="https://github.com/Cyberfaour" target="_blank" data-proj style="background:#060606; padding:42px 38px; text-decoration:none; color:inherit; position:relative; transition:background 0.4s; display:block;" style-hover="background:#0d0d0d;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:26px;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#7a7a7a;">PROJECT 04</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:18px; color:#7a7a7a;">↗</span>
+          </div>
+          <h3 style="font-family:'Space Grotesk',sans-serif; font-size:1.45rem; font-weight:600; letter-spacing:-0.02em; margin-bottom:14px;">AIoT Telemetry Pipeline</h3>
+          <p style="color:#8a8a8a; line-height:1.7; margin-bottom:24px; font-size:0.98rem;">Digital transformation initiative deploying Modbus/LoRa telemetry for distributed gas infrastructure. An ESP32 + MQTT pipeline feeds real-time analytics to Power BI for predictive maintenance and operational monitoring.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:8px;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#9a9a9a; padding:5px 11px; border:1px solid rgba(255,255,255,0.12); border-radius:4px;">IOT · MQTT</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#9a9a9a; padding:5px 11px; border:1px solid rgba(255,255,255,0.12); border-radius:4px;">MODBUS / LORA</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#9a9a9a; padding:5px 11px; border:1px solid rgba(255,255,255,0.12); border-radius:4px;">POWER BI</span>
+          </div>
+        </a>
+
+        <a href="https://github.com/Cyberfaour" target="_blank" data-proj style="background:#060606; padding:42px 38px; text-decoration:none; color:inherit; position:relative; transition:background 0.4s; display:block;" style-hover="background:#0d0d0d;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:26px;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#7a7a7a;">PROJECT 05</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:18px; color:#7a7a7a;">↗</span>
+          </div>
+          <h3 style="font-family:'Space Grotesk',sans-serif; font-size:1.45rem; font-weight:600; letter-spacing:-0.02em; margin-bottom:14px;">Compliance Automation Toolkit</h3>
+          <p style="color:#8a8a8a; line-height:1.7; margin-bottom:24px; font-size:0.98rem;">A Python &amp; PowerShell automation suite generating 200+ technical reports for the ADNOC program — cutting manual documentation time by 67% through intelligent parsing, data transformation, and standardized output.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:8px;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#9a9a9a; padding:5px 11px; border:1px solid rgba(255,255,255,0.12); border-radius:4px;">PYTHON</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#9a9a9a; padding:5px 11px; border:1px solid rgba(255,255,255,0.12); border-radius:4px;">POWERSHELL</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#9a9a9a; padding:5px 11px; border:1px solid rgba(255,255,255,0.12); border-radius:4px;">AUTOMATION</span>
+          </div>
+        </a>
+
+        <a href="https://www.linkedin.com/in/alifaour2022/" target="_blank" data-proj style="background:#060606; padding:42px 38px; text-decoration:none; color:inherit; position:relative; transition:background 0.4s; display:block;" style-hover="background:#0d0d0d;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:26px;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#7a7a7a;">PROJECT 06</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:18px; color:#7a7a7a;">↗</span>
+          </div>
+          <h3 style="font-family:'Space Grotesk',sans-serif; font-size:1.45rem; font-weight:600; letter-spacing:-0.02em; margin-bottom:14px;">TPS-Inspired Field Workflow</h3>
+          <p style="color:#8a8a8a; line-height:1.7; margin-bottom:24px; font-size:0.98rem;">A systems-based execution model eliminating context switching and blocking conditions. A flow-first approach with task specialization cut building deployment from 6 hours to ~2.5 hours per 4-building cycle — no added manpower.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:8px;">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#9a9a9a; padding:5px 11px; border:1px solid rgba(255,255,255,0.12); border-radius:4px;">LEAN SYSTEMS</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#9a9a9a; padding:5px 11px; border:1px solid rgba(255,255,255,0.12); border-radius:4px;">WORKFLOW</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#9a9a9a; padding:5px 11px; border:1px solid rgba(255,255,255,0.12); border-radius:4px;">FIELD OPS</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" style="position:relative; z-index:1; padding:120px 40px; border-top:1px solid rgba(255,255,255,0.08);">
+    <div style="max-width:1440px; margin:0 auto;">
+      <div data-reveal style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#e8893a; letter-spacing:2px; margin-bottom:16px;">06 — CONTACT</div>
+      <div data-m="g-contact" style="display:grid; grid-template-columns:1.1fr 1fr; gap:80px; align-items:start;">
+        <div data-reveal>
+          <h2 style="font-family:'Space Grotesk',sans-serif; font-size:clamp(2.2rem,4vw,3.6rem); font-weight:500; letter-spacing:-0.03em; line-height:1.05; margin-bottom:28px;">Let's build<br>something that<br><span style="font-style:italic; font-weight:700;">scales</span>.</h2>
+          <p style="color:#8a8a8a; line-height:1.8; max-width:440px; margin-bottom:40px;">Open to engineering and project leadership roles across the UAE gas &amp; energy sector. Reach out — I usually reply within a day.</p>
+          <div style="display:flex; flex-direction:column;">
+            <a href="mailto:ali2001faour@outlook.com" style="display:flex; align-items:center; justify-content:space-between; padding:20px 0; border-top:1px solid rgba(255,255,255,0.08); text-decoration:none; color:#f5f5f5; transition:padding 0.3s;" style-hover="padding-left:8px;"><span><span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#7a7a7a; display:block; margin-bottom:4px;">EMAIL</span>ali2001faour@outlook.com</span><span style="color:#e8893a;">→</span></a>
+            <a href="https://www.linkedin.com/in/alifaour2022/" target="_blank" style="display:flex; align-items:center; justify-content:space-between; padding:20px 0; border-top:1px solid rgba(255,255,255,0.08); text-decoration:none; color:#f5f5f5; transition:padding 0.3s;" style-hover="padding-left:8px;"><span><span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#7a7a7a; display:block; margin-bottom:4px;">LINKEDIN</span>linkedin.com/in/alifaour2022</span><span style="color:#e8893a;">→</span></a>
+            <a href="https://github.com/Cyberfaour" target="_blank" style="display:flex; align-items:center; justify-content:space-between; padding:20px 0; border-top:1px solid rgba(255,255,255,0.08); text-decoration:none; color:#f5f5f5; transition:padding 0.3s;" style-hover="padding-left:8px;"><span><span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#7a7a7a; display:block; margin-bottom:4px;">GITHUB</span>github.com/Cyberfaour</span><span style="color:#e8893a;">→</span></a>
+            <a href="tel:+971504270258" style="display:flex; align-items:center; justify-content:space-between; padding:20px 0; border-top:1px solid rgba(255,255,255,0.08); border-bottom:1px solid rgba(255,255,255,0.08); text-decoration:none; color:#f5f5f5; transition:padding 0.3s;" style-hover="padding-left:8px;"><span><span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#7a7a7a; display:block; margin-bottom:4px;">PHONE</span>+971 50 427 0258</span><span style="color:#e8893a;">→</span></a>
+          </div>
+        </div>
+
+        <div data-reveal style="border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:38px; background:linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.005));">
+          <h3 style="font-family:'Space Grotesk',sans-serif; font-size:1.3rem; font-weight:600; margin-bottom:28px;">Send a message</h3>
+          <form action="https://formspree.io/f/moqzooaa" method="POST">
+            <div style="margin-bottom:22px;">
+              <label for="name" style="display:block; font-family:'JetBrains Mono',monospace; font-size:10px; color:#7a7a7a; letter-spacing:1px; margin-bottom:9px;">NAME</label>
+              <input type="text" id="name" name="name" required style="width:100%; padding:13px 14px; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.12); border-radius:5px; color:#f5f5f5; font-family:'Inter',sans-serif; font-size:15px;" style-focus="border-color:#e8893a; outline:none;">
+            </div>
+            <div style="margin-bottom:22px;">
+              <label for="email" style="display:block; font-family:'JetBrains Mono',monospace; font-size:10px; color:#7a7a7a; letter-spacing:1px; margin-bottom:9px;">EMAIL</label>
+              <input type="email" id="email" name="email" required style="width:100%; padding:13px 14px; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.12); border-radius:5px; color:#f5f5f5; font-family:'Inter',sans-serif; font-size:15px;" style-focus="border-color:#e8893a; outline:none;">
+            </div>
+            <div style="margin-bottom:26px;">
+              <label for="message" style="display:block; font-family:'JetBrains Mono',monospace; font-size:10px; color:#7a7a7a; letter-spacing:1px; margin-bottom:9px;">MESSAGE</label>
+              <textarea id="message" name="message" required style="width:100%; padding:13px 14px; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.12); border-radius:5px; color:#f5f5f5; font-family:'Inter',sans-serif; font-size:15px; min-height:130px; resize:vertical;" style-focus="border-color:#e8893a; outline:none;"></textarea>
+            </div>
+            <button type="submit" style="width:100%; padding:15px; background:#f5f5f5; color:#060606; border:none; border-radius:5px; font-family:'Inter',sans-serif; font-weight:600; font-size:14px; cursor:pointer; transition:background 0.3s;" style-hover="background:#e8893a;">Send message →</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="position:relative; z-index:1; padding:44px 40px; border-top:1px solid rgba(255,255,255,0.08);">
+    <div style="max-width:1440px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:18px;">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#7a7a7a; letter-spacing:0.5px;">© 2026 ALI FAOUR — ABU DHABI, UAE</div>
+      <div style="display:flex; gap:28px;">
+        <a href="https://www.linkedin.com/in/alifaour2022/" target="_blank" style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#7a7a7a; text-decoration:none; transition:color 0.3s;" style-hover="color:#f5f5f5;">LINKEDIN</a>
+        <a href="https://github.com/Cyberfaour" target="_blank" style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#7a7a7a; text-decoration:none; transition:color 0.3s;" style-hover="color:#f5f5f5;">GITHUB</a>
+        <a href="mailto:ali2001faour@outlook.com" style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#7a7a7a; text-decoration:none; transition:color 0.3s;" style-hover="color:#f5f5f5;">EMAIL</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    const root = this.el || document;
+    const q = (s) => root.querySelector(s);
+    const qa = (s) => Array.from(root.querySelectorAll(s));
+
+    // --- reveal on scroll ---
+    const reveals = qa('[data-reveal]');
+    reveals.forEach((el) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(28px)';
+      el.style.transition = 'opacity 0.8s cubic-bezier(0.2,0,0,1), transform 0.8s cubic-bezier(0.2,0,0,1)';
+    });
+    const show = (el) => { el.style.opacity = '1'; el.style.transform = 'none'; };
+    const checkReveals = () => {
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      reveals.forEach((el) => {
+        if (el.dataset.shown) return;
+        const r = el.getBoundingClientRect();
+        if (r.top < vh * 0.92 && r.bottom > 0) { el.dataset.shown = '1'; show(el); }
+      });
+    };
+    // reveal whatever is in view right now, then watch scroll
+    requestAnimationFrame(checkReveals);
+    window.addEventListener('scroll', checkReveals, { passive: true });
+    window.addEventListener('resize', checkReveals, { passive: true });
+    // safety: never leave content hidden
+    setTimeout(() => reveals.forEach(show), 1600);
+
+    // --- count up ---
+    const counters = qa('[data-count]');
+    const runCount = (el) => {
+      if (el.dataset.counted) return;
+      el.dataset.counted = '1';
+      const target = parseInt(el.getAttribute('data-count'), 10);
+      const dur = 1500; const start = performance.now();
+      const tick = (now) => {
+        const p = Math.min((now - start) / dur, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * eased);
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+    const checkCounters = () => {
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      counters.forEach((el) => {
+        const r = el.getBoundingClientRect();
+        if (r.top < vh * 0.85 && r.bottom > 0) runCount(el);
+      });
+    };
+    requestAnimationFrame(checkCounters);
+    window.addEventListener('scroll', checkCounters, { passive: true });
+    setTimeout(() => counters.forEach(runCount), 1600);
+
+    // --- scroll progress + nav shrink ---
+    const prog = q('[data-progress]');
+    const nav = q('[data-nav]');
+    const onScroll = () => {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      const p = h > 0 ? (window.scrollY / h) * 100 : 0;
+      if (prog) prog.style.width = p + '%';
+      if (nav) {
+        if (window.scrollY > 60) { nav.style.padding = '14px 0'; nav.style.background = (window.__navBg ? window.__navBg(true) : 'rgba(6,6,6,0.82)'); }
+        else { nav.style.padding = '22px 0'; nav.style.background = (window.__navBg ? window.__navBg(false) : 'rgba(6,6,6,0.55)'); }
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // --- smooth anchor scroll (no scrollIntoView) ---
+    qa('a[href^="#"]').forEach((a) => {
+      a.addEventListener('click', (ev) => {
+        const id = a.getAttribute('href');
+        const t = id === '#top' ? root.querySelector('#top') : root.querySelector(id);
+        if (t) { ev.preventDefault(); const y = t.getBoundingClientRect().top + window.scrollY - 70; window.scrollTo({ top: y, behavior: 'smooth' }); }
+      });
+    });
+
+    // --- magnetic buttons ---
+    qa('[data-magnetic]').forEach((b) => {
+      b.addEventListener('mousemove', (e) => {
+        const r = b.getBoundingClientRect();
+        const x = (e.clientX - r.left - r.width / 2) * 0.28;
+        const y = (e.clientY - r.top - r.height / 2) * 0.4;
+        b.style.transform = `translate(${x}px, ${y}px)`;
+      });
+      b.addEventListener('mouseleave', () => { b.style.transform = 'translate(0,0)'; });
+    });
+
+    // --- Abu Dhabi clock (UTC+4) ---
+    const clock = q('[data-clock]');
+    const updateClock = () => {
+      if (!clock) return;
+      const now = new Date();
+      const auh = new Date(now.getTime() + (now.getTimezoneOffset() * 60000) + (4 * 3600000));
+      const hh = String(auh.getHours()).padStart(2, '0');
+      const mm = String(auh.getMinutes()).padStart(2, '0');
+      clock.textContent = `AUH ${hh}:${mm}`;
+    };
+    updateClock();
+    this._clockInt = setInterval(updateClock, 10000);
+  }
+  componentWillUnmount() { if (this._clockInt) clearInterval(this._clockInt); }
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
