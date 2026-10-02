@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Gridlock — Operational Software Case Study · Ali Faour</title>
   <meta name="description" content="Gridlock: an ERP and facilities-management platform built with .NET 10, Blazor, EF Core, and MySQL 8. Product definition, workflows, architecture, and pilot preparation.">
-  <meta name="theme-color" content="#090c0e">
+  <meta name="theme-color" content="#060606">
   <link rel="canonical" href="https://cyberfaour.github.io/Portfolio/Gridlock%20Case%20Study.html">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Gridlock — Operational Software Case Study · Ali Faour">
@@ -13,14 +13,15 @@
   <meta property="og:url" content="https://cyberfaour.github.io/Portfolio/Gridlock%20Case%20Study.html">
   <meta name="twitter:card" content="summary">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/styles/fonts.css">
   <link rel="stylesheet" href="assets/styles/portfolio.css">
   <script src="assets/scripts/portfolio.js" defer></script>
 </head>
-<body>
+<body class="case-page" data-case="gridlock">
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="index.html">ALI FAOUR<span>Engineering portfolio</span></a>
+      <a class="brand" href="index.html">ALI FAOUR<span>Engineering / Selected work</span></a>
       <nav class="site-nav" id="primary-navigation" aria-label="Main navigation">
         <a href="#workflow">Workflow</a>
         <a href="#engines">Configuration</a>
@@ -36,24 +37,29 @@
   </header>
   <main id="main" tabindex="-1">
     <section class="case-hero" id="top" aria-labelledby="case-title">
-      <div class="container case-intro">
+      <div class="container">
+        <div class="case-index"><a href="index.html#projects"><span aria-hidden="true">←</span> Selected work</a><span>CASE / GRIDLOCK</span></div>
+        <div class="case-intro">
         <div>
           <p class="eyebrow">Gridlock · ERP &amp; facilities management</p>
-          <h1 id="case-title">One operational record.<br>Connected work around it.</h1>
+          <h1 id="case-title">One operation.<br><span class="case-emphasis">Connected<br>by design.</span></h1>
           <p class="lede">Gridlock brings sites, assets, work orders, documents, inventory, and commercial records into a connected platform for industrial operations. I lead the product definition and engineering, translating day-to-day operating requirements into software.</p>
           <p class="case-meta"><span>In development · pilot preparation</span><span>Updated 2 October 2026</span></p>
           <div class="button-row"><a class="button button-primary" href="#workflow">Explore the workflow <span aria-hidden="true">↓</span></a><a class="button" href="index.html#contact">Discuss the project <span aria-hidden="true">→</span></a></div>
         </div>
         <aside class="case-summary" aria-label="Gridlock project summary">
-          <h2>Project at a glance</h2>
+          <div class="console-heading"><span>PLATFORM / GRIDLOCK</span><span class="console-status">Pilot preparation</span></div>
           <dl><dt>Purpose</dt><dd>ERP, CAFM &amp; utility operations</dd><dt>My role</dt><dd>Product definition &amp; engineering</dd><dt>Runtime</dt><dd>.NET 10</dd><dt>Interface</dt><dd>Blazor</dd><dt>Data</dt><dd>EF Core · MySQL 8</dd><dt>Stage</dt><dd>Pilot preparation</dd></dl>
+          <p class="diagram-note">Sites → work → records.<br>One connected operational context.</p>
         </aside>
+        </div>
+        <nav class="case-section-map" aria-label="Explore the Gridlock case study"><a href="#thesis">The problem</a><a href="#workflow">The workflow</a><a href="#architecture">The architecture</a><a href="#discipline">The next stage</a></nav>
       </div>
     </section>
 
     <section class="section" id="thesis" aria-labelledby="problem-heading">
       <div class="container">
-        <div class="section-heading"><p class="section-label">The operating problem</p><h2 id="problem-heading">A site is more than a row in a register.</h2><p>A single site can have assets, inspection records, planned maintenance, open work, quotations, contracts, and invoices. When those live in separate tools, someone has to reconstruct the relationship each time a decision is needed.</p></div>
+        <div class="section-heading"><p class="section-label">01 — The operating problem</p><h2 id="problem-heading">A site is more than<br><span class="case-emphasis">a row in a register.</span></h2><p>A single site can have assets, inspection records, planned maintenance, open work, quotations, contracts, and invoices. When those live in separate tools, someone has to reconstruct the relationship each time a decision is needed.</p></div>
         <div class="grid-3">
           <article class="panel"><h3>For operations</h3><p>Understand what needs attention, who owns the next action, and which site or asset the work belongs to.</p></article>
           <article class="panel"><h3>For commercial teams</h3><p>Follow the quotation, contract, procurement, and financial records related to the work.</p></article>
@@ -64,7 +70,8 @@
 
     <section class="section" id="workflow" aria-labelledby="workflow-heading">
       <div class="container">
-        <div class="section-heading"><p class="section-label">Product walkthrough</p><h2 id="workflow-heading">Follow the work through its records.</h2><p>This representative workflow explains how the product is being organized. It connects the engineering scope to the task an employee needs to complete.</p></div>
+        <div class="section-heading"><p class="section-label">02 — Product walkthrough</p><h2 id="workflow-heading">Follow the work<br>through its records.</h2><p>This representative workflow explains how the product is being organized. It connects the engineering scope to the task an employee needs to complete.</p></div>
+        <div class="diagram-header"><span>CONNECTED WORKFLOW</span><span>Representative journey</span></div>
         <ol class="workflow-list">
           <li><h3>Start with the site</h3><p>Open the site and its assets. Review the related service, documents, and operational context.</p></li>
           <li><h3>Define the work</h3><p>Create or review the work order, its scope, responsible team, checklists, and required materials.</p></li>
@@ -78,7 +85,7 @@
 
     <section class="section" id="engines" aria-labelledby="configuration-heading">
       <div class="container">
-        <div class="section-heading"><p class="section-label">Configuration</p><h2 id="configuration-heading">Make recurring operational choices explicit.</h2><p>Configuration focuses on the policies that vary between operations. The aim is to give those choices a clear administrative home and a visible effect on the relevant workflow.</p></div>
+        <div class="section-heading"><p class="section-label">03 — Configuration</p><h2 id="configuration-heading">Operational choices.<br><span class="case-emphasis">Explicit configuration.</span></h2><p>Configuration focuses on the policies that vary between operations. The aim is to give those choices a clear administrative home and a visible effect on the relevant workflow.</p></div>
         <div class="grid-3">
           <article class="panel"><h3>Approvals &amp; workflow</h3><p>Lifecycle definitions, approval steps, conditions, and the authorized actions available at each stage.</p></article>
           <article class="panel"><h3>Numbering &amp; documents</h3><p>Record numbering, document templates, branding, and controlled outputs linked back to the originating record.</p></article>
@@ -92,9 +99,9 @@
 
     <section class="section" id="architecture" aria-labelledby="architecture-heading">
       <div class="container">
-        <div class="section-heading"><p class="section-label">Engineering approach</p><h2 id="architecture-heading">A modular platform with clear responsibilities.</h2><p>The platform brings multiple business domains into a single application while keeping their responsibilities explicit. A shared application is practical for the operating environment; defined module boundaries help keep changes understandable.</p></div>
+        <div class="section-heading"><p class="section-label">04 — Engineering approach</p><h2 id="architecture-heading">One platform.<br><span class="case-emphasis">Clear responsibilities.</span></h2><p>The platform brings multiple business domains into a single application while keeping their responsibilities explicit. A shared application is practical for the operating environment; defined module boundaries help keep changes understandable.</p></div>
         <div class="grid-2">
-          <div class="panel"><h3>How a request moves</h3><ol class="architecture-flow"><li><strong>Blazor interface</strong><span>A task, form, record, or authorized action.</span></li><li><strong>Application handler</strong><span>Validation, permissions, and the requested operation.</span></li><li><strong>Domain &amp; persistence</strong><span>Business records, rules, EF Core, and MySQL.</span></li><li><strong>Related work</strong><span>Module contracts and events connect the resulting changes.</span></li></ol></div>
+          <figure class="panel"><div class="diagram-header"><span>REQUEST PATH</span><span>Modular application</span></div><ol class="architecture-flow"><li><strong>Blazor interface</strong><span>A task, form, record, or authorized action.</span></li><li><strong>Application handler</strong><span>Validation, permissions, and the requested operation.</span></li><li><strong>Domain &amp; persistence</strong><span>Business records, rules, EF Core, and MySQL.</span></li><li><strong>Related work</strong><span>Module contracts and events connect the resulting changes.</span></li></ol><figcaption class="diagram-note">Conceptual request flow through the application’s responsibilities.</figcaption></figure>
           <div class="panel"><h3>Why this structure</h3><p><strong>Keep the page focused.</strong> An interface should express the user’s task while application logic handles the operation behind it.</p><p><strong>Connect domains deliberately.</strong> Shared contracts make relationships explicit and reduce reliance on another module’s internals.</p><p><strong>Make changes inspectable.</strong> Permissions, state changes, record history, and related documents belong in the review of a workflow.</p></div>
         </div>
         <ul class="tag-list" aria-label="Current platform stack" style="margin-top:24px"><li class="tag">.NET 10</li><li class="tag">Blazor</li><li class="tag">EF Core</li><li class="tag">MySQL 8</li><li class="tag">Modular architecture</li></ul>
@@ -103,14 +110,14 @@
 
     <section class="section" id="breadth" aria-labelledby="scope-heading">
       <div class="container">
-        <div class="section-heading"><p class="section-label">Product scope</p><h2 id="scope-heading">The record families behind the operation.</h2><p>The development scope spans facilities, enterprise administration, and gas-utility work. Each family needs a usable register, record details, editing, related records, and the actions appropriate to its lifecycle.</p></div>
+        <div class="section-heading"><p class="section-label">05 — Product scope</p><h2 id="scope-heading">The record families<br>behind the operation.</h2><p>The development scope spans facilities, enterprise administration, and gas-utility work. Each family needs a usable register, record details, editing, related records, and the actions appropriate to its lifecycle.</p></div>
         <div class="table-scroll" role="region" aria-label="Gridlock product scope" tabindex="0"><table class="comparison-table"><thead><tr><th scope="col">Area</th><th scope="col">Connected records and tasks</th></tr></thead><tbody><tr><th scope="row">Facilities &amp; work</th><td>Sites, buildings, assets, inspections, planned maintenance, work orders, and checklists.</td></tr><tr><th scope="row">Commercial &amp; finance</th><td>Quotations, contracts, suppliers, procurement, invoices, receivables, and payments.</td></tr><tr><th scope="row">Utility operations</th><td>Metering, delivery planning, fleet activity, and the site context behind gas services.</td></tr><tr><th scope="row">Shared administration</th><td>People, access, workflow configuration, documents, notifications, reports, and support.</td></tr><tr><th scope="row">External access</th><td>Customer and supplier journeys with access appropriate to their authorized records and tasks.</td></tr></tbody></table></div>
       </div>
     </section>
 
     <section class="section" id="discipline" aria-labelledby="discipline-heading">
       <div class="container">
-        <div class="section-heading"><p class="section-label">Validation &amp; next stage</p><h2 id="discipline-heading">Prepare the whole journey for a pilot.</h2><p>The review work focuses on discoverable registers, complete record forms, authorized actions, connected history, and clear loading and error behavior. Those are the details that make a broad platform usable.</p></div>
+        <div class="section-heading"><p class="section-label">06 — Validation &amp; next stage</p><h2 id="discipline-heading">Prepare the whole journey<br><span class="case-emphasis">for a pilot.</span></h2><p>The review work focuses on discoverable registers, complete record forms, authorized actions, connected history, and clear loading and error behavior. Those are the details that make a broad platform usable.</p></div>
         <div class="grid-3"><article class="panel"><h3>Capability review</h3><p>Map product requirements to application owners and visible user journeys. Distinguish existing capabilities from work that is still incomplete.</p></article><article class="panel"><h3>Workflow checks</h3><p>Follow representative records through creation, changes, approvals, and related records, including permission and failure paths.</p></article><article class="panel"><h3>Pilot preparation</h3><p>Review the installer, environment setup, sample data, and the first tasks that staff need to complete independently.</p></article></div>
         <p class="source-note">Status as of 2 October 2026: in development, with pilot preparation underway. This case study describes the product and engineering approach; it does not claim production adoption or measured business outcomes.</p>
       </div>

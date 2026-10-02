@@ -3,27 +3,28 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Gas Telemetry — Integration Case Study · Ali Faour</title>
-  <meta name="description" content="Gas telemetry integration: device configuration, communications, commissioning checks, reporting schedules, and operational requirements by Ali Faour.">
-  <meta name="theme-color" content="#090c0e">
+  <title>Connected Gas Infrastructure — Systems Engineering · Ali Faour</title>
+  <meta name="description" content="Connected gas infrastructure by Ali Faour: device-to-platform architecture, communications and server requirements, manufacturer coordination, stakeholder decisions, and integration validation.">
+  <meta name="theme-color" content="#060606">
   <link rel="canonical" href="https://cyberfaour.github.io/Portfolio/Telemetry%20Case%20Study.html">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Gas Telemetry — Integration Case Study · Ali Faour">
-  <meta property="og:description" content="Gas telemetry integration: device configuration, communications, commissioning checks, reporting schedules, and operational requirements by Ali Faour.">
+  <meta property="og:title" content="Connected Gas Infrastructure — Systems Engineering · Ali Faour">
+  <meta property="og:description" content="Connected gas infrastructure by Ali Faour: device-to-platform architecture, communications and server requirements, manufacturer coordination, stakeholder decisions, and integration validation.">
   <meta property="og:url" content="https://cyberfaour.github.io/Portfolio/Telemetry%20Case%20Study.html">
   <meta name="twitter:card" content="summary">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/styles/fonts.css">
   <link rel="stylesheet" href="assets/styles/portfolio.css">
   <script src="assets/scripts/portfolio.js" defer></script>
 </head>
-<body>
+<body class="case-page" data-case="telemetry">
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="index.html">ALI FAOUR<span>Engineering portfolio</span></a>
+      <a class="brand" href="index.html">ALI FAOUR<span>Engineering / Selected work</span></a>
       <nav class="site-nav" id="primary-navigation" aria-label="Main navigation">
-        <a href="#context">Context</a>
-        <a href="#integration">Integration</a>
+        <a href="#context">Engineering role</a>
+        <a href="#integration">Infrastructure</a>
         <a href="#validation">Validation</a>
         <a href="#requirements">Requirements</a>
         <a href="index.html#projects">Portfolio</a>
@@ -35,46 +36,76 @@
     </div>
   </header>
   <main id="main" tabindex="-1">
-    <section class="case-hero" aria-labelledby="case-title">
-      <div class="container case-intro">
+    <section class="case-hero" id="top" aria-labelledby="case-title">
+      <div class="container">
+        <div class="case-index"><a href="index.html#projects"><span aria-hidden="true">←</span> Selected work</a><span>CASE / TELEMETRY</span></div>
+        <div class="case-intro">
         <div>
-          <p class="eyebrow">Industrial IoT · Gas telemetry</p>
-          <h1 id="case-title">A reading becomes useful when it has context.</h1>
-          <p class="lede">Gas monitoring connects the physical installation to the people planning and supporting an operation. My work spans device configuration, communications, commissioning checks, and the reporting behavior of the vendor platform.</p>
-          <p class="case-meta"><span>Royal Gas · Abu Dhabi &amp; Dubai</span><span>Integration &amp; operational requirements</span></p>
+          <p class="eyebrow">Industrial IoT · Infrastructure &amp; systems engineering</p>
+          <h1 id="case-title">The infrastructure<br>behind the <span class="case-emphasis">signal.</span></h1>
+          <p class="lede">I engineer the connections between gas devices, communications networks, servers, and operational software. My work includes defining system requirements, evaluating infrastructure options, and coordinating manufacturers and stakeholders so the interfaces, dependencies, and support responsibilities fit the operation.</p>
+          <p class="case-meta"><span>Royal Gas · Abu Dhabi &amp; Dubai</span><span>System design · Technical coordination</span></p>
           <div class="button-row"><a class="button button-primary" href="#integration">Follow the integration path <span aria-hidden="true">↓</span></a><a class="button" href="index.html#contact">Discuss the work <span aria-hidden="true">→</span></a></div>
         </div>
-        <aside class="case-summary" aria-label="Telemetry work summary"><h2>Engineering scope</h2><dl><dt>Field</dt><dd>Gas infrastructure &amp; monitoring devices</dd><dt>Integration</dt><dd>Device, network, server &amp; portal setup</dd><dt>Validation</dt><dd>Identity, readings, units &amp; timestamps</dd><dt>Operations</dt><dd>Reporting, access &amp; notification requirements</dd></dl></aside>
+        <aside class="case-summary" aria-label="Conceptual infrastructure engineering scope">
+          <div class="console-heading"><span>INFRASTRUCTURE / SCOPE</span><span class="console-status">Engineering model</span></div>
+          <div class="record-map" role="group" aria-label="Operational requirements connect the technical layers"><span>OPERATIONAL REQUIREMENTS</span><span>Devices &amp; control</span><span>Communications</span><span>Servers &amp; platforms</span><span>Data &amp; access</span></div>
+          <p class="diagram-note">Requirements, interfaces, and ownership carried from the field into the platform.</p>
+          <ul class="tag-list" aria-label="Engineering scope"><li class="tag">Architecture</li><li class="tag">Requirements</li><li class="tag">Validation</li></ul>
+        </aside>
+        </div>
+        <nav class="case-section-map" aria-label="Explore the telemetry case study"><a href="#context">The engineering role</a><a href="#integration">The infrastructure scope</a><a href="#validation">The validation</a><a href="#requirements">The architecture decisions</a></nav>
       </div>
     </section>
 
     <section class="section" id="context" aria-labelledby="context-heading">
       <div class="container">
-        <div class="section-heading"><p class="section-label">The operating context</p><h2 id="context-heading">The portal is one part of the system.</h2><p>A device can be online while its data is still difficult to use. The reading needs the correct tank or site identity, an understood unit, a timestamp, and someone responsible for the next action.</p></div>
-        <div class="grid-2"><article class="panel"><h3>My contribution</h3><p>I configure devices and their destination settings, coordinate field checks, investigate missing or inconsistent reports, and translate operations’ needs into clear vendor requirements.</p><p>That work connects the installation team, the communications path, the vendor platform, and the staff who depend on the resulting information.</p></article><article class="panel"><h3>Practical constraints</h3><p>Different devices and platforms have different reporting intervals, configuration options, user roles, and notification capabilities.</p><p>I make those limits visible during integration so a team can plan around the behavior the system actually provides.</p></article></div>
+        <div class="section-heading"><p class="section-label">01 — The engineering role</p><h2 id="context-heading">Define the requirements.<br><span class="case-emphasis">Connect the responsibilities.</span></h2><p>Connected gas infrastructure crosses several technical and organizational boundaries: meters and detectors, control panels, concentrators, networks, servers, data, and the people making operational decisions. I work across those boundaries to turn operating needs into an implementable system.</p></div>
+        <div class="grid-2">
+          <article class="panel"><p class="section-label">Devices → Platform</p><h3>System and interface engineering</h3><p>My hands-on work includes integrating 4G remote terminal units with existing gas-control panels for monitoring and lockout, and configuring the monitoring middleware.</p><p>Alongside that implementation work, I define device behavior, platform features, and operator-interface requirements with manufacturer engineering teams, then review samples and integration behavior against the intended use.</p></article>
+          <article class="panel"><p class="section-label">Stakeholders → Decisions</p><h3>Infrastructure and technical coordination</h3><p>I assess cloud and on-premises options, stable server endpoints, routing and isolation requirements, scalability, and recurring cost. Each choice affects how the infrastructure connects, who can access it, and who will maintain it.</p><p>I bring together operational stakeholders, field teams, IT, management, and manufacturers to clarify requirements, resolve technical dependencies, and agree the next engineering decision.</p></article>
+        </div>
       </div>
     </section>
 
     <section class="section" id="integration" aria-labelledby="integration-heading">
       <div class="container">
-        <div class="section-heading"><p class="section-label">Integration path</p><h2 id="integration-heading">Connect the measurement to an operational task.</h2><p>The sequence below is a representative engineering model. The actual transport and portal depend on the device and deployment.</p></div>
-        <ol class="workflow-list"><li><h3>Identify the asset</h3><p>Confirm the installation, device identity, relevant tank or meter, and the reading being collected.</p></li><li><h3>Configure the connection</h3><p>Set the required network, APN, domain, or server parameters for the selected device and service.</p></li><li><h3>Validate the report</h3><p>Check that the expected device appears in the platform and that its values and timestamps make sense.</p></li><li><h3>Define the response</h3><p>Agree who reviews the information, what needs attention, and how a missing update or abnormal reading is followed up.</p></li></ol>
+        <div class="section-heading"><p class="section-label">02 — Infrastructure scope</p><h2 id="integration-heading">Five layers.<br><span class="case-emphasis">One engineering brief.</span></h2><p>The responsibility matrix below describes the decisions I work through across connected-gas projects. The selected devices, communications paths, and platforms depend on the installation and its operating requirements.</p></div>
+        <div class="table-scroll" role="region" aria-label="Infrastructure engineering responsibility matrix" tabindex="0">
+          <table class="comparison-table">
+            <caption>Engineering responsibilities from the device to the operational decision</caption>
+            <thead><tr><th scope="col">Layer</th><th scope="col">My engineering responsibility</th><th scope="col">Decision to resolve</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Devices &amp; control</th><td>Define functional requirements for meters, detectors, concentrators, and gas-control interfaces. Review device behavior, remote-command requirements, samples, and manufacturer capabilities.</td><td>What must be measured or controlled, what feedback is available, and how will the behavior be validated?</td></tr>
+              <tr><th scope="row">Communications</th><td>Assess coverage, device-to-concentrator links, cellular uplinks, and connection dependencies. Specify the applicable SIM, APN, domain, IP, and server settings.</td><td>Which path is supported, how does it report, and what are its coverage, maintenance, and cost implications?</td></tr>
+              <tr><th scope="row">Servers &amp; platforms</th><td>Evaluate cloud and on-premises models, stable endpoints, network isolation, platform access, scalability, and support responsibilities.</td><td>Where does each service run, which systems can reach it, and who operates and maintains it?</td></tr>
+              <tr><th scope="row">Data &amp; integration</th><td>Clarify the supported software interfaces, data and database dependencies, asset mapping, units, timestamps, reports, and access requirements.</td><td>How will information move into operational software with the context and permissions its users need?</td></tr>
+              <tr><th scope="row">Stakeholders &amp; decisions</th><td>Translate operating scenarios into technical specifications and manufacturer questions. Reconcile feedback, dependencies, and acceptance needs across the teams involved.</td><td>Who supplies, decides, validates, and supports each part of the system?</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="diagram-header"><span>ENGINEERING WORKFLOW</span><span>Requirements → Interfaces → Validation → Operation</span></div>
+        <ol class="workflow-list"><li><h3>Define the operating need</h3><p>Work through the monitoring, control, access, and reporting scenarios with the people who will use and support the system.</p></li><li><h3>Resolve the technical interfaces</h3><p>Confirm what the manufacturer supports, select the connection and platform approach, and identify the infrastructure dependencies.</p></li><li><h3>Validate the integration</h3><p>Review samples, configure the required connections, and check device behavior, data, permissions, and failure cases against the requirements.</p></li><li><h3>Agree operational ownership</h3><p>Make support responsibilities, outstanding constraints, maintenance needs, and the next acceptance or implementation step explicit.</p></li></ol>
         <div class="callout"><p><strong>Reporting frequency is a design input.</strong> An hourly device report and an on-demand control action have different requirements. A dashboard refresh cannot make the underlying device transmit more often.</p></div>
       </div>
     </section>
 
     <section class="section" id="validation" aria-labelledby="validation-heading">
       <div class="container">
-        <div class="section-heading"><p class="section-label">Commissioning &amp; data checks</p><h2 id="validation-heading">Check the whole reading, not just the connection.</h2><p>The integration review covers the physical context and the meaning of the data arriving in the platform.</p></div>
-        <div class="table-scroll" role="region" aria-label="Telemetry validation questions" tabindex="0"><table class="comparison-table"><thead><tr><th scope="col">Check</th><th scope="col">Question to resolve</th><th scope="col">Why it matters</th></tr></thead><tbody><tr><th scope="row">Asset identity</th><td>Does the device map to the correct site, tank, or meter?</td><td>A valid reading attached to the wrong asset can send a team to the wrong location.</td></tr><tr><th scope="row">Value &amp; unit</th><td>What does the value represent, and how is it scaled or calibrated?</td><td>Level, volume, consumption, and device status are different quantities.</td></tr><tr><th scope="row">Time &amp; freshness</th><td>When was the measurement taken, received, and last updated?</td><td>A plausible value can still be stale.</td></tr><tr><th scope="row">Missing reports</th><td>How is a gap detected, investigated, and handed over?</td><td>An absent update needs an owner and a defined response.</td></tr><tr><th scope="row">Access &amp; alerts</th><td>Who can see the asset, and who receives the relevant notification?</td><td>Visibility and responsibility need to match the operating structure.</td></tr></tbody></table></div>
+        <div class="section-heading"><p class="section-label">03 — Integration validation</p><h2 id="validation-heading">Validate the behavior<br><span class="case-emphasis">across the system.</span></h2><p>Commissioning is one part of this review. The wider task is to confirm that the device, communications path, software interface, data, and access model behave as the agreed workflow requires.</p></div>
+        <div class="table-scroll" role="region" aria-label="Telemetry validation questions" tabindex="0"><table class="comparison-table"><thead><tr><th scope="col">Check</th><th scope="col">Question to resolve</th><th scope="col">Why it matters</th></tr></thead><tbody><tr><th scope="row">Connection &amp; interface</th><td>Does the selected uplink reach the intended server, and does the exposed interface match the agreed integration route?</td><td>Connectivity and application integration have distinct dependencies to verify.</td></tr><tr><th scope="row">Command feedback</th><td>What does a command acknowledgement confirm, and where is the resulting device state observed?</td><td>Sending, receiving, and executing a command are distinct states to validate.</td></tr><tr><th scope="row">Asset identity</th><td>Does the device map to the correct site, tank, or meter?</td><td>A valid reading attached to the wrong asset can send a team to the wrong location.</td></tr><tr><th scope="row">Value &amp; unit</th><td>What does the value represent, and how is it scaled or calibrated?</td><td>Level, volume, consumption, and device status are different quantities.</td></tr><tr><th scope="row">Time &amp; freshness</th><td>When was the measurement taken, received, and last updated?</td><td>A plausible value can still be stale.</td></tr><tr><th scope="row">Missing reports</th><td>How is a gap detected, investigated, and handed over?</td><td>An absent update needs an owner and a defined response.</td></tr><tr><th scope="row">Access &amp; alerts</th><td>Who can see the asset, and who receives the relevant notification?</td><td>Visibility and responsibility need to match the operating structure.</td></tr></tbody></table></div>
       </div>
     </section>
 
     <section class="section" id="requirements" aria-labelledby="requirements-heading">
       <div class="container">
-        <div class="section-heading"><p class="section-label">Vendor requirements</p><h2 id="requirements-heading">Specify the workflow behind each feature.</h2><p>A feature label is only useful when the expected behavior is clear. I work through the actual operator and administrator scenarios before turning them into vendor questions.</p></div>
-        <div class="grid-3"><article class="panel"><h3>Site-level access</h3><p>Describe which users should see which locations and records, with clear boundaries between teams or customers.</p></article><article class="panel"><h3>Notification ownership</h3><p>Define recipients, groups, escalation needs, and whether existing user accounts can be reused for notifications.</p></article><article class="panel"><h3>Reporting schedules</h3><p>Separate the device’s transmission interval from report delivery, portal refresh, and the schedule the operation needs.</p></article></div>
-        <div class="callout"><p><strong>The engineering lesson:</strong> integration includes device behavior, data meaning, access, and operational ownership. Each needs to be understood before the monitoring workflow can be relied upon.</p></div>
+        <div class="section-heading"><p class="section-label">04 — Architecture decisions</p><h2 id="requirements-heading">Find the supported<br><span class="case-emphasis">integration boundary.</span></h2><p>In a smart-metering review, stakeholders needed to understand how concentrator data could reach a third-party building-management system. I worked through the communications model with the manufacturer to establish which interface could support that requirement.</p></div>
+        <div class="grid-3">
+          <article class="panel"><p class="section-label">The question</p><h3>What does the serial link expose?</h3><p>The concentrator had an RS-485 connection. Its physical presence raised an integration question that required confirmation of the actual transport and supported behavior.</p></article>
+          <article class="panel"><p class="section-label">The clarification</p><h3>Locate the software interface</h3><p>The manufacturer confirmed that the serial link carried proprietary concentrator-to-server communications. The supported third-party integration point was the management software’s Web API. The concentrator also supported one uplink mode at a time.</p></article>
+          <article class="panel"><p class="section-label">The review outcome</p><h3>A defined architecture boundary</h3><p>The clarification established where the integration needed to happen and which infrastructure and software dependencies required further work. The outcome was a confirmed interface boundary and a clearer integration brief.</p></article>
+        </div>
+        <div class="callout"><h3>Carry the operating requirements into the specification</h3><p>The same review discipline applies to site-level access, tenant separation, notification recipients, and reporting schedules. I work through the operator and administrator scenarios, document the supported behavior, and turn capability gaps into precise manufacturer questions and stakeholder decisions.</p></div>
       </div>
     </section>
 

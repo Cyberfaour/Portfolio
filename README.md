@@ -1,6 +1,6 @@
 # Ali Faour — Engineering Portfolio
 
-A static portfolio for industrial software, gas telemetry, field delivery, and documentation automation.
+A static portfolio for operational software, connected infrastructure, field delivery, and practical AI-assisted workflows.
 
 **Website:** [cyberfaour.github.io/Portfolio](https://cyberfaour.github.io/Portfolio/)
 
@@ -8,9 +8,10 @@ A static portfolio for industrial software, gas telemetry, field delivery, and d
 
 | Page | Purpose |
 | --- | --- |
-| `index.html` | Introduction, selected work, defined program outcomes, experience, credentials, and contact. |
+| `index.html` | Introduction, selected work, defined program outcomes, AI workflow, experience, credentials, and contact. |
 | `Gridlock Case Study.html` | Product definition, connected workflows, engineering approach, and current development/pilot stage. |
-| `Telemetry Case Study.html` | Device integration, commissioning checks, reporting behavior, and operational requirements. |
+| `Telemetry Case Study.html` | Infrastructure architecture, manufacturer and stakeholder coordination, integration boundaries, and validation. |
+| `AI Workflow Case Study.html` | RELAAM document preparation, daily AI-assisted practice, quality control, and output-based throughput evidence. |
 | `ADNOC Case Study.html` | A coordinated field-delivery program and its documentation workflow. |
 | `DoE LPG Case Study.html` | The 2023–2025 LPG enhancement program, illustrated with existing field and tooling artifacts. |
 
@@ -29,6 +30,7 @@ Open `http://localhost:8000`. The site also uses relative URLs suitable for the 
 ```sh
 python3 scripts/check-site.py
 node --check assets/scripts/portfolio.js
+node --check assets/scripts/hero-motion.js
 node --check assets/scripts/redirect.js
 ```
 
@@ -39,7 +41,9 @@ Before publishing visual or interaction changes, inspect desktop and narrow layo
 ## Shared implementation
 
 - `assets/styles/portfolio.css`: colors, typography, layout, responsive navigation, focus, scrollbars, and print styles.
-- `assets/scripts/portfolio.js`: one theme controller, mobile-menu behavior, and progressively enhanced contact submission.
+- `assets/styles/fonts.css` and `assets/fonts/`: local Space Grotesk, Inter, and JetBrains Mono, with license notices and provenance.
+- `assets/scripts/portfolio.js`: one theme controller, mobile-menu behavior, AUH clock, scroll progress, active sections, and progressively enhanced contact submission.
+- `assets/scripts/hero-motion.js`: decorative signal animation with pause/play, static reduced-motion treatment, theme adaptation, and rendering suspended outside the visible hero.
 - `assets/scripts/redirect.js`: preserves fragments and query strings on older page URLs.
 - `.nojekyll`: publishes ordinary static files with GitHub Pages.
 

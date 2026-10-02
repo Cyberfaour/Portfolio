@@ -12,7 +12,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGES = ('index.html', 'Gridlock Case Study.html', 'Telemetry Case Study.html',
-         'ADNOC Case Study.html', 'DoE LPG Case Study.html')
+         'ADNOC Case Study.html', 'DoE LPG Case Study.html', 'AI Workflow Case Study.html')
 VOID = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link',
         'meta', 'param', 'source', 'track', 'wbr'}
 ERRORS = []
@@ -133,10 +133,11 @@ email = [a for _, a in home.select('input') if a.get('name') == 'email']
 check(bool(email) and email[0].get('type') == 'email', 'Contact email lacks email type')
 
 for name, anchors in {
-    'index.html': ('top', 'projects', 'about', 'expertise', 'experience', 'credentials', 'contact'),
+    'index.html': ('top', 'projects', 'ai-workflow', 'about', 'expertise', 'experience', 'credentials', 'contact'),
     'Gridlock Case Study.html': ('top', 'thesis', 'engines', 'architecture', 'discipline'),
     'ADNOC Case Study.html': ('top', 'problem', 'system', 'pipeline', 'results'),
-    'DoE LPG Case Study.html': ('top', 'layers', 'pipeline', 'integrity', 'lessons')
+    'DoE LPG Case Study.html': ('top', 'layers', 'pipeline', 'integrity', 'lessons'),
+    'AI Workflow Case Study.html': ('top', 'context', 'workflow', 'daily', 'throughput')
 }.items():
     for anchor in anchors:
         check(anchor in parsed[name].ids, f'{name}: original anchor {anchor} missing')
