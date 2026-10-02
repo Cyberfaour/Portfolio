@@ -15,7 +15,9 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/styles/fonts.css">
   <link rel="stylesheet" href="assets/styles/portfolio.css">
+  <link rel="stylesheet" href="assets/styles/workflow-demo.css">
   <script src="assets/scripts/portfolio.js" defer></script>
+  <script src="assets/scripts/workflow-demo.js" defer></script>
 </head>
 <body class="case-page" data-case="ai">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -84,6 +86,54 @@
           <li><h3>Prepare &amp; review</h3><p>Feed the checked data into trackers, AMC drafts, and status summaries. Review the outputs and record the owners and next actions before circulation.</p></li>
         </ol>
         <div class="callout"><h3>Quality control is part of the workflow</h3><p>I review packs, trackers, and drafts against the information they were built from. An unclear value becomes a question to resolve; a missing document becomes a visible blocker. The operating record needs to show both the information available and the work still outstanding.</p></div>
+        <details class="workflow-demo" id="workflow-sample" data-workflow-demo>
+          <summary><span class="wd-summary-text"><span class="wd-summary-title">Try a sample workflow</span><span class="wd-summary-teaser">Trace one value, review a duplicate, and carry a missing document forward.</span></span></summary>
+          <div class="wd-body">
+            <p class="wd-disclaimer"><span>EDUCATIONAL DEMO</span> All records below are synthetic. The sample illustrates review decisions; it contains no client documents or live AI processing.</p>
+            <ol class="wd-steps" aria-label="Sample workflow stages" data-workflow-steps hidden><li aria-current="step"><span>01</span> Sources</li><li><span>02</span> Dataset</li><li><span>03</span> Review</li><li><span>04</span> Output</li></ol>
+            <div class="wd-stage-stack">
+              <section class="wd-stage" data-workflow-stage aria-labelledby="wd-sources-title">
+                <div class="wd-stage-heading"><h3 id="wd-sources-title" tabindex="-1">01 — Start with the source records</h3><p>Three incoming records describe two fictional buildings. One is a resubmitted copy.</p></div>
+                <div class="wd-source-grid">
+                  <article class="wd-document"><p class="wd-file-label">S-01 / SAMPLE SERVICE BRIEF</p><h4>Building DEMO-A</h4><dl><dt>Contract term</dt><dd>12 months</dd><dt>Asset register</dt><dd>Provided</dd></dl><p class="wd-document-note">Original source for DEMO-A.</p></article>
+                  <article class="wd-document"><p class="wd-file-label">S-02 / SAMPLE SERVICE BRIEF</p><h4>Building DEMO-B</h4><dl><dt>Contract term</dt><dd>12 months</dd><dt>Asset register</dt><dd>Not provided</dd></dl><p class="wd-document-note">The missing register needs a follow-up.</p></article>
+                  <article class="wd-document"><p class="wd-file-label">S-03 / RESUBMITTED COPY</p><h4>Building DEMO-A</h4><dl><dt>Contract term</dt><dd>12 months</dd><dt>Asset register</dt><dd>Provided</dd></dl><p class="wd-document-note">A second copy of S-01, not another building.</p></article>
+                </div>
+              </section>
+              <section class="wd-stage" data-workflow-stage aria-labelledby="wd-dataset-title">
+                <div class="wd-stage-heading"><h3 id="wd-dataset-title" tabindex="-1">02 — Inspect the structured dataset</h3><p>The sample extraction includes an incorrect term and a duplicate. Structure makes them easier to review.</p></div>
+                <div class="wd-table-scroll" role="region" aria-label="Synthetic extracted records" tabindex="0">
+                  <table class="wd-table"><caption data-workflow-record-count>3 imported entries · 2 unique buildings</caption><thead><tr><th scope="col">Building</th><th scope="col">Extracted term</th><th scope="col">Source</th><th scope="col">Review state</th></tr></thead><tbody>
+                    <tr><th scope="row">DEMO-A</th><td data-workflow-extracted-term>6 months</td><td><span>S-01</span><button class="wd-inline-action" type="button" data-workflow-trace hidden>Trace to source</button></td><td data-workflow-term-state>Check against source</td></tr>
+                    <tr><th scope="row">DEMO-B</th><td>12 months</td><td>S-02</td><td data-workflow-document-state>Asset register missing</td></tr>
+                    <tr data-workflow-duplicate-row><th scope="row">DEMO-A</th><td>12 months</td><td>S-03</td><td>Repeated source record</td></tr>
+                  </tbody></table>
+                </div>
+                <p class="wd-stage-note">The 6-month value is a deliberately incorrect sample extraction. S-01 states 12 months.</p>
+              </section>
+              <section class="wd-stage" data-workflow-stage aria-labelledby="wd-review-title">
+                <div class="wd-stage-heading"><h3 id="wd-review-title" tabindex="-1">03 — Make the review decisions</h3><p>Resolve what the sources support. Keep the outstanding document visible.</p></div>
+                <div class="wd-review-grid">
+                  <article class="wd-review-item"><p class="wd-file-label">DUPLICATE / DEMO-A</p><h4>One building, two entries</h4><p>S-03 repeats S-01. Retain one working record and keep both source references.</p><button class="wd-action" type="button" data-workflow-action="duplicate" hidden>Keep one record</button><p class="wd-review-state" data-workflow-duplicate-state>Decision pending</p></article>
+                  <article class="wd-review-item"><p class="wd-file-label">FIELD CHECK / DEMO-A</p><h4>Which contract term?</h4><p>The extracted 6-month term conflicts with the source brief.</p><details class="wd-source-proof" data-workflow-proof><summary>Inspect sample source S-01</summary><div><p class="wd-file-label">S-01 / SOURCE EXCERPT</p><p>Building: <strong>DEMO-A</strong><br>Contract term: <mark>12 months</mark></p><button class="wd-action" type="button" data-workflow-action="term" hidden>Use source value</button></div></details><p class="wd-review-state" data-workflow-term-review>Source check pending</p></article>
+                  <article class="wd-review-item"><p class="wd-file-label">MISSING DOCUMENT / DEMO-B</p><h4>Assign the next action</h4><p>The asset register has not been supplied. Record who will request it.</p><button class="wd-action" type="button" data-workflow-action="followup" hidden>Assign to Operations</button><p class="wd-review-state" data-workflow-followup-state>Open · owner needed</p></article>
+                </div>
+                <p class="wd-static-outcome" data-workflow-static>Example decisions: retain one DEMO-A record with both references, correct its term to 12 months from S-01, and assign the missing DEMO-B register to Operations. The document remains outstanding.</p>
+              </section>
+              <section class="wd-stage" data-workflow-stage aria-labelledby="wd-output-title">
+                <div class="wd-stage-heading"><h3 id="wd-output-title" tabindex="-1">04 — Preview the working output</h3><p>The prepared dataset travels with its source references and outstanding actions.</p></div>
+                <div class="wd-output"><div class="wd-output-heading"><span>AMC / WORKING DATA</span><span>Draft · internal review</span></div><dl>
+                  <dt>Working records</dt><dd data-workflow-output-count>2 unique building records; S-03 retained as a duplicate source reference.</dd>
+                  <dt>DEMO-A term</dt><dd><span data-workflow-output-term>12 months · checked against S-01.</span><button class="wd-inline-action" type="button" data-workflow-trace hidden>View source</button></dd>
+                  <dt>DEMO-B follow-up</dt><dd data-workflow-output-followup>Open · Operations to request the missing asset register before circulation.</dd>
+                </dl></div>
+                <p class="wd-stage-note">This remains a working draft. The missing register stays open; submission and approval are separate steps.</p>
+              </section>
+            </div>
+            <p class="wd-status" role="status" aria-live="polite" aria-atomic="true" data-workflow-status hidden></p>
+            <div class="wd-controls" data-workflow-controls hidden><span class="wd-position" data-workflow-position>Step 1 of 4</span><div><button class="wd-back" type="button" data-workflow-back disabled>Back</button><button class="wd-next" type="button" data-workflow-next>View dataset <span aria-hidden="true">→</span></button></div></div>
+          </div>
+        </details>
       </div>
     </section>
 

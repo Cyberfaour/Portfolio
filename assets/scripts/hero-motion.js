@@ -32,7 +32,8 @@
     let resizeFrame = 0;
     let previous = 0;
     let lastPaint = 0;
-    let elapsed = 0;
+    // The compact blueprint owns the entry construction when it is present.
+    let elapsed = hero.querySelector('[data-hero-blueprint]') ? 4000 : 0;
 
     canvas.className = 'hero-signal-canvas';
     canvas.setAttribute('aria-hidden', 'true');
@@ -48,10 +49,13 @@
 
     function updateControl() {
       if (!button) return;
+      const exploring = hero.dataset.blueprintActive === 'exploring';
+      if (hero.dataset.motionPaused !== String(paused)) hero.dataset.motionPaused = String(paused);
       button.hidden = !width || !height || reducedMotion.matches || forcedColors.matches;
-      button.setAttribute('aria-pressed', String(!paused));
-      button.setAttribute('aria-label', paused ? 'Play hero animation' : 'Pause hero animation');
-      if (label) label.textContent = paused ? 'Play motion' : 'Pause motion';
+      button.disabled = exploring;
+      button.setAttribute('aria-pressed', String(!paused && !exploring));
+      button.setAttribute('aria-label', exploring ? 'Hero animation paused while connections are open' : paused ? 'Play hero animation' : 'Pause hero animation');
+      if (label) label.textContent = exploring ? 'Motion paused' : paused ? 'Play motion' : 'Pause motion';
     }
 
     function makePaint() {
@@ -208,7 +212,7 @@
     }
 
     function shouldRun() {
-      return pageActive && visible && !document.hidden && !paused && !reducedMotion.matches && !forcedColors.matches;
+      return pageActive && visible && !document.hidden && !paused && !hero.hasAttribute('data-blueprint-active') && !reducedMotion.matches && !forcedColors.matches;
     }
 
     function tick(now) {
@@ -267,6 +271,8 @@
     if ('MutationObserver' in window) {
       new MutationObserver(() => { makePaint(); render(); })
         .observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+      new MutationObserver(reconcile)
+        .observe(hero, { attributes: true, attributeFilter: ['data-blueprint-active'] });
     }
     if ('ResizeObserver' in window) new ResizeObserver(scheduleResize).observe(hero);
     window.addEventListener('resize', scheduleResize, { passive: true });

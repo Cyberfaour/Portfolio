@@ -31,6 +31,8 @@ Open `http://localhost:8000`. The site also uses relative URLs suitable for the 
 python3 scripts/check-site.py
 node --check assets/scripts/portfolio.js
 node --check assets/scripts/hero-motion.js
+node --check assets/scripts/hero-blueprint.js
+node --check assets/scripts/workflow-demo.js
 node --check assets/scripts/redirect.js
 ```
 
@@ -44,12 +46,16 @@ Before publishing visual or interaction changes, inspect desktop and narrow layo
 - `assets/styles/fonts.css` and `assets/fonts/`: local Space Grotesk, Inter, and JetBrains Mono, with license notices and provenance.
 - `assets/scripts/portfolio.js`: one theme controller, mobile-menu behavior, AUH clock, scroll progress, active sections, and progressively enhanced contact submission.
 - `assets/scripts/hero-motion.js`: decorative signal animation with pause/play, static reduced-motion treatment, theme adaptation, and rendering suspended outside the visible hero.
+- `assets/styles/hero-blueprint.css` and `assets/scripts/hero-blueprint.js`: compact illustrative engineering drawing, with optional explanations of field, infrastructure, integration, and ownership. Its explanations start closed.
+- `assets/styles/workflow-demo.css` and `assets/scripts/workflow-demo.js`: an optional, manually advanced AI workflow example inside the case study. All sample records are fictional; no documents are uploaded or services called.
 - `assets/scripts/redirect.js`: preserves fragments and query strings on older page URLs.
 - `.nojekyll`: publishes ordinary static files with GitHub Pages.
 
 The core content, section links, images, CV, and native form work without JavaScript. Without enhancement, the form posts directly to its existing Formspree endpoint. With JavaScript, it reports sending/success/error status, prevents concurrent sends, and preserves text when delivery cannot be confirmed. Actual email delivery depends on the configured Formspree account.
 
 The older `.dc.html` and `Ali Faour Portfolio.html` URLs redirect to the canonical pages, with a visible link and a meta-refresh fallback. Existing case-study section anchors remain available.
+
+The optional explorations supplement the readable case studies. Check their closed and open states, keyboard access, stage navigation, source references, and missing-document follow-up. The hero drawing settles after its short construction sequence; the workflow does not advance itself. Native page cross-fades are brief and disabled for reduced-motion preferences, with ordinary navigation in browsers without support.
 
 ## Content maintenance
 

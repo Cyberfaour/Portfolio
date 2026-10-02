@@ -40,3 +40,13 @@ Telemetry represents infrastructure engineering across device behavior, communic
 AI-assisted work should show the actual process: source documents, extraction, structured data, reconciliation, reusable outputs, and human review. RELAAM’s contract-draft batch and building-program tracker are distinct scopes. Describe draft production separately from submission or approval. Explain throughput through reduced repeated handling, reusable data, and clear output volumes; distinguish estimates from measured timing.
 
 Distinguish completed engagements from product development, requirements, and architecture review. Keep Gridlock’s current stack and pilot-preparation status accurate. Attach delivery figures to their program and team contribution. Training labels must not imply unverified personal registration. Public diagrams explain relationships and never pretend to be screenshots of a running system.
+
+## Audience pacing and optional exploration
+
+Ali wants memorable interactions while keeping the audience comfortable. Preserve the homepage’s existing reading order and visual identity. A visitor can understand the work without operating a demonstration.
+
+- Keep the hero’s blueprint compact. Its construction is a brief, finite sequence; explanatory layers remain inside a closed native disclosure until requested. Show one layer at a time when enhanced, with equivalent keyboard and touch access.
+- Place the AI workbench inside the existing workflow case study. Keep it closed initially, advance only on deliberate input, and retain a readable explanation when JavaScript is unavailable.
+- Use explicit synthetic records in the workbench. Show where values originate, how exceptions are reviewed, and which missing documents remain assigned follow-ups. A generated draft is never presented as an approval or proof that missing evidence has arrived.
+- Use a short native cross-fade between pages, with the brand and theme control visually anchored. Normal navigation is the fallback; reduced-motion users receive ordinary page changes.
+- Use the shared palette and fonts through CSS variables. Feature styles and scripts load only on their owning pages. Do not introduce scroll capture, autoplay walkthroughs, sound, or a new framework for these interactions.

@@ -16,8 +16,10 @@
   <link rel="preload" href="assets/fonts/space-grotesk-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/styles/fonts.css">
   <link rel="stylesheet" href="assets/styles/portfolio.css">
+  <link rel="stylesheet" href="assets/styles/hero-blueprint.css">
   <script src="assets/scripts/portfolio.js" defer></script>
   <script src="assets/scripts/hero-motion.js" defer></script>
+  <script src="assets/scripts/hero-blueprint.js" defer></script>
 </head>
 <body class="portfolio-home">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -54,10 +56,79 @@
         <aside class="system-console" aria-label="Engineering profile">
           <div class="console-heading"><span>ENGINEERING PROFILE</span><span class="console-location">AUH <time data-local-time hidden></time><span data-clock-fallback>UTC+04</span></span></div>
           <p class="console-title">Grounded in the field.<br><span>Connected by software.</span></p>
-          <div class="signal-map" role="group" aria-label="Engineering approach: field, data, systems">
-            <div class="signal-node"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M8 8c0-3 16-3 16 0v15c0 3-16 3-16 0V8Z"/><path d="M8 8c0 3 16 3 16 0M8 17h16M12 27v3m8-3v3M16 3v3"/></svg><span>FIELD</span></div>
-            <div class="signal-node"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="8" y="8" width="16" height="16" rx="2"/><path d="M12 3v5m8-5v5M12 24v5m8-5v5M3 12h5m-5 8h5m16-8h5m-5 8h5M12 12h8v8h-8Z"/></svg><span>DATA</span></div>
-            <div class="signal-node"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="10" y="3" width="12" height="7" rx="1"/><rect x="2" y="22" width="10" height="7" rx="1"/><rect x="20" y="22" width="10" height="7" rx="1"/><path d="M16 10v7M7 22v-5h18v5"/></svg><span>SYSTEMS</span></div>
+          <div class="hero-blueprint" data-hero-blueprint>
+            <figure class="blueprint-figure">
+              <svg class="blueprint-drawing" viewBox="0 0 360 110" role="img" aria-labelledby="blueprint-title blueprint-description">
+                <title id="blueprint-title">From the installation to the operational record</title>
+                <desc id="blueprint-description">An illustrative engineering drawing connects a tank and control cabinet through communications and server infrastructure to an operational record. The drawing represents engineering responsibilities, not a live installation.</desc>
+                <g class="blueprint-ground" fill="none" stroke="currentColor">
+                  <path d="m12 78 47-26 57 31-47 26ZM144 77l38-21 45 25-38 21ZM253 87l38-21 53 29-25 14"/>
+                  <path d="m35 91 46-26M39 64l57 31M161 87l38-21M163 66l45 25M276 99l38-21"/>
+                </g>
+                <g class="blueprint-layer blueprint-field" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <path class="blueprint-draw blueprint-face" pathLength="1" d="M29 29c0-10 36-10 36 0v35c0 12-36 12-36 0Z"/>
+                  <path class="blueprint-draw" pathLength="1" d="M29 29c0 11 36 11 36 0M35 74v9m24-9v9M47 18v-7h11"/>
+                  <path class="blueprint-draw" pathLength="1" d="m81 37 17-10 15 9v34L96 80l-15-9ZM81 37l15 9 17-10M96 46v34"/>
+                  <path class="blueprint-draw blueprint-fine" pathLength="1" d="m86 44 6 3v8l-6-3ZM85 62l7 4m-7 2 7 4M65 58h8l8 5"/>
+                  <path class="blueprint-accent blueprint-draw" pathLength="1" d="M47 11h11M65 58h8l8 5"/>
+                </g>
+                <g class="blueprint-layer blueprint-infrastructure" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <path class="blueprint-draw blueprint-face" pathLength="1" d="m157 35 25-14 26 15v40l-25 14-26-15Z"/>
+                  <path class="blueprint-draw" pathLength="1" d="m157 35 26 15 25-14M183 50v39M162 47l15 9m-15 2 15 9m-15 2 15 9"/>
+                  <path class="blueprint-draw blueprint-fine" pathLength="1" d="m190 52 11-6m-11 18 11-6m-11 18 11-6M182 21V10"/>
+                  <path class="blueprint-accent blueprint-draw" pathLength="1" d="M178 12a5 5 0 0 1 8 0m-12-4a11 11 0 0 1 16 0"/>
+                </g>
+                <g class="blueprint-layer blueprint-integration" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <path class="blueprint-draw blueprint-face" pathLength="1" d="m280 23 48 27v48l-48-27Z"/>
+                  <path class="blueprint-draw blueprint-face" pathLength="1" d="m271 29 48 27v48l-48-27Z"/>
+                  <path class="blueprint-draw blueprint-fine" pathLength="1" d="m282 47 25 14m-25-4 25 14m-25-4 14 8"/>
+                  <path class="blueprint-accent blueprint-draw" pathLength="1" d="m282 80 4 6 8-4"/>
+                </g>
+                <g class="blueprint-layer blueprint-routes blueprint-accent" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <path class="blueprint-draw" pathLength="1" d="m113 65 17 10 27-15M208 61l27 15 36-20"/>
+                  <path class="blueprint-draw blueprint-fine" pathLength="1" d="m130 82 27-15m78 16 36-20"/>
+                  <path class="blueprint-draw" pathLength="1" d="m144 64 5 1-1 4m108-10 5 1-1 4"/>
+                </g>
+                <g class="blueprint-ownership" fill="none" stroke="currentColor" stroke-linecap="round">
+                  <path d="M15 35V5h327v30"/>
+                  <path d="M58 5v7M238 5v7M304 5v7"/>
+                </g>
+              </svg>
+              <figcaption>Illustrative connections · field → infrastructure → operation</figcaption>
+            </figure>
+            <details class="blueprint-disclosure" data-blueprint-disclosure>
+              <summary><span data-blueprint-summary>Explore the connections</span><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M6 1v10M1 6h10"/></svg></summary>
+              <div class="blueprint-explorer">
+                <div class="blueprint-controls" role="group" aria-label="Choose an engineering layer" data-blueprint-controls hidden>
+                  <button type="button" data-blueprint-layer="field" aria-pressed="true" aria-controls="blueprint-field">Field</button>
+                  <button type="button" data-blueprint-layer="infrastructure" aria-pressed="false" aria-controls="blueprint-infrastructure">Infrastructure</button>
+                  <button type="button" data-blueprint-layer="integration" aria-pressed="false" aria-controls="blueprint-integration">Integration</button>
+                  <button type="button" data-blueprint-layer="ownership" aria-pressed="false" aria-controls="blueprint-ownership">Ownership</button>
+                </div>
+                <div class="blueprint-panels">
+                  <section class="blueprint-panel" id="blueprint-field" data-blueprint-panel="field" aria-labelledby="blueprint-field-heading">
+                    <h2 id="blueprint-field-heading">Specify the field behavior.</h2>
+                    <p>I turn operating needs into device and control requirements: what must be measured, how a command should behave, and what feedback confirms the result. Sample checks and commissioning connect the specification to the installation.</p>
+                    <a href="Telemetry%20Case%20Study.html#validation">See the validation work <span aria-hidden="true">→</span></a>
+                  </section>
+                  <section class="blueprint-panel" id="blueprint-infrastructure" data-blueprint-panel="infrastructure" aria-labelledby="blueprint-infrastructure-heading">
+                    <h2 id="blueprint-infrastructure-heading">Design the path to the platform.</h2>
+                    <p>I assess communications paths, server endpoints, hosting, access, and support needs. Working with manufacturer engineering teams, I make the infrastructure dependencies and operating trade-offs explicit before integration.</p>
+                    <a href="Telemetry%20Case%20Study.html#integration">Explore the infrastructure scope <span aria-hidden="true">→</span></a>
+                  </section>
+                  <section class="blueprint-panel" id="blueprint-integration" data-blueprint-panel="integration" aria-labelledby="blueprint-integration-heading">
+                    <h2 id="blueprint-integration-heading">Define the supported interface.</h2>
+                    <p>I confirm the supported software interface, then work through asset identity, timestamps, access, and reporting requirements. Those checks establish how device information can move into operational software.</p>
+                    <a href="Telemetry%20Case%20Study.html#requirements">Read an integration decision <span aria-hidden="true">→</span></a>
+                  </section>
+                  <section class="blueprint-panel" id="blueprint-ownership" data-blueprint-panel="ownership" aria-labelledby="blueprint-ownership-heading">
+                    <h2 id="blueprint-ownership-heading">Connect the responsibilities.</h2>
+                    <p>I bring manufacturers, IT, field teams, and operational stakeholders into the same technical brief. Together we resolve who supplies, validates, maintains, and supports each layer, and which decision needs attention next.</p>
+                    <a href="Telemetry%20Case%20Study.html#context">See the coordination work <span aria-hidden="true">→</span></a>
+                  </section>
+                </div>
+              </div>
+            </details>
           </div>
           <dl class="profile-record">
             <div><dt>BASE</dt><dd>Abu Dhabi, UAE</dd></div>

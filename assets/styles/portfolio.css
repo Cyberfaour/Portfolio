@@ -549,6 +549,15 @@ section[id], h2[id], div[id] { scroll-margin-top: 6rem; }
   .contact-form { padding: 23px; }
 }
 @media (prefers-reduced-motion: no-preference) {
+  /* Native page changes stay brief; the identity remains visually anchored. */
+  @view-transition { navigation: auto; }
+  .brand { view-transition-name: portfolio-brand; }
+  .theme-toggle { view-transition-name: portfolio-theme; }
+  ::view-transition-group(*) { animation-duration: 220ms; animation-timing-function: cubic-bezier(.2, 0, 0, 1); }
+  ::view-transition-old(root) { animation: page-leave 120ms ease-out both; }
+  ::view-transition-new(root) { animation: page-arrive 220ms ease-out both; }
+  ::view-transition-old(portfolio-brand), ::view-transition-old(portfolio-theme) { animation: none; opacity: 0; }
+  ::view-transition-new(portfolio-brand), ::view-transition-new(portfolio-theme) { animation: none; mix-blend-mode: normal; }
   html { scroll-behavior: smooth; }
   a, button { transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease; }
   .header-inner { transition: min-height 180ms ease; }
@@ -569,6 +578,8 @@ section[id], h2[id], div[id] { scroll-margin-top: 6rem; }
   .brand::before { animation: brand-pulse 2400ms ease 2; }
   .is-revealing { animation: enter 650ms cubic-bezier(.2, 0, 0, 1) both; }
 }
+@keyframes page-leave { to { opacity: 0; } }
+@keyframes page-arrive { from { opacity: 0; } to { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
 }
