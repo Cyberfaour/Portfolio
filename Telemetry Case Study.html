@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gas Telemetry — Integration Case Study · Ali Faour</title>
+  <meta name="description" content="Gas telemetry integration: device configuration, communications, commissioning checks, reporting schedules, and operational requirements by Ali Faour.">
+  <meta name="theme-color" content="#090c0e">
+  <link rel="canonical" href="https://cyberfaour.github.io/Portfolio/Telemetry%20Case%20Study.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Gas Telemetry — Integration Case Study · Ali Faour">
+  <meta property="og:description" content="Gas telemetry integration: device configuration, communications, commissioning checks, reporting schedules, and operational requirements by Ali Faour.">
+  <meta property="og:url" content="https://cyberfaour.github.io/Portfolio/Telemetry%20Case%20Study.html">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/styles/portfolio.css">
+  <script src="assets/scripts/portfolio.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">ALI FAOUR<span>Engineering portfolio</span></a>
+      <nav class="site-nav" id="primary-navigation" aria-label="Main navigation">
+        <a href="#context">Context</a>
+        <a href="#integration">Integration</a>
+        <a href="#validation">Validation</a>
+        <a href="#requirements">Requirements</a>
+        <a href="index.html#projects">Portfolio</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" type="button" data-theme-toggle hidden aria-label="Switch to light theme"><span data-theme-label>Light theme</span></button>
+        <button class="menu-toggle" type="button" data-menu-toggle hidden aria-controls="primary-navigation" aria-expanded="false">Menu</button>
+      </div>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="case-hero" aria-labelledby="case-title">
+      <div class="container case-intro">
+        <div>
+          <p class="eyebrow">Industrial IoT · Gas telemetry</p>
+          <h1 id="case-title">A reading becomes useful when it has context.</h1>
+          <p class="lede">Gas monitoring connects the physical installation to the people planning and supporting an operation. My work spans device configuration, communications, commissioning checks, and the reporting behavior of the vendor platform.</p>
+          <p class="case-meta"><span>Royal Gas · Abu Dhabi &amp; Dubai</span><span>Integration &amp; operational requirements</span></p>
+          <div class="button-row"><a class="button button-primary" href="#integration">Follow the integration path <span aria-hidden="true">↓</span></a><a class="button" href="index.html#contact">Discuss the work <span aria-hidden="true">→</span></a></div>
+        </div>
+        <aside class="case-summary" aria-label="Telemetry work summary"><h2>Engineering scope</h2><dl><dt>Field</dt><dd>Gas infrastructure &amp; monitoring devices</dd><dt>Integration</dt><dd>Device, network, server &amp; portal setup</dd><dt>Validation</dt><dd>Identity, readings, units &amp; timestamps</dd><dt>Operations</dt><dd>Reporting, access &amp; notification requirements</dd></dl></aside>
+      </div>
+    </section>
+
+    <section class="section" id="context" aria-labelledby="context-heading">
+      <div class="container">
+        <div class="section-heading"><p class="section-label">The operating context</p><h2 id="context-heading">The portal is one part of the system.</h2><p>A device can be online while its data is still difficult to use. The reading needs the correct tank or site identity, an understood unit, a timestamp, and someone responsible for the next action.</p></div>
+        <div class="grid-2"><article class="panel"><h3>My contribution</h3><p>I configure devices and their destination settings, coordinate field checks, investigate missing or inconsistent reports, and translate operations’ needs into clear vendor requirements.</p><p>That work connects the installation team, the communications path, the vendor platform, and the staff who depend on the resulting information.</p></article><article class="panel"><h3>Practical constraints</h3><p>Different devices and platforms have different reporting intervals, configuration options, user roles, and notification capabilities.</p><p>I make those limits visible during integration so a team can plan around the behavior the system actually provides.</p></article></div>
+      </div>
+    </section>
+
+    <section class="section" id="integration" aria-labelledby="integration-heading">
+      <div class="container">
+        <div class="section-heading"><p class="section-label">Integration path</p><h2 id="integration-heading">Connect the measurement to an operational task.</h2><p>The sequence below is a representative engineering model. The actual transport and portal depend on the device and deployment.</p></div>
+        <ol class="workflow-list"><li><h3>Identify the asset</h3><p>Confirm the installation, device identity, relevant tank or meter, and the reading being collected.</p></li><li><h3>Configure the connection</h3><p>Set the required network, APN, domain, or server parameters for the selected device and service.</p></li><li><h3>Validate the report</h3><p>Check that the expected device appears in the platform and that its values and timestamps make sense.</p></li><li><h3>Define the response</h3><p>Agree who reviews the information, what needs attention, and how a missing update or abnormal reading is followed up.</p></li></ol>
+        <div class="callout"><p><strong>Reporting frequency is a design input.</strong> An hourly device report and an on-demand control action have different requirements. A dashboard refresh cannot make the underlying device transmit more often.</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="validation" aria-labelledby="validation-heading">
+      <div class="container">
+        <div class="section-heading"><p class="section-label">Commissioning &amp; data checks</p><h2 id="validation-heading">Check the whole reading, not just the connection.</h2><p>The integration review covers the physical context and the meaning of the data arriving in the platform.</p></div>
+        <div class="table-scroll" role="region" aria-label="Telemetry validation questions" tabindex="0"><table class="comparison-table"><thead><tr><th scope="col">Check</th><th scope="col">Question to resolve</th><th scope="col">Why it matters</th></tr></thead><tbody><tr><th scope="row">Asset identity</th><td>Does the device map to the correct site, tank, or meter?</td><td>A valid reading attached to the wrong asset can send a team to the wrong location.</td></tr><tr><th scope="row">Value &amp; unit</th><td>What does the value represent, and how is it scaled or calibrated?</td><td>Level, volume, consumption, and device status are different quantities.</td></tr><tr><th scope="row">Time &amp; freshness</th><td>When was the measurement taken, received, and last updated?</td><td>A plausible value can still be stale.</td></tr><tr><th scope="row">Missing reports</th><td>How is a gap detected, investigated, and handed over?</td><td>An absent update needs an owner and a defined response.</td></tr><tr><th scope="row">Access &amp; alerts</th><td>Who can see the asset, and who receives the relevant notification?</td><td>Visibility and responsibility need to match the operating structure.</td></tr></tbody></table></div>
+      </div>
+    </section>
+
+    <section class="section" id="requirements" aria-labelledby="requirements-heading">
+      <div class="container">
+        <div class="section-heading"><p class="section-label">Vendor requirements</p><h2 id="requirements-heading">Specify the workflow behind each feature.</h2><p>A feature label is only useful when the expected behavior is clear. I work through the actual operator and administrator scenarios before turning them into vendor questions.</p></div>
+        <div class="grid-3"><article class="panel"><h3>Site-level access</h3><p>Describe which users should see which locations and records, with clear boundaries between teams or customers.</p></article><article class="panel"><h3>Notification ownership</h3><p>Define recipients, groups, escalation needs, and whether existing user accounts can be reused for notifications.</p></article><article class="panel"><h3>Reporting schedules</h3><p>Separate the device’s transmission interval from report delivery, portal refresh, and the schedule the operation needs.</p></article></div>
+        <div class="callout"><p><strong>The engineering lesson:</strong> integration includes device behavior, data meaning, access, and operational ownership. Each needs to be understood before the monitoring workflow can be relied upon.</p></div>
+      </div>
+    </section>
+
+    <section class="case-footer" aria-labelledby="next-heading"><div class="container"><p class="section-label">Related work</p><h2 id="next-heading">From operational data to connected records.</h2><div class="button-row"><a class="button button-primary" href="Gridlock%20Case%20Study.html">Explore Gridlock <span aria-hidden="true">→</span></a><a class="button" href="DoE%20LPG%20Case%20Study.html">DoE documentation case study <span aria-hidden="true">→</span></a><a class="button" href="index.html#projects">Back to portfolio</a></div></div></section>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© 2026 Ali Faour · Abu Dhabi, UAE</p>
+      <div><a href="https://github.com/Cyberfaour">GitHub</a><a href="https://www.linkedin.com/in/alifaour2022/">LinkedIn</a><a href="mailto:ali2001faour@outlook.com">Email</a></div>
+    </div>
+  </footer>
+</body>
+</html>
