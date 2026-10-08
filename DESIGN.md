@@ -20,6 +20,8 @@ The established identity is neutral black, sharp amber, expressive Space Grotesk
 
 Space Grotesk handles display headings and large figures; Inter handles body text and buttons; JetBrains Mono handles navigation, chapter labels, metadata, and diagrams. Original font families are self-hosted with `font-display: swap`; licenses and provenance live in `assets/fonts/`. Runtime tokens live in `assets/styles/portfolio.css`.
 
+The shared header pairs Ali's name with a compact UAE flag and the supplied “فخورين بالإمارات” emblem. Keep both assets static, reserve their dimensions, and retain the same treatment on the homepage and case studies. The flag sits beside the name; the emblem has a separate, quiet position beside the wordmark. Certification and training providers appear as a wrapping typographic row within the credentials section, backed by the linked CV and credential bundle. Provider names describe education and training, not commercial endorsements.
+
 Preserve the warm ivory light theme, understated neutral dividers, amber marker underlines, off-white primary buttons, and joined project/capability grids. Gridlock can use a restrained blue accent inside its software diagrams. The homepage uses a 1440px maximum width with 40px outer gutters, and case studies use a 1280px maximum.
 
 ## Motion and behavior
