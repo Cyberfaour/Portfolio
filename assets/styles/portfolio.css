@@ -89,9 +89,12 @@ section[id], h2[id], div[id] { scroll-margin-top: 6rem; }
 .site-header { position: sticky; top: 0; z-index: 30; background: var(--bg); background: color-mix(in srgb, var(--bg) 90%, transparent); backdrop-filter: blur(20px); border-bottom: 1px solid var(--soft-line); }
 .header-inner { min-height: 86px; display: flex; align-items: center; gap: 28px; }
 .site-header[data-compact] .header-inner { min-height: 70px; }
-.brand { position: relative; display: inline-flex; flex-direction: column; flex: 0 0 auto; padding: 8px 0 8px 20px; color: var(--text); font-family: var(--font-mono); font-size: 14px; font-weight: 600; letter-spacing: .025em; text-decoration: none; }
-.brand::before { content: ''; position: absolute; top: 17px; left: 0; width: 7px; height: 7px; border-radius: 50%; background: var(--accent-fill); }
+.brand { position: relative; display: inline-flex; align-items: center; gap: 16px; flex: 0 0 auto; padding: 8px 0; color: var(--text); font-family: var(--font-mono); font-size: 14px; font-weight: 600; letter-spacing: .025em; text-decoration: none; }
 .brand small, .brand > span { font-family: var(--font-mono); font-size: 9px; font-weight: 400; color: var(--subtle); letter-spacing: .025em; }
+.brand > .brand-copy { display: flex; flex-direction: column; gap: 5px; color: inherit; }
+.brand-name { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; line-height: 1.25; }
+.brand-flag { width: 24px; height: 12px; flex: 0 0 24px; border-radius: 1px; box-shadow: 0 0 0 1px var(--line); }
+.brand-emblem { width: 52px; height: 52px; flex: 0 0 52px; object-fit: contain; }
 .brand:hover { color: var(--accent); }
 .site-nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 4px 28px; margin-left: auto; }
 .site-nav a { position: relative; display: inline-flex; align-items: center; min-height: 44px; padding-block: 6px; color: var(--muted); font-family: var(--font-mono); font-size: 11px; font-weight: 400; letter-spacing: .025em; text-decoration: none; text-transform: uppercase; }
@@ -256,6 +259,12 @@ section[id], h2[id], div[id] { scroll-margin-top: 6rem; }
 .experience-role { color: var(--accent); font-size: 13px; margin-bottom: 21px; }
 .experience-list ul { max-width: 830px; padding-left: 1.15em; color: var(--muted); font-size: 14px; }
 .experience-list li li + li { margin-top: 9px; }
+.credential-providers { padding-bottom: 30px; }
+.provider-heading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px 24px; margin-bottom: 20px; }
+.provider-heading p { color: var(--muted); font-size: .875rem; }
+.provider-heading .text-link { margin: 0; font-size: .875rem; }
+.provider-list { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 30px; list-style: none; padding: 0; }
+.provider-list li { max-width: 100%; color: var(--text); font-family: var(--font-display); font-size: 1rem; font-weight: 500; line-height: 1.5; }
 .credential-list { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--line); }
 .credential-list li { padding: 29px 32px 29px 0; border-bottom: 1px solid var(--line); }
 .credential-list h3 { font-size: 1.25rem; font-weight: 500; }
@@ -402,6 +411,8 @@ section[id], h2[id], div[id] { scroll-margin-top: 6rem; }
   .capability-rail .container > span { padding-inline: 16px; gap: 12px; font-size: 10px; }
 }
 @media (max-width: 900px) {
+  .brand { gap: 12px; }
+  .brand-emblem { width: 44px; height: 44px; flex-basis: 44px; }
   .header-inner { flex-wrap: wrap; min-height: 76px; padding-block: 8px; }
   .site-header[data-compact] .header-inner { min-height: 68px; }
   .header-actions { margin-left: auto; }
@@ -464,6 +475,8 @@ section[id], h2[id], div[id] { scroll-margin-top: 6rem; }
   .capability-rail .container > span:nth-child(odd) { padding-left: 0; }
 }
 @media (max-width: 680px) {
+  .provider-list { gap: 14px 24px; }
+  .provider-heading { gap: 8px; margin-bottom: 20px; }
   .container { width: calc(100% - 40px); }
   .hero { padding-top: 44px; }
   .hero .eyebrow { max-width: 330px; font-size: 9px; margin-bottom: 23px; }
@@ -532,7 +545,10 @@ section[id], h2[id], div[id] { scroll-margin-top: 6rem; }
 }
 @media (max-width: 400px) {
   .header-inner { gap: 10px; }
-  .brand { font-size: 12px; padding-left: 17px; }
+  .brand { font-size: 12px; gap: 10px; }
+  .brand-name { font-size: 12px; gap: 8px; }
+  .brand-flag { width: 22px; height: 11px; flex-basis: 22px; }
+  .brand-emblem { width: 40px; height: 40px; flex-basis: 40px; }
   .brand small, .brand > span { font-size: 8px; }
   .brand::before { top: 15px; }
   .button { padding-inline: 17px; gap: 13px; font-size: 12px; }
