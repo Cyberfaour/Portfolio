@@ -8,8 +8,8 @@ A static portfolio for operational software, connected infrastructure, field del
 
 | Page | Purpose |
 | --- | --- |
-| `index.html` | Introduction, selected work, defined program outcomes, AI workflow, experience, credentials, and contact. |
-| `Gridlock Case Study.html` | Product definition, connected workflows, engineering approach, and current development/pilot stage. |
+| `index.html` | Introduction, independently owned Gridlock product, separate Royal Gas experience, defined program outcomes, credentials, and contact. |
+| `Gridlock Case Study.html` | Ali Faour's independently owned software (2024–present): product definition, architecture, and development/pilot stage. |
 | `Telemetry Case Study.html` | Infrastructure architecture, manufacturer and stakeholder coordination, integration boundaries, and validation. |
 | `AI Workflow Case Study.html` | RELAAM document preparation, daily AI-assisted practice, quality control, and output-based throughput evidence. |
 | `ADNOC Case Study.html` | A coordinated field-delivery program and its documentation workflow. |
@@ -61,7 +61,7 @@ The optional explorations supplement the readable case studies. Check their clos
 
 Keep the website and profile’s role title, qualification, product stack, and project status aligned. [The results ledger](docs/results-ledger.md) records the scope and definition of the figures used in the site.
 
-Gridlock is presented as **in development, with pilot preparation underway**, dated 2 October 2026. Its diagrams explain product relationships and workflows; they are not product screenshots or a production demonstration. Add actual demonstration images only when they can be accurately captioned and shared.
+Gridlock is presented as **independently owned by Ali Faour, in development, with pilot preparation underway**, updated 20 October 2026. Its diagrams explain product relationships and workflows; they are not product screenshots or a production demonstration. Add actual demonstration images only when they can be accurately captioned and shared.
 
 The DoE page retains the previously published site photo, structured tracker, and Python-generator image. Preserve their context when changing captions. The CV and training certificate are linked as existing files; edits to website copy do not update the contents of those PDFs.
 
