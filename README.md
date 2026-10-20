@@ -63,7 +63,7 @@ Keep the website and profile’s role title, qualification, product stack, and p
 
 Gridlock is presented as **independently owned by Ali Faour, in development, with pilot preparation underway**, updated 20 October 2026. Its diagrams explain product relationships and workflows; they are not product screenshots or a production demonstration. Add actual demonstration images only when they can be accurately captioned and shared.
 
-The DoE page retains the previously published site photo, structured tracker, and Python-generator image. Preserve their context when changing captions. The CV and training certificate are linked as existing files; edits to website copy do not update the contents of those PDFs.
+The DoE page retains the previously published site photo, structured tracker, and Python-generator image. Preserve their context when changing captions. The updated CV page provides a two-page résumé PDF and editable DOCX (`Ali_Faour_Resume_Corrected.pdf` / `.docx`). The existing `Ali_Faour_Resume.pdf` dossier and its `uploads/` copy retain all 23 supporting-document pages after the corrected two-page résumé. Supporting certificates and letters are preserved as issued; the résumé describes ISO/IEC 27001:2022 Lead Auditor training without claiming individual auditor registration.
 
 ## Design
 

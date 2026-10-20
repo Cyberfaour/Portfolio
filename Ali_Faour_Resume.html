@@ -7,12 +7,13 @@
 *{box-sizing:border-box}body{margin:0}.sheet{max-width:880px;margin:36px auto;padding:42px 50px;background:white;box-shadow:0 12px 40px #172c4120}
 h1{font-size:35px;line-height:1.1;letter-spacing:-.035em;margin:0;color:#112d4b}h2{font-size:14px;letter-spacing:.16em;margin:31px 0 14px;text-transform:uppercase;color:#244d7d;border-bottom:1px solid #b2c4d8;padding-bottom:7px}
 h3{font-size:16px;margin:0;color:#112d4b}p{margin:6px 0 12px}ul{margin:8px 0 14px;padding-left:21px}li{margin:5px 0}.subtitle{font-weight:600;font-size:16px;color:#456480;margin-top:8px}.contact{font-size:13px;color:#50657c}.entry{margin:20px 0}.entry-head{display:flex;justify-content:space-between;gap:12px}.dates{font-size:13px;color:#61758c;white-space:nowrap}.label{font-size:13px;font-weight:650;color:#4a698d}.gridlock{border-left:4px solid #3a689a;padding:12px 16px;background:#f1f5fa}.muted{color:#586d80}.skills{display:grid;grid-template-columns:155px 1fr;gap:8px;margin:8px 0}.actions{text-align:right;margin-bottom:12px}.actions a,.actions button{font:inherit;cursor:pointer;border:1px solid #b7c5d4;border-radius:5px;background:white;color:#204d7a;padding:8px 12px;text-decoration:none}a{color:#1e5d94}
-@media(max-width:680px){.sheet{padding:25px 20px;margin:0}.entry-head{display:block}.dates{white-space:normal}.skills{grid-template-columns:1fr;gap:0}.actions{text-align:left;margin-bottom:22px}}
-@media print{@page{size:A4;margin:15mm}body{background:white}.sheet{max-width:none;margin:0;padding:0;box-shadow:none;font-size:12px}.actions{display:none}h2,.entry{break-after:avoid}ul{break-inside:avoid}a{color:inherit;text-decoration:none}.gridlock{background:none}}
+.actions{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px}
+@media(max-width:680px){.sheet{padding:25px 20px;margin:0}.entry-head{display:block}.dates{white-space:normal}.skills{grid-template-columns:1fr;gap:0}.actions{text-align:left;justify-content:flex-start;margin-bottom:22px}}
+@media print{@page{size:A4;margin:15mm}:root,html,body{background:white!important}.sheet{max-width:none;margin:0;padding:0;box-shadow:none;font-size:12px}.actions{display:none}h2,h3{break-after:avoid}.entry{break-inside:avoid}ul{break-inside:avoid}a{color:inherit;text-decoration:none}.gridlock{background:none}}
 </style></head><body><main class="sheet">
-<nav class="actions"><a href="index.html">Back to portfolio</a> <button type="button" onclick="window.print()">Print / Save as PDF</button></nav>
+<nav class="actions" aria-label="Resume downloads"><a href="index.html">Back to portfolio</a> <a href="Ali_Faour_Resume_Corrected.pdf" download>Download PDF</a> <a href="Ali_Faour_Resume_Corrected.docx" download>Download DOCX</a> <a href="Ali_Faour_Resume.pdf">CV &amp; credentials (25 pages)</a> <button type="button" onclick="window.print()">Print / Save as PDF</button></nav>
 <header><h1>Ali I. Faour</h1><div class="subtitle">Technical Solutions Engineer · AIoT &amp; Digital Transformation · Software Product Architecture</div>
-<p class="contact">Abu Dhabi, UAE · +971 50 427 0258 · <a href="mailto:ali.i.faour@outlook.com">ali.i.faour@outlook.com</a> · <a href="https://www.linkedin.com/in/alibrahimfaour/">LinkedIn</a> · <a href="index.html">Portfolio</a></p></header>
+<p class="contact">Abu Dhabi, UAE · +971 50 427 0258 · <a href="mailto:ali.i.faour@outlook.com">ali.i.faour@outlook.com</a> · <a href="https://www.linkedin.com/in/alibrahimfaour/">LinkedIn</a> · <a href="https://cyberfaour.github.io/Portfolio/">Portfolio</a></p></header>
 
 <section><h2>Independent Software Product</h2><div class="gridlock">
 <div class="entry-head"><h3>Gridlock ERP — Creator &amp; Lead Architect</h3><span class="dates">2024–present</span></div>
@@ -28,8 +29,8 @@ h3{font-size:16px;margin:0;color:#112d4b}p{margin:6px 0 12px}ul{margin:8px 0 14p
 <ul><li>Lead technical escalations and cross-functional coordination among operations, field teams, manufacturers, project consultants and management.</li>
 <li>Directed an AED 5M Department of Energy LPG infrastructure program under AtkinsRéalis oversight, coordinating over 400 work orders across site assessment, proposals, submissions and closeout.</li>
 <li>Recovered an AED 1.2M ADNOC Ruwais scope by reorganizing field deployment for eight technicians, shortening delivery from six months to two months.</li>
-<li>Coordinated Hanwei gas safety devices, monitoring platform requirements and remote-control integrations with the manufacturer’s engineering team.</li>
-<li>Configured and deployed 290+ Anova GSM tank-level telemetry devices across Abu Dhabi and Dubai; supported field verification, technician training, data reconciliation and operational reporting.</li>
+<li>Coordinated gas safety devices, monitoring platform requirements and remote-control integrations with the manufacturer’s engineering team.</li>
+<li>Configured and deployed 290+ GSM tank-level telemetry devices across Abu Dhabi and Dubai; supported field verification, technician training, data reconciliation and operational reporting.</li>
 <li>Conducted LoRa mesh field trials, managed gas-control panel deployment, and reconstructed 30+ years of operational data into a structured Excel-based ETL master database.</li></ul></div>
 <div class="entry"><div class="entry-head"><h3>Intern — Control Systems Engineering / IT Support</h3><span class="dates">Jan–Nov 2023</span></div><p class="label">Royal Development for Gas Works and Contracting · Abu Dhabi, UAE</p>
 <p>Assembled and tested LPG detection/control panels; supported field inspections, calibration and preventive maintenance; assisted with Active Directory, infrastructure checks and IT operations.</p></div>
@@ -41,10 +42,10 @@ h3{font-size:16px;margin:0;color:#112d4b}p{margin:6px 0 12px}ul{margin:8px 0 14p
 <p><strong>MePS Engineering Proposal System:</strong> Regulatory gas-submittal preparation, demand calculations, and structured technical documentation.</p>
 <p><strong>KB200N Controller Board:</strong> Hardware redesign concept to simplify multi-board control panels.</p>
 <p><strong>DoE / ADNOC Reporting Pipelines:</strong> Python and Excel workflows supporting 1,500+ DoE reports and 224 ADNOC submission packages.</p></section>
-<section><h2>Education</h2><p><strong>B.S., Computer Engineering</strong> · Lebanese International University · 2022 · UAE MOHESR recognized</p></section>
+<section><h2>Education</h2><p><strong>B.E. Computer Engineering</strong> · Lebanese International University · 2022 · UAE MOHESR recognized</p></section>
 <section><h2>Technical Skills</h2>
 <div class="skills"><strong>Software &amp; Data</strong><span>C#, Python, SQL, .NET 10, Blazor, EF Core, MySQL, REST APIs, automation, data pipelines</span></div>
 <div class="skills"><strong>Industrial Systems</strong><span>LoRa / LoRaWAN / Mesh, Modbus, RS485, 4G / GSM / NB-IoT, SCADA / PLC, embedded systems, panel commissioning</span></div>
 <div class="skills"><strong>Delivery</strong><span>Systems architecture, cross-functional project coordination, technical requirements, vendor coordination, testing, deployment</span></div></section>
-<section><h2>Selected Certifications &amp; Training</h2><p>ISO/IEC 27001:2022 Lead Auditor — TÜV SÜD · AWS Certified Cloud Practitioner · ADNOC Work Management System · ADNOC Life Saving Rules · Industrial IoT Markets and Security · Cisco Network and Endpoint Security</p></section>
+<section><h2>Selected Certifications &amp; Training</h2><p>ISO/IEC 27001:2022 Lead Auditor training — TÜV SÜD · AWS Certified Cloud Practitioner · ADNOC Work Management System · ADNOC Life Saving Rules · Industrial IoT Markets and Security · Cisco Network and Endpoint Security</p></section>
 </main></body></html>
